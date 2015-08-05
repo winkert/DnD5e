@@ -4,7 +4,9 @@ using System.ComponentModel;
 
 namespace DnD5e
 {
-
+    /// <summary>
+    /// Represents a character used in DnD5e.
+    /// </summary>
     [Serializable]
     public class Character
     {
@@ -306,6 +308,7 @@ namespace DnD5e
         HalfOrc,
         Tiefling
     }
+    //The SubRaces could be refactored to be treated like the SubClasses
     /// <summary>
     /// The subrace of the character. Not all races have subraces.
     /// Due to design, this includes ethnicity (Human) and ancestry (Dragonborn)

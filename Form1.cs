@@ -736,7 +736,7 @@ namespace DnD5e
         #endregion
 
         #region Event Handlers
-        //
+        //Change index events
         private void combo_Race_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindSubRaces((string)combo_Race.SelectedValue);
@@ -777,13 +777,21 @@ namespace DnD5e
             ItemTypes item = selected.ParseEnum<ItemTypes>();
             setEquipment(item);
         }
-        //
+        //Event for general use
         private void txt_Enter_SelectAll(object sender, EventArgs e)
         {
-            NumericUpDown field = (NumericUpDown)sender;
-            field.Select(0, field.Value.ToString().Length);
+            if (sender is NumericUpDown)
+            {
+                NumericUpDown field = (NumericUpDown)sender;
+                field.Select(0, field.Value.ToString().Length);
+            }
+            if (sender is TextBox)
+            {
+                TextBox field = (TextBox)sender;
+                field.Select(0, field.Text.Length);
+            }
         }
-        //
+        //Menu events
         private void saveListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             allCharacters.serialize(SaveLocation);
@@ -817,7 +825,7 @@ namespace DnD5e
             }
             
         }
-        //
+        //Button events
         private void btn_Save_Click(object sender, EventArgs e)
         {
             if (allCharacters == null)
@@ -933,7 +941,10 @@ namespace DnD5e
                 MessageBox.Show("Please select an item to delete from the inventory.");
             }
         }
-        //
+        //Thus far unused event. In theory:
+        //When a tab is changed, the required binding and loading of that tab takes place.
+        //This moves some of the load time from when the application is started to throughout the runtime.
+        //I'm on the fence about this particular thing as it might adversely affect usability.
         private void tabControl_Selected(object sender, TabControlEventArgs e)
         {
             //string tabName = e.TabPage.Text;
@@ -953,12 +964,6 @@ namespace DnD5e
             //        break;
             //}
         }
-
-
-
-
-
-
         #endregion
 
         

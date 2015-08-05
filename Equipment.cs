@@ -5,6 +5,9 @@ using System.ComponentModel;
 namespace DnD5e
 {
     #region Classes
+    /// <summary>
+    /// General Equipment item
+    /// </summary>
     [Serializable]
     public class Equipment
     {
@@ -30,7 +33,9 @@ namespace DnD5e
         }
 
     }
-
+    /// <summary>
+    /// Weapon. A type of Equipment
+    /// </summary>
     [Serializable]
     public class Weapon : Equipment
     {
@@ -70,7 +75,9 @@ namespace DnD5e
         }
 
     }
-
+    /// <summary>
+    /// Armor. A type of Equipment
+    /// </summary>
     [Serializable]
     public class Armor : Equipment
     {
@@ -117,19 +124,24 @@ namespace DnD5e
         [Description("Martial Range Weapon")]
         MartialRange
     }
-    public enum WeaponType
-    {
-        None = 0
-    }
     public enum ItemTypes
     {
         None = 0,
         Weapon,
         Armor,
-        Potion, 
+        Potion,
         Gear,
         Trinket,
         Valuable
+    }
+    //Currently unused Enum. In Theory:
+    //This would be a list of weapons (Sword, Hand Axe, Spear, Sling, etc)
+    //I feel like it would be unwieldy
+    //Another option would be to treat this like the subclasses.
+    //I would then create a similar set for armor.
+    public enum WeaponType
+    {
+        None = 0
     }
     #endregion
 }
