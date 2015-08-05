@@ -26,6 +26,7 @@ namespace DnD5e
         /// Default is -1 (no selection)
         /// </summary>
         public int SelectedCharacter = -1;
+        private bool changesMade = false;
         private string SaveLocation = Path.GetDirectoryName(Application.ExecutablePath) + "\\characters.bin";
         private List<Proficiencies> tempProficiencies = new List<Proficiencies>();
         private List<Spell> tempSpells = new List<Spell>();
@@ -662,6 +663,12 @@ namespace DnD5e
             Spell_Components.Text = "Spell Components : " + s.sComponents;
             Spell_Effects.Text = "Spell Effects : " + s.sEffect;
         }
+        private void displayItemInfo(Equipment s)
+        {
+            Item_Name.Text = s.Name;
+            Item_Effects.Text = "Additional Information : " + s.Effects;
+            Item_Value.Text = s.Value.GoldToCoins();
+        }
         #endregion
         #region Validation
         private void checkSpellCasting(Classes c)
@@ -755,6 +762,11 @@ namespace DnD5e
             int selectedSpell = list_KnownSpells.SelectedIndex;
             displaySpellInfo(tempSpells[selectedSpell]);
         }
+        private void list_Equipment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedItem = list_Equipment.SelectedIndex;
+            displayItemInfo(tempEquipment[selectedItem]);
+        }
         private void combo_ItemTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selected = combo_ItemTypes.SelectedItem.ToString();
@@ -775,15 +787,17 @@ namespace DnD5e
         private void saveListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             allCharacters.serialize(SaveLocation);
+            changesMade = false;
         }
         private void loadListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             allCharacters = SaveLocation.deserialize();
             refreshCharacters();
+            changesMade = false;
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (allCharacters.Count > 0)
+            if (allCharacters.Count > 0 && changesMade)
             {
                 //Should ask to save changes.
                 DialogResult save = MessageBox.Show("Do you want to save your character list?", "Save before exiting?", MessageBoxButtons.YesNoCancel);
@@ -824,6 +838,7 @@ namespace DnD5e
             }
             //Refresh the box so you can see the new character
             refreshCharacters();
+            changesMade = true;
         }
         private void btn_Load_Click(object sender, EventArgs e)
         {
@@ -849,6 +864,7 @@ namespace DnD5e
             allCharacters.Remove(allCharacters[SelectedCharacter]);
             list_Characters.SelectedIndex = -1;
             refreshCharacters();
+            changesMade = true;
         }
         private void btn_SaveProf_Click(object sender, EventArgs e)
         {

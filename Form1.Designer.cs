@@ -85,6 +85,38 @@
             this.combo_SubRace = new System.Windows.Forms.ComboBox();
             this.label_Class = new System.Windows.Forms.Label();
             this.tab_CharEquipment = new System.Windows.Forms.TabPage();
+            this.grp_EquipmentGrid = new System.Windows.Forms.GroupBox();
+            this.btn_DeleteItem = new System.Windows.Forms.Button();
+            this.btn_SaveItem = new System.Windows.Forms.Button();
+            this.list_Equipment = new System.Windows.Forms.ListBox();
+            this.grp_EquipmentBuild = new System.Windows.Forms.GroupBox();
+            this.pan_Armor = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txt_ArmorClass = new System.Windows.Forms.TextBox();
+            this.combo_ArmorType = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txt_ItemEffects = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.item_cp = new System.Windows.Forms.TextBox();
+            this.item_sp = new System.Windows.Forms.TextBox();
+            this.item_ep = new System.Windows.Forms.TextBox();
+            this.item_gp = new System.Windows.Forms.TextBox();
+            this.item_pp = new System.Windows.Forms.TextBox();
+            this.txt_ItemName = new System.Windows.Forms.TextBox();
+            this.pan_Weapon = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txt_WeaponDamage = new System.Windows.Forms.TextBox();
+            this.combo_WeaponType = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.combo_ItemTypes = new System.Windows.Forms.ComboBox();
             this.tab_CharSpells = new System.Windows.Forms.TabPage();
             this.btn_DeleteSpell = new System.Windows.Forms.Button();
             this.btn_NewSpell = new System.Windows.Forms.Button();
@@ -106,6 +138,13 @@
             this.txt_SpellName = new System.Windows.Forms.TextBox();
             this.btn_SaveSpell = new System.Windows.Forms.Button();
             this.grp_SpellInfo = new System.Windows.Forms.GroupBox();
+            this.Spell_Effects = new System.Windows.Forms.TextBox();
+            this.Spell_Components = new System.Windows.Forms.TextBox();
+            this.Spell_Duration = new System.Windows.Forms.Label();
+            this.Spell_CastTime = new System.Windows.Forms.Label();
+            this.Spell_Range = new System.Windows.Forms.Label();
+            this.Spell_Class_Level = new System.Windows.Forms.Label();
+            this.Spell_Name = new System.Windows.Forms.Label();
             this.grp_KnownSpells = new System.Windows.Forms.GroupBox();
             this.list_KnownSpells = new System.Windows.Forms.ListBox();
             this.tab_Record = new System.Windows.Forms.TabPage();
@@ -120,45 +159,10 @@
             this.saveListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grp_EquipmentBuild = new System.Windows.Forms.GroupBox();
-            this.grp_EquipmentGrid = new System.Windows.Forms.GroupBox();
-            this.list_Equipment = new System.Windows.Forms.ListBox();
-            this.combo_ItemTypes = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.Spell_Name = new System.Windows.Forms.Label();
-            this.Spell_Class_Level = new System.Windows.Forms.Label();
-            this.Spell_Range = new System.Windows.Forms.Label();
-            this.Spell_CastTime = new System.Windows.Forms.Label();
-            this.Spell_Duration = new System.Windows.Forms.Label();
-            this.Spell_Components = new System.Windows.Forms.TextBox();
-            this.Spell_Effects = new System.Windows.Forms.TextBox();
-            this.pan_Weapon = new System.Windows.Forms.Panel();
-            this.txt_ItemName = new System.Windows.Forms.TextBox();
-            this.item_pp = new System.Windows.Forms.TextBox();
-            this.item_gp = new System.Windows.Forms.TextBox();
-            this.item_ep = new System.Windows.Forms.TextBox();
-            this.item_sp = new System.Windows.Forms.TextBox();
-            this.item_cp = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txt_ItemEffects = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.pan_Armor = new System.Windows.Forms.Panel();
-            this.combo_ArmorType = new System.Windows.Forms.ComboBox();
-            this.combo_WeaponType = new System.Windows.Forms.ComboBox();
-            this.txt_ArmorClass = new System.Windows.Forms.TextBox();
-            this.txt_WeaponDamage = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.btn_SaveItem = new System.Windows.Forms.Button();
-            this.btn_DeleteItem = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Item_Effects = new System.Windows.Forms.TextBox();
+            this.Item_Value = new System.Windows.Forms.Label();
+            this.Item_Name = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -171,15 +175,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_Dx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_St)).BeginInit();
             this.tab_CharEquipment.SuspendLayout();
+            this.grp_EquipmentGrid.SuspendLayout();
+            this.grp_EquipmentBuild.SuspendLayout();
+            this.pan_Armor.SuspendLayout();
+            this.pan_Weapon.SuspendLayout();
             this.tab_CharSpells.SuspendLayout();
             this.grp_SpellInfo.SuspendLayout();
             this.grp_KnownSpells.SuspendLayout();
             this.grp_Characters.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.grp_EquipmentBuild.SuspendLayout();
-            this.grp_EquipmentGrid.SuspendLayout();
-            this.pan_Weapon.SuspendLayout();
-            this.pan_Armor.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -867,6 +872,315 @@
             this.tab_CharEquipment.Text = "Equipment";
             this.tab_CharEquipment.UseVisualStyleBackColor = true;
             // 
+            // grp_EquipmentGrid
+            // 
+            this.grp_EquipmentGrid.Controls.Add(this.groupBox1);
+            this.grp_EquipmentGrid.Controls.Add(this.btn_DeleteItem);
+            this.grp_EquipmentGrid.Controls.Add(this.btn_SaveItem);
+            this.grp_EquipmentGrid.Controls.Add(this.list_Equipment);
+            this.grp_EquipmentGrid.Location = new System.Drawing.Point(3, 247);
+            this.grp_EquipmentGrid.Name = "grp_EquipmentGrid";
+            this.grp_EquipmentGrid.Size = new System.Drawing.Size(450, 246);
+            this.grp_EquipmentGrid.TabIndex = 1;
+            this.grp_EquipmentGrid.TabStop = false;
+            // 
+            // btn_DeleteItem
+            // 
+            this.btn_DeleteItem.Location = new System.Drawing.Point(368, 19);
+            this.btn_DeleteItem.Name = "btn_DeleteItem";
+            this.btn_DeleteItem.Size = new System.Drawing.Size(75, 23);
+            this.btn_DeleteItem.TabIndex = 2;
+            this.btn_DeleteItem.Text = "Delete Item";
+            this.btn_DeleteItem.UseVisualStyleBackColor = true;
+            this.btn_DeleteItem.Click += new System.EventHandler(this.btn_DeleteItem_Click);
+            // 
+            // btn_SaveItem
+            // 
+            this.btn_SaveItem.Location = new System.Drawing.Point(287, 19);
+            this.btn_SaveItem.Name = "btn_SaveItem";
+            this.btn_SaveItem.Size = new System.Drawing.Size(75, 23);
+            this.btn_SaveItem.TabIndex = 1;
+            this.btn_SaveItem.Text = "Save Item";
+            this.btn_SaveItem.UseVisualStyleBackColor = true;
+            this.btn_SaveItem.Click += new System.EventHandler(this.btn_SaveItem_Click);
+            // 
+            // list_Equipment
+            // 
+            this.list_Equipment.FormattingEnabled = true;
+            this.list_Equipment.Location = new System.Drawing.Point(3, 19);
+            this.list_Equipment.Name = "list_Equipment";
+            this.list_Equipment.Size = new System.Drawing.Size(275, 225);
+            this.list_Equipment.TabIndex = 0;
+            this.list_Equipment.SelectedIndexChanged += new System.EventHandler(this.list_Equipment_SelectedIndexChanged);
+            // 
+            // grp_EquipmentBuild
+            // 
+            this.grp_EquipmentBuild.Controls.Add(this.pan_Armor);
+            this.grp_EquipmentBuild.Controls.Add(this.label25);
+            this.grp_EquipmentBuild.Controls.Add(this.label24);
+            this.grp_EquipmentBuild.Controls.Add(this.txt_ItemEffects);
+            this.grp_EquipmentBuild.Controls.Add(this.label23);
+            this.grp_EquipmentBuild.Controls.Add(this.label22);
+            this.grp_EquipmentBuild.Controls.Add(this.label21);
+            this.grp_EquipmentBuild.Controls.Add(this.label20);
+            this.grp_EquipmentBuild.Controls.Add(this.label19);
+            this.grp_EquipmentBuild.Controls.Add(this.label18);
+            this.grp_EquipmentBuild.Controls.Add(this.item_cp);
+            this.grp_EquipmentBuild.Controls.Add(this.item_sp);
+            this.grp_EquipmentBuild.Controls.Add(this.item_ep);
+            this.grp_EquipmentBuild.Controls.Add(this.item_gp);
+            this.grp_EquipmentBuild.Controls.Add(this.item_pp);
+            this.grp_EquipmentBuild.Controls.Add(this.txt_ItemName);
+            this.grp_EquipmentBuild.Controls.Add(this.pan_Weapon);
+            this.grp_EquipmentBuild.Controls.Add(this.label17);
+            this.grp_EquipmentBuild.Controls.Add(this.combo_ItemTypes);
+            this.grp_EquipmentBuild.Location = new System.Drawing.Point(3, 6);
+            this.grp_EquipmentBuild.Name = "grp_EquipmentBuild";
+            this.grp_EquipmentBuild.Size = new System.Drawing.Size(450, 179);
+            this.grp_EquipmentBuild.TabIndex = 0;
+            this.grp_EquipmentBuild.TabStop = false;
+            this.grp_EquipmentBuild.Text = "Equipment";
+            // 
+            // pan_Armor
+            // 
+            this.pan_Armor.Controls.Add(this.label27);
+            this.pan_Armor.Controls.Add(this.label26);
+            this.pan_Armor.Controls.Add(this.txt_ArmorClass);
+            this.pan_Armor.Controls.Add(this.combo_ArmorType);
+            this.pan_Armor.Location = new System.Drawing.Point(223, 89);
+            this.pan_Armor.Name = "pan_Armor";
+            this.pan_Armor.Size = new System.Drawing.Size(210, 81);
+            this.pan_Armor.TabIndex = 9;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(18, 42);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(62, 13);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "Armor Class";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(18, 15);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(61, 13);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Armor Type";
+            // 
+            // txt_ArmorClass
+            // 
+            this.txt_ArmorClass.Location = new System.Drawing.Point(84, 39);
+            this.txt_ArmorClass.Name = "txt_ArmorClass";
+            this.txt_ArmorClass.Size = new System.Drawing.Size(121, 20);
+            this.txt_ArmorClass.TabIndex = 1;
+            // 
+            // combo_ArmorType
+            // 
+            this.combo_ArmorType.FormattingEnabled = true;
+            this.combo_ArmorType.Location = new System.Drawing.Point(84, 12);
+            this.combo_ArmorType.Name = "combo_ArmorType";
+            this.combo_ArmorType.Size = new System.Drawing.Size(121, 21);
+            this.combo_ArmorType.TabIndex = 0;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label25.Location = new System.Drawing.Point(209, 22);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(45, 17);
+            this.label25.TabIndex = 17;
+            this.label25.Text = "Name";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label24.Location = new System.Drawing.Point(6, 89);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(55, 17);
+            this.label24.TabIndex = 16;
+            this.label24.Text = "Effects:";
+            // 
+            // txt_ItemEffects
+            // 
+            this.txt_ItemEffects.Location = new System.Drawing.Point(67, 88);
+            this.txt_ItemEffects.Multiline = true;
+            this.txt_ItemEffects.Name = "txt_ItemEffects";
+            this.txt_ItemEffects.Size = new System.Drawing.Size(129, 82);
+            this.txt_ItemEffects.TabIndex = 7;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label23.Location = new System.Drawing.Point(384, 45);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(26, 17);
+            this.label23.TabIndex = 14;
+            this.label23.Text = "CP";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label22.Location = new System.Drawing.Point(318, 45);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(26, 17);
+            this.label22.TabIndex = 13;
+            this.label22.Text = "SP";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label21.Location = new System.Drawing.Point(252, 45);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(26, 17);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "EP";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label20.Location = new System.Drawing.Point(186, 45);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 17);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "GP";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label19.Location = new System.Drawing.Point(120, 45);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(26, 17);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "PP";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label18.Location = new System.Drawing.Point(78, 63);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(36, 17);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Cost";
+            // 
+            // item_cp
+            // 
+            this.item_cp.Location = new System.Drawing.Point(384, 62);
+            this.item_cp.Name = "item_cp";
+            this.item_cp.Size = new System.Drawing.Size(60, 20);
+            this.item_cp.TabIndex = 6;
+            // 
+            // item_sp
+            // 
+            this.item_sp.Location = new System.Drawing.Point(318, 62);
+            this.item_sp.Name = "item_sp";
+            this.item_sp.Size = new System.Drawing.Size(60, 20);
+            this.item_sp.TabIndex = 5;
+            // 
+            // item_ep
+            // 
+            this.item_ep.Location = new System.Drawing.Point(252, 62);
+            this.item_ep.Name = "item_ep";
+            this.item_ep.Size = new System.Drawing.Size(60, 20);
+            this.item_ep.TabIndex = 4;
+            // 
+            // item_gp
+            // 
+            this.item_gp.Location = new System.Drawing.Point(186, 62);
+            this.item_gp.Name = "item_gp";
+            this.item_gp.Size = new System.Drawing.Size(60, 20);
+            this.item_gp.TabIndex = 3;
+            // 
+            // item_pp
+            // 
+            this.item_pp.Location = new System.Drawing.Point(120, 62);
+            this.item_pp.Name = "item_pp";
+            this.item_pp.Size = new System.Drawing.Size(60, 20);
+            this.item_pp.TabIndex = 2;
+            // 
+            // txt_ItemName
+            // 
+            this.txt_ItemName.Location = new System.Drawing.Point(270, 21);
+            this.txt_ItemName.Name = "txt_ItemName";
+            this.txt_ItemName.Size = new System.Drawing.Size(174, 20);
+            this.txt_ItemName.TabIndex = 1;
+            // 
+            // pan_Weapon
+            // 
+            this.pan_Weapon.Controls.Add(this.label29);
+            this.pan_Weapon.Controls.Add(this.label28);
+            this.pan_Weapon.Controls.Add(this.txt_WeaponDamage);
+            this.pan_Weapon.Controls.Add(this.combo_WeaponType);
+            this.pan_Weapon.Location = new System.Drawing.Point(206, 89);
+            this.pan_Weapon.Name = "pan_Weapon";
+            this.pan_Weapon.Size = new System.Drawing.Size(240, 81);
+            this.pan_Weapon.TabIndex = 8;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(5, 15);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(75, 13);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "Weapon Type";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(33, 42);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(47, 13);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "Damage";
+            // 
+            // txt_WeaponDamage
+            // 
+            this.txt_WeaponDamage.Location = new System.Drawing.Point(86, 39);
+            this.txt_WeaponDamage.Name = "txt_WeaponDamage";
+            this.txt_WeaponDamage.Size = new System.Drawing.Size(151, 20);
+            this.txt_WeaponDamage.TabIndex = 2;
+            // 
+            // combo_WeaponType
+            // 
+            this.combo_WeaponType.FormattingEnabled = true;
+            this.combo_WeaponType.Location = new System.Drawing.Point(86, 12);
+            this.combo_WeaponType.Name = "combo_WeaponType";
+            this.combo_WeaponType.Size = new System.Drawing.Size(151, 21);
+            this.combo_WeaponType.TabIndex = 1;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label17.Location = new System.Drawing.Point(6, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(70, 17);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Item Type";
+            // 
+            // combo_ItemTypes
+            // 
+            this.combo_ItemTypes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_ItemTypes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.combo_ItemTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.combo_ItemTypes.FormattingEnabled = true;
+            this.combo_ItemTypes.Location = new System.Drawing.Point(82, 19);
+            this.combo_ItemTypes.Name = "combo_ItemTypes";
+            this.combo_ItemTypes.Size = new System.Drawing.Size(99, 23);
+            this.combo_ItemTypes.TabIndex = 0;
+            this.combo_ItemTypes.SelectedIndexChanged += new System.EventHandler(this.combo_ItemTypes_SelectedIndexChanged);
+            // 
             // tab_CharSpells
             // 
             this.tab_CharSpells.Controls.Add(this.btn_DeleteSpell);
@@ -1096,6 +1410,77 @@
             this.grp_SpellInfo.TabStop = false;
             this.grp_SpellInfo.Text = "Spell Information";
             // 
+            // Spell_Effects
+            // 
+            this.Spell_Effects.BackColor = System.Drawing.SystemColors.Window;
+            this.Spell_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Spell_Effects.Enabled = false;
+            this.Spell_Effects.Location = new System.Drawing.Point(9, 136);
+            this.Spell_Effects.Multiline = true;
+            this.Spell_Effects.Name = "Spell_Effects";
+            this.Spell_Effects.ReadOnly = true;
+            this.Spell_Effects.Size = new System.Drawing.Size(215, 78);
+            this.Spell_Effects.TabIndex = 8;
+            this.Spell_Effects.Text = "Effects";
+            // 
+            // Spell_Components
+            // 
+            this.Spell_Components.BackColor = System.Drawing.SystemColors.Window;
+            this.Spell_Components.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Spell_Components.Enabled = false;
+            this.Spell_Components.Location = new System.Drawing.Point(9, 87);
+            this.Spell_Components.Multiline = true;
+            this.Spell_Components.Name = "Spell_Components";
+            this.Spell_Components.ReadOnly = true;
+            this.Spell_Components.Size = new System.Drawing.Size(215, 43);
+            this.Spell_Components.TabIndex = 7;
+            this.Spell_Components.Text = "Components";
+            // 
+            // Spell_Duration
+            // 
+            this.Spell_Duration.AutoSize = true;
+            this.Spell_Duration.Location = new System.Drawing.Point(6, 71);
+            this.Spell_Duration.Name = "Spell_Duration";
+            this.Spell_Duration.Size = new System.Drawing.Size(47, 13);
+            this.Spell_Duration.TabIndex = 4;
+            this.Spell_Duration.Text = "Duration";
+            // 
+            // Spell_CastTime
+            // 
+            this.Spell_CastTime.AutoSize = true;
+            this.Spell_CastTime.Location = new System.Drawing.Point(6, 58);
+            this.Spell_CastTime.Name = "Spell_CastTime";
+            this.Spell_CastTime.Size = new System.Drawing.Size(54, 13);
+            this.Spell_CastTime.TabIndex = 3;
+            this.Spell_CastTime.Text = "Cast Time";
+            // 
+            // Spell_Range
+            // 
+            this.Spell_Range.AutoSize = true;
+            this.Spell_Range.Location = new System.Drawing.Point(6, 45);
+            this.Spell_Range.Name = "Spell_Range";
+            this.Spell_Range.Size = new System.Drawing.Size(39, 13);
+            this.Spell_Range.TabIndex = 2;
+            this.Spell_Range.Text = "Range";
+            // 
+            // Spell_Class_Level
+            // 
+            this.Spell_Class_Level.AutoSize = true;
+            this.Spell_Class_Level.Location = new System.Drawing.Point(6, 32);
+            this.Spell_Class_Level.Name = "Spell_Class_Level";
+            this.Spell_Class_Level.Size = new System.Drawing.Size(61, 13);
+            this.Spell_Class_Level.TabIndex = 1;
+            this.Spell_Class_Level.Text = "Class Level";
+            // 
+            // Spell_Name
+            // 
+            this.Spell_Name.AutoSize = true;
+            this.Spell_Name.Location = new System.Drawing.Point(6, 19);
+            this.Spell_Name.Name = "Spell_Name";
+            this.Spell_Name.Size = new System.Drawing.Size(35, 13);
+            this.Spell_Name.TabIndex = 0;
+            this.Spell_Name.Text = "Name";
+            // 
             // grp_KnownSpells
             // 
             this.grp_KnownSpells.Controls.Add(this.list_KnownSpells);
@@ -1224,383 +1609,48 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // grp_EquipmentBuild
-            // 
-            this.grp_EquipmentBuild.Controls.Add(this.pan_Armor);
-            this.grp_EquipmentBuild.Controls.Add(this.label25);
-            this.grp_EquipmentBuild.Controls.Add(this.label24);
-            this.grp_EquipmentBuild.Controls.Add(this.txt_ItemEffects);
-            this.grp_EquipmentBuild.Controls.Add(this.label23);
-            this.grp_EquipmentBuild.Controls.Add(this.label22);
-            this.grp_EquipmentBuild.Controls.Add(this.label21);
-            this.grp_EquipmentBuild.Controls.Add(this.label20);
-            this.grp_EquipmentBuild.Controls.Add(this.label19);
-            this.grp_EquipmentBuild.Controls.Add(this.label18);
-            this.grp_EquipmentBuild.Controls.Add(this.item_cp);
-            this.grp_EquipmentBuild.Controls.Add(this.item_sp);
-            this.grp_EquipmentBuild.Controls.Add(this.item_ep);
-            this.grp_EquipmentBuild.Controls.Add(this.item_gp);
-            this.grp_EquipmentBuild.Controls.Add(this.item_pp);
-            this.grp_EquipmentBuild.Controls.Add(this.txt_ItemName);
-            this.grp_EquipmentBuild.Controls.Add(this.pan_Weapon);
-            this.grp_EquipmentBuild.Controls.Add(this.label17);
-            this.grp_EquipmentBuild.Controls.Add(this.combo_ItemTypes);
-            this.grp_EquipmentBuild.Location = new System.Drawing.Point(3, 6);
-            this.grp_EquipmentBuild.Name = "grp_EquipmentBuild";
-            this.grp_EquipmentBuild.Size = new System.Drawing.Size(450, 235);
-            this.grp_EquipmentBuild.TabIndex = 0;
-            this.grp_EquipmentBuild.TabStop = false;
-            this.grp_EquipmentBuild.Text = "Equipment";
-            // 
-            // grp_EquipmentGrid
-            // 
-            this.grp_EquipmentGrid.Controls.Add(this.btn_DeleteItem);
-            this.grp_EquipmentGrid.Controls.Add(this.btn_SaveItem);
-            this.grp_EquipmentGrid.Controls.Add(this.list_Equipment);
-            this.grp_EquipmentGrid.Location = new System.Drawing.Point(3, 247);
-            this.grp_EquipmentGrid.Name = "grp_EquipmentGrid";
-            this.grp_EquipmentGrid.Size = new System.Drawing.Size(450, 246);
-            this.grp_EquipmentGrid.TabIndex = 1;
-            this.grp_EquipmentGrid.TabStop = false;
-            // 
-            // list_Equipment
-            // 
-            this.list_Equipment.FormattingEnabled = true;
-            this.list_Equipment.Location = new System.Drawing.Point(3, 19);
-            this.list_Equipment.Name = "list_Equipment";
-            this.list_Equipment.Size = new System.Drawing.Size(319, 225);
-            this.list_Equipment.TabIndex = 0;
-            // 
-            // combo_ItemTypes
-            // 
-            this.combo_ItemTypes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.combo_ItemTypes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.combo_ItemTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.combo_ItemTypes.FormattingEnabled = true;
-            this.combo_ItemTypes.Location = new System.Drawing.Point(82, 19);
-            this.combo_ItemTypes.Name = "combo_ItemTypes";
-            this.combo_ItemTypes.Size = new System.Drawing.Size(99, 23);
-            this.combo_ItemTypes.TabIndex = 0;
-            this.combo_ItemTypes.SelectedIndexChanged += new System.EventHandler(this.combo_ItemTypes_SelectedIndexChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label17.Location = new System.Drawing.Point(6, 22);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(70, 17);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Item Type";
-            // 
-            // Spell_Name
-            // 
-            this.Spell_Name.AutoSize = true;
-            this.Spell_Name.Location = new System.Drawing.Point(6, 19);
-            this.Spell_Name.Name = "Spell_Name";
-            this.Spell_Name.Size = new System.Drawing.Size(35, 13);
-            this.Spell_Name.TabIndex = 0;
-            this.Spell_Name.Text = "Name";
-            // 
-            // Spell_Class_Level
-            // 
-            this.Spell_Class_Level.AutoSize = true;
-            this.Spell_Class_Level.Location = new System.Drawing.Point(6, 32);
-            this.Spell_Class_Level.Name = "Spell_Class_Level";
-            this.Spell_Class_Level.Size = new System.Drawing.Size(61, 13);
-            this.Spell_Class_Level.TabIndex = 1;
-            this.Spell_Class_Level.Text = "Class Level";
-            // 
-            // Spell_Range
-            // 
-            this.Spell_Range.AutoSize = true;
-            this.Spell_Range.Location = new System.Drawing.Point(6, 45);
-            this.Spell_Range.Name = "Spell_Range";
-            this.Spell_Range.Size = new System.Drawing.Size(39, 13);
-            this.Spell_Range.TabIndex = 2;
-            this.Spell_Range.Text = "Range";
-            // 
-            // Spell_CastTime
-            // 
-            this.Spell_CastTime.AutoSize = true;
-            this.Spell_CastTime.Location = new System.Drawing.Point(6, 58);
-            this.Spell_CastTime.Name = "Spell_CastTime";
-            this.Spell_CastTime.Size = new System.Drawing.Size(54, 13);
-            this.Spell_CastTime.TabIndex = 3;
-            this.Spell_CastTime.Text = "Cast Time";
-            // 
-            // Spell_Duration
-            // 
-            this.Spell_Duration.AutoSize = true;
-            this.Spell_Duration.Location = new System.Drawing.Point(6, 71);
-            this.Spell_Duration.Name = "Spell_Duration";
-            this.Spell_Duration.Size = new System.Drawing.Size(47, 13);
-            this.Spell_Duration.TabIndex = 4;
-            this.Spell_Duration.Text = "Duration";
-            // 
-            // Spell_Components
-            // 
-            this.Spell_Components.BackColor = System.Drawing.SystemColors.Window;
-            this.Spell_Components.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Spell_Components.Enabled = false;
-            this.Spell_Components.Location = new System.Drawing.Point(9, 87);
-            this.Spell_Components.Multiline = true;
-            this.Spell_Components.Name = "Spell_Components";
-            this.Spell_Components.ReadOnly = true;
-            this.Spell_Components.Size = new System.Drawing.Size(215, 43);
-            this.Spell_Components.TabIndex = 7;
-            this.Spell_Components.Text = "Components";
-            // 
-            // Spell_Effects
-            // 
-            this.Spell_Effects.BackColor = System.Drawing.SystemColors.Window;
-            this.Spell_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Spell_Effects.Enabled = false;
-            this.Spell_Effects.Location = new System.Drawing.Point(9, 136);
-            this.Spell_Effects.Multiline = true;
-            this.Spell_Effects.Name = "Spell_Effects";
-            this.Spell_Effects.ReadOnly = true;
-            this.Spell_Effects.Size = new System.Drawing.Size(215, 78);
-            this.Spell_Effects.TabIndex = 8;
-            this.Spell_Effects.Text = "Effects";
-            // 
-            // pan_Weapon
-            // 
-            this.pan_Weapon.Controls.Add(this.label29);
-            this.pan_Weapon.Controls.Add(this.label28);
-            this.pan_Weapon.Controls.Add(this.txt_WeaponDamage);
-            this.pan_Weapon.Controls.Add(this.combo_WeaponType);
-            this.pan_Weapon.Location = new System.Drawing.Point(6, 148);
-            this.pan_Weapon.Name = "pan_Weapon";
-            this.pan_Weapon.Size = new System.Drawing.Size(210, 81);
-            this.pan_Weapon.TabIndex = 8;
-            // 
-            // txt_ItemName
-            // 
-            this.txt_ItemName.Location = new System.Drawing.Point(270, 21);
-            this.txt_ItemName.Name = "txt_ItemName";
-            this.txt_ItemName.Size = new System.Drawing.Size(174, 20);
-            this.txt_ItemName.TabIndex = 1;
-            // 
-            // item_pp
-            // 
-            this.item_pp.Location = new System.Drawing.Point(120, 62);
-            this.item_pp.Name = "item_pp";
-            this.item_pp.Size = new System.Drawing.Size(60, 20);
-            this.item_pp.TabIndex = 2;
-            // 
-            // item_gp
-            // 
-            this.item_gp.Location = new System.Drawing.Point(186, 62);
-            this.item_gp.Name = "item_gp";
-            this.item_gp.Size = new System.Drawing.Size(60, 20);
-            this.item_gp.TabIndex = 3;
-            // 
-            // item_ep
-            // 
-            this.item_ep.Location = new System.Drawing.Point(252, 62);
-            this.item_ep.Name = "item_ep";
-            this.item_ep.Size = new System.Drawing.Size(60, 20);
-            this.item_ep.TabIndex = 4;
-            // 
-            // item_sp
-            // 
-            this.item_sp.Location = new System.Drawing.Point(318, 62);
-            this.item_sp.Name = "item_sp";
-            this.item_sp.Size = new System.Drawing.Size(60, 20);
-            this.item_sp.TabIndex = 5;
-            // 
-            // item_cp
-            // 
-            this.item_cp.Location = new System.Drawing.Point(384, 62);
-            this.item_cp.Name = "item_cp";
-            this.item_cp.Size = new System.Drawing.Size(60, 20);
-            this.item_cp.TabIndex = 6;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label18.Location = new System.Drawing.Point(78, 63);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(36, 17);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "Cost";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label19.Location = new System.Drawing.Point(120, 45);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(26, 17);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "PP";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label20.Location = new System.Drawing.Point(186, 45);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 17);
-            this.label20.TabIndex = 11;
-            this.label20.Text = "GP";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label21.Location = new System.Drawing.Point(252, 45);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(26, 17);
-            this.label21.TabIndex = 12;
-            this.label21.Text = "EP";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label22.Location = new System.Drawing.Point(318, 45);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(26, 17);
-            this.label22.TabIndex = 13;
-            this.label22.Text = "SP";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label23.Location = new System.Drawing.Point(384, 45);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(26, 17);
-            this.label23.TabIndex = 14;
-            this.label23.Text = "CP";
-            // 
-            // txt_ItemEffects
-            // 
-            this.txt_ItemEffects.Location = new System.Drawing.Point(67, 88);
-            this.txt_ItemEffects.Multiline = true;
-            this.txt_ItemEffects.Name = "txt_ItemEffects";
-            this.txt_ItemEffects.Size = new System.Drawing.Size(377, 54);
-            this.txt_ItemEffects.TabIndex = 7;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label24.Location = new System.Drawing.Point(6, 89);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(55, 17);
-            this.label24.TabIndex = 16;
-            this.label24.Text = "Effects:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label25.Location = new System.Drawing.Point(209, 22);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(45, 17);
-            this.label25.TabIndex = 17;
-            this.label25.Text = "Name";
-            // 
-            // pan_Armor
-            // 
-            this.pan_Armor.Controls.Add(this.label27);
-            this.pan_Armor.Controls.Add(this.label26);
-            this.pan_Armor.Controls.Add(this.txt_ArmorClass);
-            this.pan_Armor.Controls.Add(this.combo_ArmorType);
-            this.pan_Armor.Location = new System.Drawing.Point(234, 148);
-            this.pan_Armor.Name = "pan_Armor";
-            this.pan_Armor.Size = new System.Drawing.Size(210, 81);
-            this.pan_Armor.TabIndex = 9;
-            // 
-            // combo_ArmorType
-            // 
-            this.combo_ArmorType.FormattingEnabled = true;
-            this.combo_ArmorType.Location = new System.Drawing.Point(84, 12);
-            this.combo_ArmorType.Name = "combo_ArmorType";
-            this.combo_ArmorType.Size = new System.Drawing.Size(121, 21);
-            this.combo_ArmorType.TabIndex = 0;
-            // 
-            // combo_WeaponType
-            // 
-            this.combo_WeaponType.FormattingEnabled = true;
-            this.combo_WeaponType.Location = new System.Drawing.Point(86, 12);
-            this.combo_WeaponType.Name = "combo_WeaponType";
-            this.combo_WeaponType.Size = new System.Drawing.Size(121, 21);
-            this.combo_WeaponType.TabIndex = 1;
-            // 
-            // txt_ArmorClass
-            // 
-            this.txt_ArmorClass.Location = new System.Drawing.Point(84, 39);
-            this.txt_ArmorClass.Name = "txt_ArmorClass";
-            this.txt_ArmorClass.Size = new System.Drawing.Size(121, 20);
-            this.txt_ArmorClass.TabIndex = 1;
-            // 
-            // txt_WeaponDamage
-            // 
-            this.txt_WeaponDamage.Location = new System.Drawing.Point(86, 39);
-            this.txt_WeaponDamage.Name = "txt_WeaponDamage";
-            this.txt_WeaponDamage.Size = new System.Drawing.Size(121, 20);
-            this.txt_WeaponDamage.TabIndex = 2;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(18, 15);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(61, 13);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "Armor Type";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(18, 42);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(62, 13);
-            this.label27.TabIndex = 3;
-            this.label27.Text = "Armor Class";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(33, 42);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(47, 13);
-            this.label28.TabIndex = 4;
-            this.label28.Text = "Damage";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(5, 15);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(75, 13);
-            this.label29.TabIndex = 5;
-            this.label29.Text = "Weapon Type";
-            // 
-            // btn_SaveItem
-            // 
-            this.btn_SaveItem.Location = new System.Drawing.Point(328, 19);
-            this.btn_SaveItem.Name = "btn_SaveItem";
-            this.btn_SaveItem.Size = new System.Drawing.Size(75, 23);
-            this.btn_SaveItem.TabIndex = 1;
-            this.btn_SaveItem.Text = "Save Item";
-            this.btn_SaveItem.UseVisualStyleBackColor = true;
-            this.btn_SaveItem.Click += new System.EventHandler(this.btn_SaveItem_Click);
-            // 
-            // btn_DeleteItem
-            // 
-            this.btn_DeleteItem.Location = new System.Drawing.Point(328, 48);
-            this.btn_DeleteItem.Name = "btn_DeleteItem";
-            this.btn_DeleteItem.Size = new System.Drawing.Size(75, 23);
-            this.btn_DeleteItem.TabIndex = 2;
-            this.btn_DeleteItem.Text = "Delete Item";
-            this.btn_DeleteItem.UseVisualStyleBackColor = true;
-            this.btn_DeleteItem.Click += new System.EventHandler(this.btn_DeleteItem_Click);
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Item_Effects);
+            this.groupBox1.Controls.Add(this.Item_Value);
+            this.groupBox1.Controls.Add(this.Item_Name);
+            this.groupBox1.Location = new System.Drawing.Point(284, 48);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(166, 196);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Item Information";
+            // 
+            // Item_Effects
+            // 
+            this.Item_Effects.BackColor = System.Drawing.SystemColors.Window;
+            this.Item_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Item_Effects.Enabled = false;
+            this.Item_Effects.Location = new System.Drawing.Point(6, 48);
+            this.Item_Effects.Multiline = true;
+            this.Item_Effects.Name = "Item_Effects";
+            this.Item_Effects.ReadOnly = true;
+            this.Item_Effects.Size = new System.Drawing.Size(153, 142);
+            this.Item_Effects.TabIndex = 8;
+            this.Item_Effects.Text = "Additional Information";
+            // 
+            // Item_Value
+            // 
+            this.Item_Value.AutoSize = true;
+            this.Item_Value.Location = new System.Drawing.Point(6, 32);
+            this.Item_Value.Name = "Item_Value";
+            this.Item_Value.Size = new System.Drawing.Size(34, 13);
+            this.Item_Value.TabIndex = 2;
+            this.Item_Value.Text = "Value";
+            // 
+            // Item_Name
+            // 
+            this.Item_Name.AutoSize = true;
+            this.Item_Name.Location = new System.Drawing.Point(6, 19);
+            this.Item_Name.Name = "Item_Name";
+            this.Item_Name.Size = new System.Drawing.Size(35, 13);
+            this.Item_Name.TabIndex = 0;
+            this.Item_Name.Text = "Name";
             // 
             // Form1
             // 
@@ -1633,6 +1683,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_Dx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_St)).EndInit();
             this.tab_CharEquipment.ResumeLayout(false);
+            this.grp_EquipmentGrid.ResumeLayout(false);
+            this.grp_EquipmentBuild.ResumeLayout(false);
+            this.grp_EquipmentBuild.PerformLayout();
+            this.pan_Armor.ResumeLayout(false);
+            this.pan_Armor.PerformLayout();
+            this.pan_Weapon.ResumeLayout(false);
+            this.pan_Weapon.PerformLayout();
             this.tab_CharSpells.ResumeLayout(false);
             this.tab_CharSpells.PerformLayout();
             this.grp_SpellInfo.ResumeLayout(false);
@@ -1641,13 +1698,8 @@
             this.grp_Characters.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.grp_EquipmentBuild.ResumeLayout(false);
-            this.grp_EquipmentBuild.PerformLayout();
-            this.grp_EquipmentGrid.ResumeLayout(false);
-            this.pan_Weapon.ResumeLayout(false);
-            this.pan_Weapon.PerformLayout();
-            this.pan_Armor.ResumeLayout(false);
-            this.pan_Armor.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1786,6 +1838,10 @@
         private System.Windows.Forms.ComboBox combo_WeaponType;
         private System.Windows.Forms.Button btn_DeleteItem;
         private System.Windows.Forms.Button btn_SaveItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox Item_Effects;
+        private System.Windows.Forms.Label Item_Value;
+        private System.Windows.Forms.Label Item_Name;
     }
 }
 
