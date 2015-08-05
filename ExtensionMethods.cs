@@ -85,5 +85,78 @@ namespace DnD5e
             return (T)Enum.Parse(typeof(T), stringVal);
         }
         #endregion
+        #region Money Methods
+        //Copper = 1/100 gold
+        //Silver = 1/10 gold
+        //Electrum = 1/2 gold
+        //Gold = 1 gold
+        //Platinum = 10 gold
+        public static decimal CopperToGold(this int coin)
+        {
+            return (decimal)coin/100;
+        }
+        public static decimal SilverToGold(this int coin)
+        {
+            return (decimal)coin/10;
+        }
+        public static decimal ElectrumToGold(this int coin)
+        {
+            return (decimal)coin/2;
+        }
+        public static decimal PlatinumToGold(this int coin)
+        {
+            return (decimal)coin * 10;
+        }
+        /// <summary>
+        /// Converts the value of an item (as gp) into the components.
+        /// </summary>
+        /// <returns></returns>
+        public static string GoldToCoins(this decimal gold)
+        {
+            decimal amountLeft = gold;
+            string coppers = "";
+            string silvers = "";
+            string electrums = "";
+            string golds = "";
+            string platinums = "";
+            if(amountLeft >= 10)
+            {
+                int platinumCoins = (int)Math.Floor(Math.Floor(amountLeft) / 10m);
+                platinums = platinumCoins.ToString() + " pp ";
+                amountLeft -= platinumCoins * 10m;
+
+            }
+            if(amountLeft >= 1)
+            {
+                int goldCoins = (int)Math.Floor(amountLeft);
+                golds = goldCoins.ToString() + " gp ";
+                amountLeft -= goldCoins;
+            }
+            if(amountLeft > 0)
+            {
+                int electrumCoins = (int)Math.Floor(amountLeft * 2m);
+                electrums = electrumCoins.ToString() + " ep ";
+                amountLeft -= electrumCoins / 2m;
+            }
+            if(amountLeft > 0)
+            {
+                int silverCoins = (int)Math.Floor(amountLeft * 10m);
+                silvers = silverCoins.ToString() + " sp ";
+                amountLeft -= silverCoins / 10m;
+            }
+            if(amountLeft > 0)
+            {
+                int copperCoins = (int)Math.Floor(amountLeft * 100m);
+                coppers = copperCoins.ToString() + " cp ";
+                amountLeft -= copperCoins / 100m;
+            }
+            if(amountLeft > 0)
+            {
+                MessageBox.Show("Remainder: " + amountLeft);
+            }
+            string values = platinums + golds + electrums + silvers + coppers;
+            return values.Trim();
+        }
+        #endregion
     }
 }

@@ -284,7 +284,7 @@ namespace DnD5e
     /// </summary>
     enum Gender
     {
-        none = 0,
+        None = 0,
         Male,
         Female
     }
@@ -293,7 +293,7 @@ namespace DnD5e
     /// </summary>
     enum Races
     {
-        none = 0,
+        None = 0,
         Dwarf,
         Elf,
         Halfling,
@@ -313,7 +313,7 @@ namespace DnD5e
     enum SubRaces
     {
         //Default
-        none = 0,
+        None = 0,
         //Dwarf
         [Description("Hill Dwarf")]
         hillDwarf,
@@ -363,7 +363,7 @@ namespace DnD5e
     /// </summary>
     public enum Classes
     {
-        none = 0,
+        None = 0,
         Barbarian,
         Bard,
         Cleric,
@@ -521,7 +521,7 @@ namespace DnD5e
     }
     public enum SubClassTypes
     {
-        none = 0,
+        None = 0,
         PrimalPaths,
         BardColleges,
         DivineDomains,
@@ -537,7 +537,7 @@ namespace DnD5e
     }
     public enum PrimalPaths
     {
-        none = 0,
+        None = 0,
         //Barbarian: Primal Path
         [Description("Path of the Berserker")]
         Berserker,
@@ -546,7 +546,7 @@ namespace DnD5e
     }
     public enum BardColleges
     {
-        none = 0,
+        None = 0,
         //Bard: Bard College
         [Description("College of Lore")]
         Lore,
@@ -555,7 +555,7 @@ namespace DnD5e
     }
     public enum DivineDomains
     {
-        none = 0,
+        None = 0,
         //Cleric: Divine Domain
         [Description("Knowledge Domain")]
         Knowledge,
@@ -574,7 +574,7 @@ namespace DnD5e
     }
     public enum DruidCircles
     {
-        none = 0,
+        None = 0,
         //Druid: Druid Circle
         [Description("Circle of the Land")]
         Land,//Arctic, Coast, Desert, Forest, Grassland, Mountain, Swamp, Underdark
@@ -583,7 +583,7 @@ namespace DnD5e
     }
     public enum MartialArchetypes
     {
-        none = 0,
+        None = 0,
         //Fighter: Martial Archetype
         [Description("Champion")]
         Champion,
@@ -594,7 +594,7 @@ namespace DnD5e
     }
     public enum MonasticTraditions
     {
-        none = 0,
+        None = 0,
         //Monk: Monastic Tradition
         [Description("Way of the Open Hands")]
         OpenHands,
@@ -605,7 +605,7 @@ namespace DnD5e
     }
     public enum SacredOaths
     {
-        none = 0,
+        None = 0,
         //Paladin: Sacred Oath
         [Description("Oath of Devotion")]
         Devotion,
@@ -616,7 +616,7 @@ namespace DnD5e
     }
     public enum RangerArchetypes
     {
-        none = 0,
+        None = 0,
         //Ranger: Ranger Archetype
         [Description("Hunter")]
         Hunter,
@@ -625,7 +625,7 @@ namespace DnD5e
     }
     public enum RoguishArchetypes
     {
-        none = 0,
+        None = 0,
         //Rogue: Roguish Archetype
         [Description("Thief")]
         Thief,
@@ -636,7 +636,7 @@ namespace DnD5e
     }
     public enum SorcerousOrigins
     {
-        none = 0,
+        None = 0,
         //Sorcerer: Sorcerous Origins
         [Description("Draconic Bloodline")]
         Draconic,
@@ -645,7 +645,7 @@ namespace DnD5e
     }
     public enum OtherworldlyPatrons
     {
-        none = 0,
+        None = 0,
         //Warlock: Otherworldly Patron
         [Description("The Archfey")]
         Archfey,
@@ -656,7 +656,7 @@ namespace DnD5e
     }
     public enum ArcaneTraditions
     {
-        none = 0,
+        None = 0,
         //Wizard: Arcane Tradition
         [Description("School of Abjuration")]
         Abjuration,

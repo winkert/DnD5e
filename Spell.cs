@@ -35,12 +35,21 @@ namespace DnD5e
         {
             return sName + " (" + sLevel.GetDescription() + "; " + sClass.GetDescription() + ")";
         }
+        public string getClass()
+        {
+            return sClass.GetDescription();
+        }
+        public string getLevel()
+        {
+            return sLevel.GetDescription();
+        }
+
     }
     #endregion
     #region Components
     public enum SpellClass
     {
-        none = 0,
+        None = 0,
         Bard,
         Cleric,
         Druid,

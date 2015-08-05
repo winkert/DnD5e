@@ -12,7 +12,7 @@ namespace DnD5e
         {
 
         }
-        public Equipment(string name, string value)
+        public Equipment(string name, decimal value)
         {
             Name = name;
             Value = value;
@@ -20,11 +20,15 @@ namespace DnD5e
 
         public string Name;
         public string Effects;
-        public string Value;
+        /// <summary>
+        /// The Value of the item in gold pieces.
+        /// </summary>
+        public decimal Value;
         public override string ToString()
         {
-            return Name;
+            return Name + " : " + Value.GoldToCoins();
         }
+
     }
 
     [Serializable]
@@ -34,14 +38,14 @@ namespace DnD5e
         {
 
         }
-        public Weapon(string name, WeaponClasses wclass, int dice, int ndice, int b, string effects)
+        public Weapon(string name, WeaponClasses wclass, int dice, int ndice, int b, decimal value)
         {
             Name = name;
             wClass = wclass;
             wNumDice = ndice;
             wDice = dice;
             wBonus = b;
-            Effects = effects;
+            Value = value;
         }
         WeaponClasses wClass;
         int wNumDice;
@@ -49,7 +53,7 @@ namespace DnD5e
         int wBonus;
         public override string ToString()
         {
-            return Name + " (" + Damage() + ")";
+            return Name + " (" + Damage() + ")" + " : " + Value.GoldToCoins();
         }
         public string Damage()
         {
@@ -74,20 +78,18 @@ namespace DnD5e
         {
 
         }
-        public Armor(string name, ArmorTypes atype, int aclass, int b, string effects)
+        public Armor(string name, ArmorTypes atype, int aclass, decimal value)
         {
             Name = name;
             aType = atype;
             AC = aclass;
-            aBonus = b;
-            Effects = effects;
+            Value = value;
         }
         ArmorTypes aType;
         int AC;
-        int aBonus;
         public override string ToString()
         {
-            return Name + " (" + AC + ")";
+            return Name + " (" + AC + ")" + " : " + Value.GoldToCoins();
         }
     }
     #endregion
@@ -106,10 +108,28 @@ namespace DnD5e
     public enum WeaponClasses
     {
         None = 0,
-        [Description("Simple Weapon")]
+        [Description("Simple Melee Weapon")]
         SimpleWeapon,
-        [Description("Martial Weapon")]
-        MartialWeapon
+        [Description("Martial Melee Weapon")]
+        MartialWeapon,
+        [Description("Simple Range Weapon")]
+        SimpleRange,
+        [Description("Martial Range Weapon")]
+        MartialRange
+    }
+    public enum WeaponType
+    {
+        None = 0
+    }
+    public enum ItemTypes
+    {
+        None = 0,
+        Weapon,
+        Armor,
+        Potion, 
+        Gear,
+        Trinket,
+        Valuable
     }
     #endregion
 }

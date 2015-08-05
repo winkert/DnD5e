@@ -86,6 +86,7 @@
             this.label_Class = new System.Windows.Forms.Label();
             this.tab_CharEquipment = new System.Windows.Forms.TabPage();
             this.tab_CharSpells = new System.Windows.Forms.TabPage();
+            this.btn_DeleteSpell = new System.Windows.Forms.Button();
             this.btn_NewSpell = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.txt_SpellComponents = new System.Windows.Forms.TextBox();
@@ -104,10 +105,7 @@
             this.combo_SpellClass = new System.Windows.Forms.ComboBox();
             this.txt_SpellName = new System.Windows.Forms.TextBox();
             this.btn_SaveSpell = new System.Windows.Forms.Button();
-            this.btn_UnprepareSpell = new System.Windows.Forms.Button();
-            this.btn_PrepareSpell = new System.Windows.Forms.Button();
-            this.grp_PreparedSpells = new System.Windows.Forms.GroupBox();
-            this.list_PreparedSpells = new System.Windows.Forms.ListBox();
+            this.grp_SpellInfo = new System.Windows.Forms.GroupBox();
             this.grp_KnownSpells = new System.Windows.Forms.GroupBox();
             this.list_KnownSpells = new System.Windows.Forms.ListBox();
             this.tab_Record = new System.Windows.Forms.TabPage();
@@ -122,8 +120,45 @@
             this.saveListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btn_DeleteSpell = new System.Windows.Forms.Button();
+            this.grp_EquipmentBuild = new System.Windows.Forms.GroupBox();
+            this.grp_EquipmentGrid = new System.Windows.Forms.GroupBox();
+            this.list_Equipment = new System.Windows.Forms.ListBox();
+            this.combo_ItemTypes = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.Spell_Name = new System.Windows.Forms.Label();
+            this.Spell_Class_Level = new System.Windows.Forms.Label();
+            this.Spell_Range = new System.Windows.Forms.Label();
+            this.Spell_CastTime = new System.Windows.Forms.Label();
+            this.Spell_Duration = new System.Windows.Forms.Label();
+            this.Spell_Components = new System.Windows.Forms.TextBox();
+            this.Spell_Effects = new System.Windows.Forms.TextBox();
+            this.pan_Weapon = new System.Windows.Forms.Panel();
+            this.txt_ItemName = new System.Windows.Forms.TextBox();
+            this.item_pp = new System.Windows.Forms.TextBox();
+            this.item_gp = new System.Windows.Forms.TextBox();
+            this.item_ep = new System.Windows.Forms.TextBox();
+            this.item_sp = new System.Windows.Forms.TextBox();
+            this.item_cp = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txt_ItemEffects = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.pan_Armor = new System.Windows.Forms.Panel();
+            this.combo_ArmorType = new System.Windows.Forms.ComboBox();
+            this.combo_WeaponType = new System.Windows.Forms.ComboBox();
+            this.txt_ArmorClass = new System.Windows.Forms.TextBox();
+            this.txt_WeaponDamage = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.btn_SaveItem = new System.Windows.Forms.Button();
+            this.btn_DeleteItem = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -135,11 +170,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_Cn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Dx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_St)).BeginInit();
+            this.tab_CharEquipment.SuspendLayout();
             this.tab_CharSpells.SuspendLayout();
-            this.grp_PreparedSpells.SuspendLayout();
+            this.grp_SpellInfo.SuspendLayout();
             this.grp_KnownSpells.SuspendLayout();
             this.grp_Characters.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.grp_EquipmentBuild.SuspendLayout();
+            this.grp_EquipmentGrid.SuspendLayout();
+            this.pan_Weapon.SuspendLayout();
+            this.pan_Armor.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -184,6 +224,8 @@
             // 
             // combo_Prestige
             // 
+            this.combo_Prestige.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_Prestige.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_Prestige.DropDownWidth = 165;
             this.combo_Prestige.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.combo_Prestige.FormattingEnabled = true;
@@ -276,6 +318,8 @@
             // 
             // combo_ProfType
             // 
+            this.combo_ProfType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_ProfType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_ProfType.FormattingEnabled = true;
             this.combo_ProfType.Location = new System.Drawing.Point(6, 35);
             this.combo_ProfType.Name = "combo_ProfType";
@@ -491,6 +535,8 @@
             // 
             // combo_Allignment
             // 
+            this.combo_Allignment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_Allignment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_Allignment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.combo_Allignment.FormattingEnabled = true;
             this.combo_Allignment.Location = new System.Drawing.Point(101, 182);
@@ -727,6 +773,8 @@
             // 
             // combo_Gender
             // 
+            this.combo_Gender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_Gender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_Gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.combo_Gender.FormattingEnabled = true;
             this.combo_Gender.Location = new System.Drawing.Point(101, 32);
@@ -748,6 +796,8 @@
             // 
             // combo_Race
             // 
+            this.combo_Race.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_Race.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.combo_Race.FormattingEnabled = true;
             this.combo_Race.Location = new System.Drawing.Point(101, 62);
@@ -770,6 +820,8 @@
             // 
             // combo_Class
             // 
+            this.combo_Class.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_Class.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_Class.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.combo_Class.FormattingEnabled = true;
             this.combo_Class.Location = new System.Drawing.Point(101, 122);
@@ -781,6 +833,8 @@
             // 
             // combo_SubRace
             // 
+            this.combo_SubRace.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_SubRace.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_SubRace.Enabled = false;
             this.combo_SubRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.combo_SubRace.FormattingEnabled = true;
@@ -803,6 +857,8 @@
             // 
             // tab_CharEquipment
             // 
+            this.tab_CharEquipment.Controls.Add(this.grp_EquipmentGrid);
+            this.tab_CharEquipment.Controls.Add(this.grp_EquipmentBuild);
             this.tab_CharEquipment.Location = new System.Drawing.Point(4, 22);
             this.tab_CharEquipment.Name = "tab_CharEquipment";
             this.tab_CharEquipment.Padding = new System.Windows.Forms.Padding(3);
@@ -832,7 +888,7 @@
             this.tab_CharSpells.Controls.Add(this.combo_SpellClass);
             this.tab_CharSpells.Controls.Add(this.txt_SpellName);
             this.tab_CharSpells.Controls.Add(this.btn_SaveSpell);
-            this.tab_CharSpells.Controls.Add(this.grp_PreparedSpells);
+            this.tab_CharSpells.Controls.Add(this.grp_SpellInfo);
             this.tab_CharSpells.Controls.Add(this.grp_KnownSpells);
             this.tab_CharSpells.Location = new System.Drawing.Point(4, 22);
             this.tab_CharSpells.Name = "tab_CharSpells";
@@ -841,6 +897,16 @@
             this.tab_CharSpells.TabIndex = 1;
             this.tab_CharSpells.Text = "Spells";
             this.tab_CharSpells.UseVisualStyleBackColor = true;
+            // 
+            // btn_DeleteSpell
+            // 
+            this.btn_DeleteSpell.Location = new System.Drawing.Point(168, 222);
+            this.btn_DeleteSpell.Name = "btn_DeleteSpell";
+            this.btn_DeleteSpell.Size = new System.Drawing.Size(75, 23);
+            this.btn_DeleteSpell.TabIndex = 10;
+            this.btn_DeleteSpell.Text = "Delete";
+            this.btn_DeleteSpell.UseVisualStyleBackColor = true;
+            this.btn_DeleteSpell.Click += new System.EventHandler(this.btn_DeleteSpell_Click);
             // 
             // btn_NewSpell
             // 
@@ -864,6 +930,7 @@
             // 
             // txt_SpellComponents
             // 
+            this.txt_SpellComponents.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txt_SpellComponents.Location = new System.Drawing.Point(6, 55);
             this.txt_SpellComponents.Multiline = true;
             this.txt_SpellComponents.Name = "txt_SpellComponents";
@@ -942,20 +1009,23 @@
             // 
             // txt_SpellCastTime
             // 
+            this.txt_SpellCastTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txt_SpellCastTime.Location = new System.Drawing.Point(296, 86);
             this.txt_SpellCastTime.Name = "txt_SpellCastTime";
-            this.txt_SpellCastTime.Size = new System.Drawing.Size(157, 20);
+            this.txt_SpellCastTime.Size = new System.Drawing.Size(157, 21);
             this.txt_SpellCastTime.TabIndex = 5;
             // 
             // txt_SpellRange
             // 
+            this.txt_SpellRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txt_SpellRange.Location = new System.Drawing.Point(296, 60);
             this.txt_SpellRange.Name = "txt_SpellRange";
-            this.txt_SpellRange.Size = new System.Drawing.Size(157, 20);
+            this.txt_SpellRange.Size = new System.Drawing.Size(157, 21);
             this.txt_SpellRange.TabIndex = 4;
             // 
             // txt_SpellEffects
             // 
+            this.txt_SpellEffects.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txt_SpellEffects.Location = new System.Drawing.Point(6, 138);
             this.txt_SpellEffects.Multiline = true;
             this.txt_SpellEffects.Name = "txt_SpellEffects";
@@ -964,32 +1034,40 @@
             // 
             // txt_SpellDuration
             // 
+            this.txt_SpellDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.txt_SpellDuration.Location = new System.Drawing.Point(296, 112);
             this.txt_SpellDuration.Name = "txt_SpellDuration";
-            this.txt_SpellDuration.Size = new System.Drawing.Size(157, 20);
+            this.txt_SpellDuration.Size = new System.Drawing.Size(157, 21);
             this.txt_SpellDuration.TabIndex = 6;
             // 
             // combo_SpellLevel
             // 
+            this.combo_SpellLevel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_SpellLevel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.combo_SpellLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.combo_SpellLevel.FormattingEnabled = true;
             this.combo_SpellLevel.Location = new System.Drawing.Point(296, 34);
             this.combo_SpellLevel.Name = "combo_SpellLevel";
-            this.combo_SpellLevel.Size = new System.Drawing.Size(157, 21);
+            this.combo_SpellLevel.Size = new System.Drawing.Size(157, 23);
             this.combo_SpellLevel.TabIndex = 2;
             // 
             // combo_SpellClass
             // 
+            this.combo_SpellClass.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_SpellClass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.combo_SpellClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.combo_SpellClass.FormattingEnabled = true;
             this.combo_SpellClass.Location = new System.Drawing.Point(296, 8);
             this.combo_SpellClass.Name = "combo_SpellClass";
-            this.combo_SpellClass.Size = new System.Drawing.Size(157, 21);
+            this.combo_SpellClass.Size = new System.Drawing.Size(157, 23);
             this.combo_SpellClass.TabIndex = 1;
             // 
             // txt_SpellName
             // 
+            this.txt_SpellName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txt_SpellName.Location = new System.Drawing.Point(61, 6);
             this.txt_SpellName.Name = "txt_SpellName";
-            this.txt_SpellName.Size = new System.Drawing.Size(153, 20);
+            this.txt_SpellName.Size = new System.Drawing.Size(153, 23);
             this.txt_SpellName.TabIndex = 0;
             // 
             // btn_SaveSpell
@@ -1002,52 +1080,28 @@
             this.btn_SaveSpell.UseVisualStyleBackColor = true;
             this.btn_SaveSpell.Click += new System.EventHandler(this.btn_SaveSpell_Click);
             // 
-            // btn_UnprepareSpell
+            // grp_SpellInfo
             // 
-            this.btn_UnprepareSpell.Location = new System.Drawing.Point(119, 213);
-            this.btn_UnprepareSpell.Name = "btn_UnprepareSpell";
-            this.btn_UnprepareSpell.Size = new System.Drawing.Size(75, 23);
-            this.btn_UnprepareSpell.TabIndex = 1;
-            this.btn_UnprepareSpell.Text = "Unprepare";
-            this.btn_UnprepareSpell.UseVisualStyleBackColor = true;
-            this.btn_UnprepareSpell.Click += new System.EventHandler(this.btn_UnprepareSpell_Click);
-            // 
-            // btn_PrepareSpell
-            // 
-            this.btn_PrepareSpell.Location = new System.Drawing.Point(119, 213);
-            this.btn_PrepareSpell.Name = "btn_PrepareSpell";
-            this.btn_PrepareSpell.Size = new System.Drawing.Size(75, 23);
-            this.btn_PrepareSpell.TabIndex = 1;
-            this.btn_PrepareSpell.Text = "Prepare";
-            this.btn_PrepareSpell.UseVisualStyleBackColor = true;
-            this.btn_PrepareSpell.Click += new System.EventHandler(this.btn_PrepareSpell_Click);
-            // 
-            // grp_PreparedSpells
-            // 
-            this.grp_PreparedSpells.Controls.Add(this.list_PreparedSpells);
-            this.grp_PreparedSpells.Controls.Add(this.btn_UnprepareSpell);
-            this.grp_PreparedSpells.Location = new System.Drawing.Point(253, 251);
-            this.grp_PreparedSpells.Name = "grp_PreparedSpells";
-            this.grp_PreparedSpells.Size = new System.Drawing.Size(200, 242);
-            this.grp_PreparedSpells.TabIndex = 12;
-            this.grp_PreparedSpells.TabStop = false;
-            this.grp_PreparedSpells.Text = "Prepared Spells";
-            // 
-            // list_PreparedSpells
-            // 
-            this.list_PreparedSpells.FormattingEnabled = true;
-            this.list_PreparedSpells.Location = new System.Drawing.Point(6, 19);
-            this.list_PreparedSpells.Name = "list_PreparedSpells";
-            this.list_PreparedSpells.Size = new System.Drawing.Size(188, 186);
-            this.list_PreparedSpells.TabIndex = 0;
+            this.grp_SpellInfo.Controls.Add(this.Spell_Effects);
+            this.grp_SpellInfo.Controls.Add(this.Spell_Components);
+            this.grp_SpellInfo.Controls.Add(this.Spell_Duration);
+            this.grp_SpellInfo.Controls.Add(this.Spell_CastTime);
+            this.grp_SpellInfo.Controls.Add(this.Spell_Range);
+            this.grp_SpellInfo.Controls.Add(this.Spell_Class_Level);
+            this.grp_SpellInfo.Controls.Add(this.Spell_Name);
+            this.grp_SpellInfo.Location = new System.Drawing.Point(223, 251);
+            this.grp_SpellInfo.Name = "grp_SpellInfo";
+            this.grp_SpellInfo.Size = new System.Drawing.Size(230, 242);
+            this.grp_SpellInfo.TabIndex = 12;
+            this.grp_SpellInfo.TabStop = false;
+            this.grp_SpellInfo.Text = "Spell Information";
             // 
             // grp_KnownSpells
             // 
             this.grp_KnownSpells.Controls.Add(this.list_KnownSpells);
-            this.grp_KnownSpells.Controls.Add(this.btn_PrepareSpell);
             this.grp_KnownSpells.Location = new System.Drawing.Point(6, 251);
             this.grp_KnownSpells.Name = "grp_KnownSpells";
-            this.grp_KnownSpells.Size = new System.Drawing.Size(200, 242);
+            this.grp_KnownSpells.Size = new System.Drawing.Size(211, 242);
             this.grp_KnownSpells.TabIndex = 11;
             this.grp_KnownSpells.TabStop = false;
             this.grp_KnownSpells.Text = "Known Spells";
@@ -1057,8 +1111,9 @@
             this.list_KnownSpells.FormattingEnabled = true;
             this.list_KnownSpells.Location = new System.Drawing.Point(6, 19);
             this.list_KnownSpells.Name = "list_KnownSpells";
-            this.list_KnownSpells.Size = new System.Drawing.Size(188, 186);
+            this.list_KnownSpells.Size = new System.Drawing.Size(199, 212);
             this.list_KnownSpells.TabIndex = 0;
+            this.list_KnownSpells.SelectedIndexChanged += new System.EventHandler(this.list_KnownSpells_SelectedIndexChanged);
             // 
             // tab_Record
             // 
@@ -1169,33 +1224,389 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // textBox1
+            // grp_EquipmentBuild
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(485, 441);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(229, 114);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "Items left to do:\r\nEquipment (UI, save, load)";
+            this.grp_EquipmentBuild.Controls.Add(this.pan_Armor);
+            this.grp_EquipmentBuild.Controls.Add(this.label25);
+            this.grp_EquipmentBuild.Controls.Add(this.label24);
+            this.grp_EquipmentBuild.Controls.Add(this.txt_ItemEffects);
+            this.grp_EquipmentBuild.Controls.Add(this.label23);
+            this.grp_EquipmentBuild.Controls.Add(this.label22);
+            this.grp_EquipmentBuild.Controls.Add(this.label21);
+            this.grp_EquipmentBuild.Controls.Add(this.label20);
+            this.grp_EquipmentBuild.Controls.Add(this.label19);
+            this.grp_EquipmentBuild.Controls.Add(this.label18);
+            this.grp_EquipmentBuild.Controls.Add(this.item_cp);
+            this.grp_EquipmentBuild.Controls.Add(this.item_sp);
+            this.grp_EquipmentBuild.Controls.Add(this.item_ep);
+            this.grp_EquipmentBuild.Controls.Add(this.item_gp);
+            this.grp_EquipmentBuild.Controls.Add(this.item_pp);
+            this.grp_EquipmentBuild.Controls.Add(this.txt_ItemName);
+            this.grp_EquipmentBuild.Controls.Add(this.pan_Weapon);
+            this.grp_EquipmentBuild.Controls.Add(this.label17);
+            this.grp_EquipmentBuild.Controls.Add(this.combo_ItemTypes);
+            this.grp_EquipmentBuild.Location = new System.Drawing.Point(3, 6);
+            this.grp_EquipmentBuild.Name = "grp_EquipmentBuild";
+            this.grp_EquipmentBuild.Size = new System.Drawing.Size(450, 235);
+            this.grp_EquipmentBuild.TabIndex = 0;
+            this.grp_EquipmentBuild.TabStop = false;
+            this.grp_EquipmentBuild.Text = "Equipment";
             // 
-            // btn_DeleteSpell
+            // grp_EquipmentGrid
             // 
-            this.btn_DeleteSpell.Location = new System.Drawing.Point(168, 222);
-            this.btn_DeleteSpell.Name = "btn_DeleteSpell";
-            this.btn_DeleteSpell.Size = new System.Drawing.Size(75, 23);
-            this.btn_DeleteSpell.TabIndex = 10;
-            this.btn_DeleteSpell.Text = "Delete";
-            this.btn_DeleteSpell.UseVisualStyleBackColor = true;
-            this.btn_DeleteSpell.Click += new System.EventHandler(this.btn_DeleteSpell_Click);
+            this.grp_EquipmentGrid.Controls.Add(this.btn_DeleteItem);
+            this.grp_EquipmentGrid.Controls.Add(this.btn_SaveItem);
+            this.grp_EquipmentGrid.Controls.Add(this.list_Equipment);
+            this.grp_EquipmentGrid.Location = new System.Drawing.Point(3, 247);
+            this.grp_EquipmentGrid.Name = "grp_EquipmentGrid";
+            this.grp_EquipmentGrid.Size = new System.Drawing.Size(450, 246);
+            this.grp_EquipmentGrid.TabIndex = 1;
+            this.grp_EquipmentGrid.TabStop = false;
+            // 
+            // list_Equipment
+            // 
+            this.list_Equipment.FormattingEnabled = true;
+            this.list_Equipment.Location = new System.Drawing.Point(3, 19);
+            this.list_Equipment.Name = "list_Equipment";
+            this.list_Equipment.Size = new System.Drawing.Size(319, 225);
+            this.list_Equipment.TabIndex = 0;
+            // 
+            // combo_ItemTypes
+            // 
+            this.combo_ItemTypes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.combo_ItemTypes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.combo_ItemTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.combo_ItemTypes.FormattingEnabled = true;
+            this.combo_ItemTypes.Location = new System.Drawing.Point(82, 19);
+            this.combo_ItemTypes.Name = "combo_ItemTypes";
+            this.combo_ItemTypes.Size = new System.Drawing.Size(99, 23);
+            this.combo_ItemTypes.TabIndex = 0;
+            this.combo_ItemTypes.SelectedIndexChanged += new System.EventHandler(this.combo_ItemTypes_SelectedIndexChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label17.Location = new System.Drawing.Point(6, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(70, 17);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Item Type";
+            // 
+            // Spell_Name
+            // 
+            this.Spell_Name.AutoSize = true;
+            this.Spell_Name.Location = new System.Drawing.Point(6, 19);
+            this.Spell_Name.Name = "Spell_Name";
+            this.Spell_Name.Size = new System.Drawing.Size(35, 13);
+            this.Spell_Name.TabIndex = 0;
+            this.Spell_Name.Text = "Name";
+            // 
+            // Spell_Class_Level
+            // 
+            this.Spell_Class_Level.AutoSize = true;
+            this.Spell_Class_Level.Location = new System.Drawing.Point(6, 32);
+            this.Spell_Class_Level.Name = "Spell_Class_Level";
+            this.Spell_Class_Level.Size = new System.Drawing.Size(61, 13);
+            this.Spell_Class_Level.TabIndex = 1;
+            this.Spell_Class_Level.Text = "Class Level";
+            // 
+            // Spell_Range
+            // 
+            this.Spell_Range.AutoSize = true;
+            this.Spell_Range.Location = new System.Drawing.Point(6, 45);
+            this.Spell_Range.Name = "Spell_Range";
+            this.Spell_Range.Size = new System.Drawing.Size(39, 13);
+            this.Spell_Range.TabIndex = 2;
+            this.Spell_Range.Text = "Range";
+            // 
+            // Spell_CastTime
+            // 
+            this.Spell_CastTime.AutoSize = true;
+            this.Spell_CastTime.Location = new System.Drawing.Point(6, 58);
+            this.Spell_CastTime.Name = "Spell_CastTime";
+            this.Spell_CastTime.Size = new System.Drawing.Size(54, 13);
+            this.Spell_CastTime.TabIndex = 3;
+            this.Spell_CastTime.Text = "Cast Time";
+            // 
+            // Spell_Duration
+            // 
+            this.Spell_Duration.AutoSize = true;
+            this.Spell_Duration.Location = new System.Drawing.Point(6, 71);
+            this.Spell_Duration.Name = "Spell_Duration";
+            this.Spell_Duration.Size = new System.Drawing.Size(47, 13);
+            this.Spell_Duration.TabIndex = 4;
+            this.Spell_Duration.Text = "Duration";
+            // 
+            // Spell_Components
+            // 
+            this.Spell_Components.BackColor = System.Drawing.SystemColors.Window;
+            this.Spell_Components.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Spell_Components.Enabled = false;
+            this.Spell_Components.Location = new System.Drawing.Point(9, 87);
+            this.Spell_Components.Multiline = true;
+            this.Spell_Components.Name = "Spell_Components";
+            this.Spell_Components.ReadOnly = true;
+            this.Spell_Components.Size = new System.Drawing.Size(215, 43);
+            this.Spell_Components.TabIndex = 7;
+            this.Spell_Components.Text = "Components";
+            // 
+            // Spell_Effects
+            // 
+            this.Spell_Effects.BackColor = System.Drawing.SystemColors.Window;
+            this.Spell_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Spell_Effects.Enabled = false;
+            this.Spell_Effects.Location = new System.Drawing.Point(9, 136);
+            this.Spell_Effects.Multiline = true;
+            this.Spell_Effects.Name = "Spell_Effects";
+            this.Spell_Effects.ReadOnly = true;
+            this.Spell_Effects.Size = new System.Drawing.Size(215, 78);
+            this.Spell_Effects.TabIndex = 8;
+            this.Spell_Effects.Text = "Effects";
+            // 
+            // pan_Weapon
+            // 
+            this.pan_Weapon.Controls.Add(this.label29);
+            this.pan_Weapon.Controls.Add(this.label28);
+            this.pan_Weapon.Controls.Add(this.txt_WeaponDamage);
+            this.pan_Weapon.Controls.Add(this.combo_WeaponType);
+            this.pan_Weapon.Location = new System.Drawing.Point(6, 148);
+            this.pan_Weapon.Name = "pan_Weapon";
+            this.pan_Weapon.Size = new System.Drawing.Size(210, 81);
+            this.pan_Weapon.TabIndex = 8;
+            // 
+            // txt_ItemName
+            // 
+            this.txt_ItemName.Location = new System.Drawing.Point(270, 21);
+            this.txt_ItemName.Name = "txt_ItemName";
+            this.txt_ItemName.Size = new System.Drawing.Size(174, 20);
+            this.txt_ItemName.TabIndex = 1;
+            // 
+            // item_pp
+            // 
+            this.item_pp.Location = new System.Drawing.Point(120, 62);
+            this.item_pp.Name = "item_pp";
+            this.item_pp.Size = new System.Drawing.Size(60, 20);
+            this.item_pp.TabIndex = 2;
+            // 
+            // item_gp
+            // 
+            this.item_gp.Location = new System.Drawing.Point(186, 62);
+            this.item_gp.Name = "item_gp";
+            this.item_gp.Size = new System.Drawing.Size(60, 20);
+            this.item_gp.TabIndex = 3;
+            // 
+            // item_ep
+            // 
+            this.item_ep.Location = new System.Drawing.Point(252, 62);
+            this.item_ep.Name = "item_ep";
+            this.item_ep.Size = new System.Drawing.Size(60, 20);
+            this.item_ep.TabIndex = 4;
+            // 
+            // item_sp
+            // 
+            this.item_sp.Location = new System.Drawing.Point(318, 62);
+            this.item_sp.Name = "item_sp";
+            this.item_sp.Size = new System.Drawing.Size(60, 20);
+            this.item_sp.TabIndex = 5;
+            // 
+            // item_cp
+            // 
+            this.item_cp.Location = new System.Drawing.Point(384, 62);
+            this.item_cp.Name = "item_cp";
+            this.item_cp.Size = new System.Drawing.Size(60, 20);
+            this.item_cp.TabIndex = 6;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label18.Location = new System.Drawing.Point(78, 63);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(36, 17);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Cost";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label19.Location = new System.Drawing.Point(120, 45);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(26, 17);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "PP";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label20.Location = new System.Drawing.Point(186, 45);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 17);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "GP";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label21.Location = new System.Drawing.Point(252, 45);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(26, 17);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "EP";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label22.Location = new System.Drawing.Point(318, 45);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(26, 17);
+            this.label22.TabIndex = 13;
+            this.label22.Text = "SP";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label23.Location = new System.Drawing.Point(384, 45);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(26, 17);
+            this.label23.TabIndex = 14;
+            this.label23.Text = "CP";
+            // 
+            // txt_ItemEffects
+            // 
+            this.txt_ItemEffects.Location = new System.Drawing.Point(67, 88);
+            this.txt_ItemEffects.Multiline = true;
+            this.txt_ItemEffects.Name = "txt_ItemEffects";
+            this.txt_ItemEffects.Size = new System.Drawing.Size(377, 54);
+            this.txt_ItemEffects.TabIndex = 7;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label24.Location = new System.Drawing.Point(6, 89);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(55, 17);
+            this.label24.TabIndex = 16;
+            this.label24.Text = "Effects:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label25.Location = new System.Drawing.Point(209, 22);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(45, 17);
+            this.label25.TabIndex = 17;
+            this.label25.Text = "Name";
+            // 
+            // pan_Armor
+            // 
+            this.pan_Armor.Controls.Add(this.label27);
+            this.pan_Armor.Controls.Add(this.label26);
+            this.pan_Armor.Controls.Add(this.txt_ArmorClass);
+            this.pan_Armor.Controls.Add(this.combo_ArmorType);
+            this.pan_Armor.Location = new System.Drawing.Point(234, 148);
+            this.pan_Armor.Name = "pan_Armor";
+            this.pan_Armor.Size = new System.Drawing.Size(210, 81);
+            this.pan_Armor.TabIndex = 9;
+            // 
+            // combo_ArmorType
+            // 
+            this.combo_ArmorType.FormattingEnabled = true;
+            this.combo_ArmorType.Location = new System.Drawing.Point(84, 12);
+            this.combo_ArmorType.Name = "combo_ArmorType";
+            this.combo_ArmorType.Size = new System.Drawing.Size(121, 21);
+            this.combo_ArmorType.TabIndex = 0;
+            // 
+            // combo_WeaponType
+            // 
+            this.combo_WeaponType.FormattingEnabled = true;
+            this.combo_WeaponType.Location = new System.Drawing.Point(86, 12);
+            this.combo_WeaponType.Name = "combo_WeaponType";
+            this.combo_WeaponType.Size = new System.Drawing.Size(121, 21);
+            this.combo_WeaponType.TabIndex = 1;
+            // 
+            // txt_ArmorClass
+            // 
+            this.txt_ArmorClass.Location = new System.Drawing.Point(84, 39);
+            this.txt_ArmorClass.Name = "txt_ArmorClass";
+            this.txt_ArmorClass.Size = new System.Drawing.Size(121, 20);
+            this.txt_ArmorClass.TabIndex = 1;
+            // 
+            // txt_WeaponDamage
+            // 
+            this.txt_WeaponDamage.Location = new System.Drawing.Point(86, 39);
+            this.txt_WeaponDamage.Name = "txt_WeaponDamage";
+            this.txt_WeaponDamage.Size = new System.Drawing.Size(121, 20);
+            this.txt_WeaponDamage.TabIndex = 2;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(18, 15);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(61, 13);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Armor Type";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(18, 42);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(62, 13);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "Armor Class";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(33, 42);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(47, 13);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "Damage";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(5, 15);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(75, 13);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "Weapon Type";
+            // 
+            // btn_SaveItem
+            // 
+            this.btn_SaveItem.Location = new System.Drawing.Point(328, 19);
+            this.btn_SaveItem.Name = "btn_SaveItem";
+            this.btn_SaveItem.Size = new System.Drawing.Size(75, 23);
+            this.btn_SaveItem.TabIndex = 1;
+            this.btn_SaveItem.Text = "Save Item";
+            this.btn_SaveItem.UseVisualStyleBackColor = true;
+            this.btn_SaveItem.Click += new System.EventHandler(this.btn_SaveItem_Click);
+            // 
+            // btn_DeleteItem
+            // 
+            this.btn_DeleteItem.Location = new System.Drawing.Point(328, 48);
+            this.btn_DeleteItem.Name = "btn_DeleteItem";
+            this.btn_DeleteItem.Size = new System.Drawing.Size(75, 23);
+            this.btn_DeleteItem.TabIndex = 2;
+            this.btn_DeleteItem.Text = "Delete Item";
+            this.btn_DeleteItem.UseVisualStyleBackColor = true;
+            this.btn_DeleteItem.Click += new System.EventHandler(this.btn_DeleteItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 571);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_New);
             this.Controls.Add(this.btn_Load);
@@ -1221,13 +1632,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_Cn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Dx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_St)).EndInit();
+            this.tab_CharEquipment.ResumeLayout(false);
             this.tab_CharSpells.ResumeLayout(false);
             this.tab_CharSpells.PerformLayout();
-            this.grp_PreparedSpells.ResumeLayout(false);
+            this.grp_SpellInfo.ResumeLayout(false);
+            this.grp_SpellInfo.PerformLayout();
             this.grp_KnownSpells.ResumeLayout(false);
             this.grp_Characters.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.grp_EquipmentBuild.ResumeLayout(false);
+            this.grp_EquipmentBuild.PerformLayout();
+            this.grp_EquipmentGrid.ResumeLayout(false);
+            this.pan_Weapon.ResumeLayout(false);
+            this.pan_Weapon.PerformLayout();
+            this.pan_Armor.ResumeLayout(false);
+            this.pan_Armor.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1295,7 +1715,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox grp_Prof;
         private System.Windows.Forms.TabPage tab_CharEquipment;
         private System.Windows.Forms.ComboBox combo_ProfType;
@@ -1307,10 +1726,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox combo_Prestige;
         private System.Windows.Forms.Label label_Prestige;
-        private System.Windows.Forms.Button btn_UnprepareSpell;
-        private System.Windows.Forms.Button btn_PrepareSpell;
-        private System.Windows.Forms.GroupBox grp_PreparedSpells;
-        private System.Windows.Forms.ListBox list_PreparedSpells;
+        private System.Windows.Forms.GroupBox grp_SpellInfo;
         private System.Windows.Forms.ListBox list_KnownSpells;
         private System.Windows.Forms.Button btn_SaveSpell;
         private System.Windows.Forms.TextBox txt_SpellName;
@@ -1331,6 +1747,45 @@
         private System.Windows.Forms.TextBox txt_SpellComponents;
         private System.Windows.Forms.Button btn_NewSpell;
         private System.Windows.Forms.Button btn_DeleteSpell;
+        private System.Windows.Forms.GroupBox grp_EquipmentGrid;
+        private System.Windows.Forms.ListBox list_Equipment;
+        private System.Windows.Forms.GroupBox grp_EquipmentBuild;
+        private System.Windows.Forms.ComboBox combo_ItemTypes;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label Spell_Duration;
+        private System.Windows.Forms.Label Spell_CastTime;
+        private System.Windows.Forms.Label Spell_Range;
+        private System.Windows.Forms.Label Spell_Class_Level;
+        private System.Windows.Forms.Label Spell_Name;
+        private System.Windows.Forms.TextBox Spell_Components;
+        private System.Windows.Forms.TextBox Spell_Effects;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txt_ItemEffects;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox item_cp;
+        private System.Windows.Forms.TextBox item_sp;
+        private System.Windows.Forms.TextBox item_ep;
+        private System.Windows.Forms.TextBox item_gp;
+        private System.Windows.Forms.TextBox item_pp;
+        private System.Windows.Forms.TextBox txt_ItemName;
+        private System.Windows.Forms.Panel pan_Weapon;
+        private System.Windows.Forms.Panel pan_Armor;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txt_ArmorClass;
+        private System.Windows.Forms.ComboBox combo_ArmorType;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txt_WeaponDamage;
+        private System.Windows.Forms.ComboBox combo_WeaponType;
+        private System.Windows.Forms.Button btn_DeleteItem;
+        private System.Windows.Forms.Button btn_SaveItem;
     }
 }
 
