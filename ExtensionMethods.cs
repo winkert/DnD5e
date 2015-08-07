@@ -39,7 +39,7 @@ namespace DnD5e
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Unable to load the file due to an error.");
+                    MessageBox.Show("Unable to load the file due to an error." + "/r/n" + e.Message);
                     throw;
                 }
             }

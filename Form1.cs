@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace DnD5e
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             allCharacters = new List<Character>();
@@ -20,13 +20,13 @@ namespace DnD5e
             BindEquipmentControls();
         }
         #region Publics
-        public List<Character> allCharacters;
+        public static List<Character> allCharacters;
         /// <summary>
         /// Integer used to track which item is selected (was selected) in order to save the item.
         /// Default is -1 (no selection)
         /// </summary>
         public int SelectedCharacter = -1;
-        private bool changesMade = false;
+        public static bool changesMade = false;
         private string SaveLocation = Path.GetDirectoryName(Application.ExecutablePath) + "\\characters.bin";
         private List<Proficiencies> tempProficiencies = new List<Proficiencies>();
         private List<Spell> tempSpells = new List<Spell>();
@@ -52,6 +52,13 @@ namespace DnD5e
                 i++;
             }
             return items;
+        }
+        private void refreshXPForm()
+        {
+            if (Application.OpenForms.OfType<XPCalc>().Count() > 0)
+            {
+                Application.OpenForms.OfType<XPCalc>().Single().refreshList();
+            }
         }
         #region Save Load New
         private void refreshSpells()
@@ -179,6 +186,7 @@ namespace DnD5e
             combo_Class.SelectedItem = c.Class;
             combo_Prestige.SelectedItem = c.SubClass;
             combo_Allignment.SelectedItem = c.Allignment;
+            txt_Background.Text = c.pBackground;
 
             //Use a generic method in Character to get the attributes
             txt_St.Value = c.getAttribute("Strength");
@@ -248,6 +256,7 @@ namespace DnD5e
                 c.setSubClass("None", SubClassTypes.None);
             }
             c.setAllignment((string)combo_Allignment.SelectedItem);
+            c.pBackground = txt_Background.Text;
             //Save skills
             foreach (Control s in grp_Skills.Controls)
             {
@@ -296,6 +305,7 @@ namespace DnD5e
                 allCharacters[c].setSubClass("None", SubClassTypes.None);
             }
             allCharacters[c].setAllignment((string)combo_Allignment.SelectedItem);
+            allCharacters[c].pBackground = txt_Background.Text;
             //Save skills
             foreach (Control s in grp_Skills.Controls)
             {
@@ -663,11 +673,27 @@ namespace DnD5e
             Spell_Components.Text = "Spell Components : " + s.sComponents;
             Spell_Effects.Text = "Spell Effects : " + s.sEffect;
         }
+        private void hideSpellInfo()
+        {
+            Spell_Name.Text = "Spell Name : " ;
+            Spell_Class_Level.Text = "Spell Level : ";
+            Spell_Range.Text = "Spell Range : ";
+            Spell_CastTime.Text = "Spell Cast Time : ";
+            Spell_Duration.Text = "Spell Duration : ";
+            Spell_Components.Text = "Spell Components : ";
+            Spell_Effects.Text = "Spell Effects : ";
+        }
         private void displayItemInfo(Equipment s)
         {
             Item_Name.Text = s.Name;
             Item_Effects.Text = "Additional Information : " + s.Effects;
             Item_Value.Text = s.Value.GoldToCoins();
+        }
+        private void hideItemInfo()
+        {
+            Item_Name.Text = "Item Name : ";
+            Item_Effects.Text = "Additional Information : ";
+            Item_Value.Text = "Item Value : ";
         }
         #endregion
         #region Validation
@@ -760,12 +786,28 @@ namespace DnD5e
         private void list_KnownSpells_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedSpell = list_KnownSpells.SelectedIndex;
-            displaySpellInfo(tempSpells[selectedSpell]);
+            if(selectedSpell < 0) { selectedSpell = 0; }
+            if (tempSpells.Count > 0)
+            {
+                displaySpellInfo(tempSpells[selectedSpell]); 
+            }
+            else
+            {
+                hideSpellInfo();
+            }
         }
         private void list_Equipment_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedItem = list_Equipment.SelectedIndex;
-            displayItemInfo(tempEquipment[selectedItem]);
+            if(selectedItem < 0) { selectedItem = 0; }
+            if (tempEquipment.Count > 0)
+            {
+                displayItemInfo(tempEquipment[selectedItem]); 
+            }
+            else
+            {
+                hideItemInfo();
+            }
         }
         private void combo_ItemTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -802,6 +844,7 @@ namespace DnD5e
             allCharacters = SaveLocation.deserialize();
             refreshCharacters();
             changesMade = false;
+            refreshXPForm();
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -825,6 +868,20 @@ namespace DnD5e
             }
             
         }
+        private void experienceCalculatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(Application.OpenForms.OfType<XPCalc>().Count() > 0)
+            {
+                XPCalc window = Application.OpenForms.OfType<XPCalc>().First();
+                window.Show();
+            }
+            else
+            {
+                XPCalc window = new XPCalc();
+                window.Show();
+            }
+            
+        }
         //Button events
         private void btn_Save_Click(object sender, EventArgs e)
         {
@@ -838,6 +895,7 @@ namespace DnD5e
                 //Create character based on entered values
                 Character newCharacter = SaveCharacter();
                 allCharacters.Add(newCharacter);
+                refreshXPForm();
             }
             //Update the selected character if there is one selected
             else
@@ -873,6 +931,7 @@ namespace DnD5e
             list_Characters.SelectedIndex = -1;
             refreshCharacters();
             changesMade = true;
+            refreshXPForm();
         }
         private void btn_SaveProf_Click(object sender, EventArgs e)
         {
@@ -964,6 +1023,7 @@ namespace DnD5e
             //        break;
             //}
         }
+
         #endregion
 
         

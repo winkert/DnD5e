@@ -43,6 +43,8 @@ namespace DnD5e
         public string Class { get { return getClass(pClass); } }
         public string SubClass { get { return getSubClass(pPrestige); } }
         public string Allignment { get { return getAllignment(pAllignment); } }
+        public string Experience { get { return pExperience.ToString(); } }
+        public string Level { get { return getLevel(); } }
         public string pBackground;
         private Gender pGender;
         private Races pRace;
@@ -50,6 +52,7 @@ namespace DnD5e
         private Classes pClass;
         private SubClass pPrestige;
         private Allignments pAllignment;
+        private int pExperience = 0;
         //Abilities
         public static int pStrength;
         public static int pDexterity;
@@ -70,7 +73,7 @@ namespace DnD5e
         #region Methods
         public override string ToString()
         {
-            return pName + ": " + getRace(pRace) + ", " + getClass(pClass);
+            return pName + ": " + getLevel() + " " + getRace(pRace) + ", " + getClass(pClass);
         }
         private void InitializeSkills()
         {
@@ -277,6 +280,33 @@ namespace DnD5e
             }
         }
         #endregion
+        public void AddXP(int xp)
+        {
+            pExperience += xp;
+        }
+        private string getLevel()
+        {
+            if(pExperience >= 355000) { return "Level 20"; }
+            else if(pExperience >= 305000) { return "Level 19"; }
+            else if (pExperience >= 265000) { return "Level 18"; }
+            else if (pExperience >= 225000) { return "Level 17"; }
+            else if (pExperience >= 195000) { return "Level 16"; }
+            else if (pExperience >= 165000) { return "Level 15"; }
+            else if (pExperience >= 140000) { return "Level 14"; }
+            else if (pExperience >= 120000) { return "Level 13"; }
+            else if (pExperience >= 100000) { return "Level 12"; }
+            else if (pExperience >= 85000) { return "Level 11"; }
+            else if (pExperience >= 64000) { return "Level 10"; }
+            else if (pExperience >= 48000) { return "Level 9"; }
+            else if (pExperience >= 34000) { return "Level 8"; }
+            else if (pExperience >= 23000) { return "Level 7"; }
+            else if (pExperience >= 14000) { return "Level 6"; }
+            else if (pExperience >= 6500) { return "Level 5"; }
+            else if (pExperience >= 2700) { return "Level 4"; }
+            else if (pExperience >= 900) { return "Level 3"; }
+            else if (pExperience >= 300) { return "Level 2"; }
+            else { return "Level 1"; }
+        }
         #endregion
     }
 

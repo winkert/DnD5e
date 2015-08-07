@@ -1,6 +1,6 @@
 ﻿namespace DnD5e
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -86,6 +86,10 @@
             this.label_Class = new System.Windows.Forms.Label();
             this.tab_CharEquipment = new System.Windows.Forms.TabPage();
             this.grp_EquipmentGrid = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Item_Effects = new System.Windows.Forms.TextBox();
+            this.Item_Value = new System.Windows.Forms.Label();
+            this.Item_Name = new System.Windows.Forms.Label();
             this.btn_DeleteItem = new System.Windows.Forms.Button();
             this.btn_SaveItem = new System.Windows.Forms.Button();
             this.list_Equipment = new System.Windows.Forms.ListBox();
@@ -159,10 +163,9 @@
             this.saveListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Item_Effects = new System.Windows.Forms.TextBox();
-            this.Item_Value = new System.Windows.Forms.Label();
-            this.Item_Name = new System.Windows.Forms.Label();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.experienceCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txt_Background = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -176,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_St)).BeginInit();
             this.tab_CharEquipment.SuspendLayout();
             this.grp_EquipmentGrid.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.grp_EquipmentBuild.SuspendLayout();
             this.pan_Armor.SuspendLayout();
             this.pan_Weapon.SuspendLayout();
@@ -184,7 +188,6 @@
             this.grp_KnownSpells.SuspendLayout();
             this.grp_Characters.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -193,15 +196,16 @@
             this.tabControl.Controls.Add(this.tab_CharEquipment);
             this.tabControl.Controls.Add(this.tab_CharSpells);
             this.tabControl.Controls.Add(this.tab_Record);
-            this.tabControl.Location = new System.Drawing.Point(12, 34);
+            this.tabControl.Location = new System.Drawing.Point(12, 27);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(467, 525);
+            this.tabControl.Size = new System.Drawing.Size(467, 532);
             this.tabControl.TabIndex = 0;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
             // 
             // tab_CharSheet
             // 
+            this.tab_CharSheet.Controls.Add(this.txt_Background);
             this.tab_CharSheet.Controls.Add(this.combo_Prestige);
             this.tab_CharSheet.Controls.Add(this.label_Prestige);
             this.tab_CharSheet.Controls.Add(this.grp_Prof);
@@ -222,7 +226,7 @@
             this.tab_CharSheet.Location = new System.Drawing.Point(4, 22);
             this.tab_CharSheet.Name = "tab_CharSheet";
             this.tab_CharSheet.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_CharSheet.Size = new System.Drawing.Size(459, 499);
+            this.tab_CharSheet.Size = new System.Drawing.Size(459, 506);
             this.tab_CharSheet.TabIndex = 0;
             this.tab_CharSheet.Text = "Character Sheet";
             this.tab_CharSheet.UseVisualStyleBackColor = true;
@@ -246,7 +250,7 @@
             this.label_Prestige.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_Prestige.AutoSize = true;
             this.label_Prestige.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_Prestige.Location = new System.Drawing.Point(3, 155);
+            this.label_Prestige.Location = new System.Drawing.Point(6, 155);
             this.label_Prestige.Name = "label_Prestige";
             this.label_Prestige.Size = new System.Drawing.Size(68, 17);
             this.label_Prestige.TabIndex = 13;
@@ -555,7 +559,7 @@
             this.label_Allignment.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_Allignment.AutoSize = true;
             this.label_Allignment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_Allignment.Location = new System.Drawing.Point(4, 185);
+            this.label_Allignment.Location = new System.Drawing.Point(6, 185);
             this.label_Allignment.Name = "label_Allignment";
             this.label_Allignment.Size = new System.Drawing.Size(83, 17);
             this.label_Allignment.TabIndex = 9;
@@ -566,7 +570,7 @@
             this.label_Name.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_Name.AutoSize = true;
             this.label_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_Name.Location = new System.Drawing.Point(3, 5);
+            this.label_Name.Location = new System.Drawing.Point(6, 6);
             this.label_Name.Name = "label_Name";
             this.label_Name.Size = new System.Drawing.Size(49, 17);
             this.label_Name.TabIndex = 11;
@@ -770,7 +774,7 @@
             this.label_Gender.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_Gender.AutoSize = true;
             this.label_Gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_Gender.Location = new System.Drawing.Point(3, 35);
+            this.label_Gender.Location = new System.Drawing.Point(6, 37);
             this.label_Gender.Name = "label_Gender";
             this.label_Gender.Size = new System.Drawing.Size(62, 17);
             this.label_Gender.TabIndex = 5;
@@ -793,7 +797,7 @@
             this.label_Race.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_Race.AutoSize = true;
             this.label_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_Race.Location = new System.Drawing.Point(3, 65);
+            this.label_Race.Location = new System.Drawing.Point(6, 64);
             this.label_Race.Name = "label_Race";
             this.label_Race.Size = new System.Drawing.Size(45, 17);
             this.label_Race.TabIndex = 6;
@@ -817,7 +821,7 @@
             this.label_SubRace.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_SubRace.AutoSize = true;
             this.label_SubRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_SubRace.Location = new System.Drawing.Point(3, 95);
+            this.label_SubRace.Location = new System.Drawing.Point(6, 92);
             this.label_SubRace.Name = "label_SubRace";
             this.label_SubRace.Size = new System.Drawing.Size(73, 17);
             this.label_SubRace.TabIndex = 7;
@@ -854,7 +858,7 @@
             this.label_Class.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_Class.AutoSize = true;
             this.label_Class.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_Class.Location = new System.Drawing.Point(3, 125);
+            this.label_Class.Location = new System.Drawing.Point(6, 125);
             this.label_Class.Name = "label_Class";
             this.label_Class.Size = new System.Drawing.Size(47, 17);
             this.label_Class.TabIndex = 8;
@@ -883,6 +887,49 @@
             this.grp_EquipmentGrid.Size = new System.Drawing.Size(450, 246);
             this.grp_EquipmentGrid.TabIndex = 1;
             this.grp_EquipmentGrid.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Item_Effects);
+            this.groupBox1.Controls.Add(this.Item_Value);
+            this.groupBox1.Controls.Add(this.Item_Name);
+            this.groupBox1.Location = new System.Drawing.Point(284, 48);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(166, 196);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Item Information";
+            // 
+            // Item_Effects
+            // 
+            this.Item_Effects.BackColor = System.Drawing.SystemColors.Window;
+            this.Item_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Item_Effects.Enabled = false;
+            this.Item_Effects.Location = new System.Drawing.Point(6, 48);
+            this.Item_Effects.Multiline = true;
+            this.Item_Effects.Name = "Item_Effects";
+            this.Item_Effects.ReadOnly = true;
+            this.Item_Effects.Size = new System.Drawing.Size(153, 142);
+            this.Item_Effects.TabIndex = 8;
+            this.Item_Effects.Text = "Additional Information";
+            // 
+            // Item_Value
+            // 
+            this.Item_Value.AutoSize = true;
+            this.Item_Value.Location = new System.Drawing.Point(6, 32);
+            this.Item_Value.Name = "Item_Value";
+            this.Item_Value.Size = new System.Drawing.Size(34, 13);
+            this.Item_Value.TabIndex = 2;
+            this.Item_Value.Text = "Value";
+            // 
+            // Item_Name
+            // 
+            this.Item_Name.AutoSize = true;
+            this.Item_Name.Location = new System.Drawing.Point(6, 19);
+            this.Item_Name.Name = "Item_Name";
+            this.Item_Name.Size = new System.Drawing.Size(35, 13);
+            this.Item_Name.TabIndex = 0;
+            this.Item_Name.Text = "Name";
             // 
             // btn_DeleteItem
             // 
@@ -1571,7 +1618,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(720, 24);
@@ -1609,50 +1657,31 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // groupBox1
+            // toolsToolStripMenuItem
             // 
-            this.groupBox1.Controls.Add(this.Item_Effects);
-            this.groupBox1.Controls.Add(this.Item_Value);
-            this.groupBox1.Controls.Add(this.Item_Name);
-            this.groupBox1.Location = new System.Drawing.Point(284, 48);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(166, 196);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Item Information";
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.experienceCalculatorToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
             // 
-            // Item_Effects
+            // experienceCalculatorToolStripMenuItem
             // 
-            this.Item_Effects.BackColor = System.Drawing.SystemColors.Window;
-            this.Item_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Item_Effects.Enabled = false;
-            this.Item_Effects.Location = new System.Drawing.Point(6, 48);
-            this.Item_Effects.Multiline = true;
-            this.Item_Effects.Name = "Item_Effects";
-            this.Item_Effects.ReadOnly = true;
-            this.Item_Effects.Size = new System.Drawing.Size(153, 142);
-            this.Item_Effects.TabIndex = 8;
-            this.Item_Effects.Text = "Additional Information";
+            this.experienceCalculatorToolStripMenuItem.Name = "experienceCalculatorToolStripMenuItem";
+            this.experienceCalculatorToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.experienceCalculatorToolStripMenuItem.Text = "Experience Calculator";
+            this.experienceCalculatorToolStripMenuItem.Click += new System.EventHandler(this.experienceCalculatorToolStripMenuItem_Click);
             // 
-            // Item_Value
+            // txt_Background
             // 
-            this.Item_Value.AutoSize = true;
-            this.Item_Value.Location = new System.Drawing.Point(6, 32);
-            this.Item_Value.Name = "Item_Value";
-            this.Item_Value.Size = new System.Drawing.Size(34, 13);
-            this.Item_Value.TabIndex = 2;
-            this.Item_Value.Text = "Value";
+            this.txt_Background.Location = new System.Drawing.Point(6, 447);
+            this.txt_Background.Multiline = true;
+            this.txt_Background.Name = "txt_Background";
+            this.txt_Background.Size = new System.Drawing.Size(444, 53);
+            this.txt_Background.TabIndex = 14;
+            this.txt_Background.Text = "Player Background";
             // 
-            // Item_Name
-            // 
-            this.Item_Name.AutoSize = true;
-            this.Item_Name.Location = new System.Drawing.Point(6, 19);
-            this.Item_Name.Name = "Item_Name";
-            this.Item_Name.Size = new System.Drawing.Size(35, 13);
-            this.Item_Name.TabIndex = 0;
-            this.Item_Name.Text = "Name";
-            // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1665,7 +1694,7 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Dungeons & Dragons Dungeon Master";
             this.tabControl.ResumeLayout(false);
             this.tab_CharSheet.ResumeLayout(false);
@@ -1684,6 +1713,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_St)).EndInit();
             this.tab_CharEquipment.ResumeLayout(false);
             this.grp_EquipmentGrid.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.grp_EquipmentBuild.ResumeLayout(false);
             this.grp_EquipmentBuild.PerformLayout();
             this.pan_Armor.ResumeLayout(false);
@@ -1698,8 +1729,6 @@
             this.grp_Characters.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1842,6 +1871,9 @@
         private System.Windows.Forms.TextBox Item_Effects;
         private System.Windows.Forms.Label Item_Value;
         private System.Windows.Forms.Label Item_Name;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem experienceCalculatorToolStripMenuItem;
+        private System.Windows.Forms.TextBox txt_Background;
     }
 }
 
