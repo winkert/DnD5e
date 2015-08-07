@@ -836,11 +836,13 @@ namespace DnD5e
         //Menu events
         private void saveListToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Add SaveFileDialog() first to set SaveLocation
             allCharacters.serialize(SaveLocation);
             changesMade = false;
         }
         private void loadListToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Add OpenFileDialog() first to set SaveLocation
             allCharacters = SaveLocation.deserialize();
             refreshCharacters();
             changesMade = false;
@@ -858,6 +860,7 @@ namespace DnD5e
                 }
                 else if (save == DialogResult.Yes)
                 {
+                    //Add SaveFileDialog() first to set SaveLocation
                     allCharacters.serialize(SaveLocation);
                     Close();
                 }
