@@ -27,6 +27,7 @@ namespace DnD5e
         /// </summary>
         public int SelectedCharacter = -1;
         public static bool changesMade = false;
+        public static bool savingNloading = false;
         private string SaveLocation = Path.GetDirectoryName(Application.ExecutablePath) + "\\characters.bin";
         private List<Proficiencies> tempProficiencies = new List<Proficiencies>();
         private List<Spell> tempSpells = new List<Spell>();
@@ -356,6 +357,7 @@ namespace DnD5e
             Equipment item;
             decimal value = 0m;
             int pp, gp, ep, sp, cp;
+            decimal weight;
             if (!int.TryParse(item_pp.Text, out pp))
             {
                 pp = 0;
@@ -377,6 +379,10 @@ namespace DnD5e
                 cp = 0;
             }
             value += pp.PlatinumToGold() + gp + ep.ElectrumToGold() + sp.SilverToGold() + cp.CopperToGold();
+            if(!decimal.TryParse(txt_ItemWeight.Text, out weight))
+            {
+                weight = 0;
+            }
             if (combo_ItemTypes.SelectedItem.ToString().ParseEnum<ItemTypes>() == ItemTypes.Armor)
             {
                 int ac;
@@ -401,6 +407,7 @@ namespace DnD5e
                 item = new Equipment(txt_ItemName.Text, value);
             }
             item.Effects = txt_ItemEffects.Text;
+            item.Weight = weight;
             return item;
         }
         #endregion
@@ -837,16 +844,31 @@ namespace DnD5e
         private void saveListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Add SaveFileDialog() first to set SaveLocation
-            allCharacters.serialize(SaveLocation);
-            changesMade = false;
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.DefaultExt = "bin";
+            saveFile.Filter = "Character Sets (*.bin)|*.bin";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                SaveLocation = saveFile.FileName;
+                allCharacters.serialize(SaveLocation);
+                changesMade = false;
+            }
         }
         private void loadListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Add OpenFileDialog() first to set SaveLocation
-            allCharacters = SaveLocation.deserialize();
-            refreshCharacters();
-            changesMade = false;
-            refreshXPForm();
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.DefaultExt = "bin";
+            openFile.Filter = "Character Sets (*.bin)|*.bin";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                SaveLocation = openFile.FileName;
+                allCharacters = SaveLocation.deserialize();
+                savingNloading = true;
+                refreshCharacters();
+                changesMade = false;
+                refreshXPForm(); 
+            }
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {

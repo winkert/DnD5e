@@ -27,6 +27,7 @@ namespace DnD5e
         /// The Value of the item in gold pieces.
         /// </summary>
         public decimal Value;
+        public decimal Weight;
         public override string ToString()
         {
             return Name + " : " + Value.GoldToCoins();

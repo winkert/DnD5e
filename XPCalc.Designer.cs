@@ -46,7 +46,7 @@
             this.combo_Characters.FormattingEnabled = true;
             this.combo_Characters.Location = new System.Drawing.Point(112, 33);
             this.combo_Characters.Name = "combo_Characters";
-            this.combo_Characters.Size = new System.Drawing.Size(130, 21);
+            this.combo_Characters.Size = new System.Drawing.Size(156, 21);
             this.combo_Characters.TabIndex = 0;
             this.combo_Characters.SelectedIndexChanged += new System.EventHandler(this.combo_Characters_SelectedIndexChanged);
             // 
@@ -61,14 +61,14 @@
             this.grp_PlayInfo.Controls.Add(this.txt_XP);
             this.grp_PlayInfo.Location = new System.Drawing.Point(12, 60);
             this.grp_PlayInfo.Name = "grp_PlayInfo";
-            this.grp_PlayInfo.Size = new System.Drawing.Size(230, 124);
+            this.grp_PlayInfo.Size = new System.Drawing.Size(256, 124);
             this.grp_PlayInfo.TabIndex = 1;
             this.grp_PlayInfo.TabStop = false;
             this.grp_PlayInfo.Text = "Player Information";
             // 
             // btn_AddToAll
             // 
-            this.btn_AddToAll.Location = new System.Drawing.Point(149, 77);
+            this.btn_AddToAll.Location = new System.Drawing.Point(175, 68);
             this.btn_AddToAll.Name = "btn_AddToAll";
             this.btn_AddToAll.Size = new System.Drawing.Size(75, 23);
             this.btn_AddToAll.TabIndex = 7;
@@ -118,7 +118,7 @@
             // 
             // btn_AddXP
             // 
-            this.btn_AddXP.Location = new System.Drawing.Point(149, 48);
+            this.btn_AddXP.Location = new System.Drawing.Point(175, 39);
             this.btn_AddXP.Name = "btn_AddXP";
             this.btn_AddXP.Size = new System.Drawing.Size(75, 23);
             this.btn_AddXP.TabIndex = 1;
@@ -128,7 +128,7 @@
             // 
             // txt_XP
             // 
-            this.txt_XP.Location = new System.Drawing.Point(149, 22);
+            this.txt_XP.Location = new System.Drawing.Point(175, 13);
             this.txt_XP.Name = "txt_XP";
             this.txt_XP.Size = new System.Drawing.Size(75, 20);
             this.txt_XP.TabIndex = 0;
@@ -147,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 196);
+            this.ClientSize = new System.Drawing.Size(280, 196);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grp_PlayInfo);
             this.Controls.Add(this.combo_Characters);

@@ -30,6 +30,7 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tab_CharSheet = new System.Windows.Forms.TabPage();
+            this.txt_Background = new System.Windows.Forms.TextBox();
             this.combo_Prestige = new System.Windows.Forms.ComboBox();
             this.label_Prestige = new System.Windows.Forms.Label();
             this.grp_Prof = new System.Windows.Forms.GroupBox();
@@ -165,7 +166,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.experienceCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txt_Background = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txt_ItemWeight = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -230,6 +232,15 @@
             this.tab_CharSheet.TabIndex = 0;
             this.tab_CharSheet.Text = "Character Sheet";
             this.tab_CharSheet.UseVisualStyleBackColor = true;
+            // 
+            // txt_Background
+            // 
+            this.txt_Background.Location = new System.Drawing.Point(6, 447);
+            this.txt_Background.Multiline = true;
+            this.txt_Background.Name = "txt_Background";
+            this.txt_Background.Size = new System.Drawing.Size(444, 53);
+            this.txt_Background.TabIndex = 14;
+            this.txt_Background.Text = "Player Background";
             // 
             // combo_Prestige
             // 
@@ -871,7 +882,7 @@
             this.tab_CharEquipment.Location = new System.Drawing.Point(4, 22);
             this.tab_CharEquipment.Name = "tab_CharEquipment";
             this.tab_CharEquipment.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_CharEquipment.Size = new System.Drawing.Size(459, 499);
+            this.tab_CharEquipment.Size = new System.Drawing.Size(459, 506);
             this.tab_CharEquipment.TabIndex = 3;
             this.tab_CharEquipment.Text = "Equipment";
             this.tab_CharEquipment.UseVisualStyleBackColor = true;
@@ -962,6 +973,8 @@
             // 
             // grp_EquipmentBuild
             // 
+            this.grp_EquipmentBuild.Controls.Add(this.txt_ItemWeight);
+            this.grp_EquipmentBuild.Controls.Add(this.label30);
             this.grp_EquipmentBuild.Controls.Add(this.pan_Armor);
             this.grp_EquipmentBuild.Controls.Add(this.label25);
             this.grp_EquipmentBuild.Controls.Add(this.label24);
@@ -983,7 +996,7 @@
             this.grp_EquipmentBuild.Controls.Add(this.combo_ItemTypes);
             this.grp_EquipmentBuild.Location = new System.Drawing.Point(3, 6);
             this.grp_EquipmentBuild.Name = "grp_EquipmentBuild";
-            this.grp_EquipmentBuild.Size = new System.Drawing.Size(450, 179);
+            this.grp_EquipmentBuild.Size = new System.Drawing.Size(450, 181);
             this.grp_EquipmentBuild.TabIndex = 0;
             this.grp_EquipmentBuild.TabStop = false;
             this.grp_EquipmentBuild.Text = "Equipment";
@@ -1058,13 +1071,13 @@
             this.txt_ItemEffects.Multiline = true;
             this.txt_ItemEffects.Name = "txt_ItemEffects";
             this.txt_ItemEffects.Size = new System.Drawing.Size(129, 82);
-            this.txt_ItemEffects.TabIndex = 7;
+            this.txt_ItemEffects.TabIndex = 8;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label23.Location = new System.Drawing.Point(384, 45);
+            this.label23.Location = new System.Drawing.Point(413, 46);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(26, 17);
             this.label23.TabIndex = 14;
@@ -1074,7 +1087,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label22.Location = new System.Drawing.Point(318, 45);
+            this.label22.Location = new System.Drawing.Point(377, 46);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(26, 17);
             this.label22.TabIndex = 13;
@@ -1084,7 +1097,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label21.Location = new System.Drawing.Point(252, 45);
+            this.label21.Location = new System.Drawing.Point(341, 46);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(26, 17);
             this.label21.TabIndex = 12;
@@ -1094,7 +1107,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label20.Location = new System.Drawing.Point(186, 45);
+            this.label20.Location = new System.Drawing.Point(307, 46);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(28, 17);
             this.label20.TabIndex = 11;
@@ -1104,7 +1117,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label19.Location = new System.Drawing.Point(120, 45);
+            this.label19.Location = new System.Drawing.Point(271, 46);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(26, 17);
             this.label19.TabIndex = 10;
@@ -1114,7 +1127,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label18.Location = new System.Drawing.Point(78, 63);
+            this.label18.Location = new System.Drawing.Point(229, 64);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(36, 17);
             this.label18.TabIndex = 9;
@@ -1122,38 +1135,38 @@
             // 
             // item_cp
             // 
-            this.item_cp.Location = new System.Drawing.Point(384, 62);
+            this.item_cp.Location = new System.Drawing.Point(413, 63);
             this.item_cp.Name = "item_cp";
-            this.item_cp.Size = new System.Drawing.Size(60, 20);
-            this.item_cp.TabIndex = 6;
+            this.item_cp.Size = new System.Drawing.Size(30, 20);
+            this.item_cp.TabIndex = 7;
             // 
             // item_sp
             // 
-            this.item_sp.Location = new System.Drawing.Point(318, 62);
+            this.item_sp.Location = new System.Drawing.Point(377, 63);
             this.item_sp.Name = "item_sp";
-            this.item_sp.Size = new System.Drawing.Size(60, 20);
-            this.item_sp.TabIndex = 5;
+            this.item_sp.Size = new System.Drawing.Size(30, 20);
+            this.item_sp.TabIndex = 6;
             // 
             // item_ep
             // 
-            this.item_ep.Location = new System.Drawing.Point(252, 62);
+            this.item_ep.Location = new System.Drawing.Point(341, 63);
             this.item_ep.Name = "item_ep";
-            this.item_ep.Size = new System.Drawing.Size(60, 20);
-            this.item_ep.TabIndex = 4;
+            this.item_ep.Size = new System.Drawing.Size(30, 20);
+            this.item_ep.TabIndex = 5;
             // 
             // item_gp
             // 
-            this.item_gp.Location = new System.Drawing.Point(186, 62);
+            this.item_gp.Location = new System.Drawing.Point(307, 63);
             this.item_gp.Name = "item_gp";
-            this.item_gp.Size = new System.Drawing.Size(60, 20);
-            this.item_gp.TabIndex = 3;
+            this.item_gp.Size = new System.Drawing.Size(30, 20);
+            this.item_gp.TabIndex = 4;
             // 
             // item_pp
             // 
-            this.item_pp.Location = new System.Drawing.Point(120, 62);
+            this.item_pp.Location = new System.Drawing.Point(271, 63);
             this.item_pp.Name = "item_pp";
-            this.item_pp.Size = new System.Drawing.Size(60, 20);
-            this.item_pp.TabIndex = 2;
+            this.item_pp.Size = new System.Drawing.Size(30, 20);
+            this.item_pp.TabIndex = 3;
             // 
             // txt_ItemName
             // 
@@ -1171,7 +1184,7 @@
             this.pan_Weapon.Location = new System.Drawing.Point(206, 89);
             this.pan_Weapon.Name = "pan_Weapon";
             this.pan_Weapon.Size = new System.Drawing.Size(240, 81);
-            this.pan_Weapon.TabIndex = 8;
+            this.pan_Weapon.TabIndex = 9;
             // 
             // label29
             // 
@@ -1254,7 +1267,7 @@
             this.tab_CharSpells.Location = new System.Drawing.Point(4, 22);
             this.tab_CharSpells.Name = "tab_CharSpells";
             this.tab_CharSpells.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_CharSpells.Size = new System.Drawing.Size(459, 499);
+            this.tab_CharSpells.Size = new System.Drawing.Size(459, 506);
             this.tab_CharSpells.TabIndex = 1;
             this.tab_CharSpells.Text = "Spells";
             this.tab_CharSpells.UseVisualStyleBackColor = true;
@@ -1552,7 +1565,7 @@
             this.tab_Record.Location = new System.Drawing.Point(4, 22);
             this.tab_Record.Name = "tab_Record";
             this.tab_Record.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Record.Size = new System.Drawing.Size(459, 499);
+            this.tab_Record.Size = new System.Drawing.Size(459, 506);
             this.tab_Record.TabIndex = 2;
             this.tab_Record.Text = "Player Record";
             this.tab_Record.UseVisualStyleBackColor = true;
@@ -1672,14 +1685,22 @@
             this.experienceCalculatorToolStripMenuItem.Text = "Experience Calculator";
             this.experienceCalculatorToolStripMenuItem.Click += new System.EventHandler(this.experienceCalculatorToolStripMenuItem_Click);
             // 
-            // txt_Background
+            // label30
             // 
-            this.txt_Background.Location = new System.Drawing.Point(6, 447);
-            this.txt_Background.Multiline = true;
-            this.txt_Background.Name = "txt_Background";
-            this.txt_Background.Size = new System.Drawing.Size(444, 53);
-            this.txt_Background.TabIndex = 14;
-            this.txt_Background.Text = "Player Background";
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label30.Location = new System.Drawing.Point(6, 51);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(56, 17);
+            this.label30.TabIndex = 18;
+            this.label30.Text = "Weight:";
+            // 
+            // txt_ItemWeight
+            // 
+            this.txt_ItemWeight.Location = new System.Drawing.Point(82, 48);
+            this.txt_ItemWeight.Name = "txt_ItemWeight";
+            this.txt_ItemWeight.Size = new System.Drawing.Size(99, 20);
+            this.txt_ItemWeight.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -1874,6 +1895,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem experienceCalculatorToolStripMenuItem;
         private System.Windows.Forms.TextBox txt_Background;
+        private System.Windows.Forms.TextBox txt_ItemWeight;
+        private System.Windows.Forms.Label label30;
     }
 }
 
