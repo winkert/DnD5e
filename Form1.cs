@@ -398,8 +398,8 @@ namespace DnD5e
                 string damage = txt_WeaponDamage.Text;
                 int bonus = findBonus(damage);
                 damage = removeBonus(damage);
-                int numDice = countDice(damage);
-                int diceType = findDiceType(damage);
+                int numDice = damage.ParseDiceNumber();
+                int diceType = damage.ParseDiceType();
                 item = new Weapon(txt_ItemName.Text, combo_WeaponType.SelectedItem.ToString().ParseEnum<WeaponClasses>(), diceType,numDice,bonus,value);
             }
             else
@@ -433,25 +433,6 @@ namespace DnD5e
             {
                 return s;
             }
-        }
-        public int countDice(string s)
-        {
-            int toD = s.IndexOf('d');
-            if (toD < 1)
-            {
-                return 0;
-            }
-            return int.Parse(s.Substring(0, toD));
-        }
-        public int findDiceType(string s)
-        {
-            int toD = s.IndexOf('d') + 1;
-            int len = s.Length;
-            if (toD < 1)
-            {
-                return 0;
-            }
-            return int.Parse(s.Substring(toD, len - toD));
         }
         #endregion
         #region Dynamic Fields
@@ -897,15 +878,27 @@ namespace DnD5e
         {
             if(Application.OpenForms.OfType<XPCalc>().Count() > 0)
             {
-                XPCalc window = Application.OpenForms.OfType<XPCalc>().First();
-                window.Show();
+                Application.OpenForms.OfType<XPCalc>().First().refreshList();
+                Application.OpenForms.OfType<XPCalc>().First().Select();
             }
             else
             {
                 XPCalc window = new XPCalc();
                 window.Show();
             }
-            
+
+        }
+        private void diceRollerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<DiceRoller>().Count() > 0)
+            {
+                Application.OpenForms.OfType<DiceRoller>().First().Select();
+            }
+            else
+            {
+                DiceRoller window = new DiceRoller();
+                window.Show();
+            }
         }
         //Button events
         private void btn_Save_Click(object sender, EventArgs e)
@@ -1048,6 +1041,7 @@ namespace DnD5e
             //        break;
             //}
         }
+
 
         #endregion
 

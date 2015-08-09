@@ -95,6 +95,8 @@
             this.btn_SaveItem = new System.Windows.Forms.Button();
             this.list_Equipment = new System.Windows.Forms.ListBox();
             this.grp_EquipmentBuild = new System.Windows.Forms.GroupBox();
+            this.txt_ItemWeight = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.pan_Armor = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -152,7 +154,6 @@
             this.Spell_Name = new System.Windows.Forms.Label();
             this.grp_KnownSpells = new System.Windows.Forms.GroupBox();
             this.list_KnownSpells = new System.Windows.Forms.ListBox();
-            this.tab_Record = new System.Windows.Forms.TabPage();
             this.btn_Save = new System.Windows.Forms.Button();
             this.grp_Characters = new System.Windows.Forms.GroupBox();
             this.list_Characters = new System.Windows.Forms.ListBox();
@@ -166,8 +167,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.experienceCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label30 = new System.Windows.Forms.Label();
-            this.txt_ItemWeight = new System.Windows.Forms.TextBox();
+            this.diceRollerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -197,7 +197,6 @@
             this.tabControl.Controls.Add(this.tab_CharSheet);
             this.tabControl.Controls.Add(this.tab_CharEquipment);
             this.tabControl.Controls.Add(this.tab_CharSpells);
-            this.tabControl.Controls.Add(this.tab_Record);
             this.tabControl.Location = new System.Drawing.Point(12, 27);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -1001,6 +1000,23 @@
             this.grp_EquipmentBuild.TabStop = false;
             this.grp_EquipmentBuild.Text = "Equipment";
             // 
+            // txt_ItemWeight
+            // 
+            this.txt_ItemWeight.Location = new System.Drawing.Point(82, 48);
+            this.txt_ItemWeight.Name = "txt_ItemWeight";
+            this.txt_ItemWeight.Size = new System.Drawing.Size(99, 20);
+            this.txt_ItemWeight.TabIndex = 2;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label30.Location = new System.Drawing.Point(6, 51);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(56, 17);
+            this.label30.TabIndex = 18;
+            this.label30.Text = "Weight:";
+            // 
             // pan_Armor
             // 
             this.pan_Armor.Controls.Add(this.label27);
@@ -1560,16 +1576,6 @@
             this.list_KnownSpells.TabIndex = 0;
             this.list_KnownSpells.SelectedIndexChanged += new System.EventHandler(this.list_KnownSpells_SelectedIndexChanged);
             // 
-            // tab_Record
-            // 
-            this.tab_Record.Location = new System.Drawing.Point(4, 22);
-            this.tab_Record.Name = "tab_Record";
-            this.tab_Record.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Record.Size = new System.Drawing.Size(459, 506);
-            this.tab_Record.TabIndex = 2;
-            this.tab_Record.Text = "Player Record";
-            this.tab_Record.UseVisualStyleBackColor = true;
-            // 
             // btn_Save
             // 
             this.btn_Save.Location = new System.Drawing.Point(491, 391);
@@ -1673,7 +1679,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.experienceCalculatorToolStripMenuItem});
+            this.experienceCalculatorToolStripMenuItem,
+            this.diceRollerToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -1685,22 +1692,12 @@
             this.experienceCalculatorToolStripMenuItem.Text = "Experience Calculator";
             this.experienceCalculatorToolStripMenuItem.Click += new System.EventHandler(this.experienceCalculatorToolStripMenuItem_Click);
             // 
-            // label30
+            // diceRollerToolStripMenuItem
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label30.Location = new System.Drawing.Point(6, 51);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(56, 17);
-            this.label30.TabIndex = 18;
-            this.label30.Text = "Weight:";
-            // 
-            // txt_ItemWeight
-            // 
-            this.txt_ItemWeight.Location = new System.Drawing.Point(82, 48);
-            this.txt_ItemWeight.Name = "txt_ItemWeight";
-            this.txt_ItemWeight.Size = new System.Drawing.Size(99, 20);
-            this.txt_ItemWeight.TabIndex = 2;
+            this.diceRollerToolStripMenuItem.Name = "diceRollerToolStripMenuItem";
+            this.diceRollerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.diceRollerToolStripMenuItem.Text = "Dice Roller";
+            this.diceRollerToolStripMenuItem.Click += new System.EventHandler(this.diceRollerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1788,7 +1785,6 @@
         private System.Windows.Forms.NumericUpDown txt_Cn;
         private System.Windows.Forms.NumericUpDown txt_Dx;
         private System.Windows.Forms.NumericUpDown txt_St;
-        private System.Windows.Forms.TabPage tab_Record;
         private System.Windows.Forms.Button btn_Load;
         private System.Windows.Forms.Button btn_New;
         private System.Windows.Forms.GroupBox grp_Skills;
@@ -1897,6 +1893,7 @@
         private System.Windows.Forms.TextBox txt_Background;
         private System.Windows.Forms.TextBox txt_ItemWeight;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.ToolStripMenuItem diceRollerToolStripMenuItem;
     }
 }
 

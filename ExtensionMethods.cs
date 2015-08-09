@@ -158,5 +158,81 @@ namespace DnD5e
             return values.Trim();
         }
         #endregion
+        #region DiceMethods
+        /// <summary>
+        /// Parses a string in the format of "1d6" into the type of dice rolled.
+        /// </summary>
+        /// <returns>Integer representing the type of dice. if error, returns 0.</returns>
+        public static int ParseDiceType(this string roll)
+        {
+            string theRoll = string.Empty;
+            char[] testers = { '+', '-' };
+            if(roll.IndexOfAny(testers) > 1)
+            {
+                theRoll = roll.Substring(0, roll.IndexOfAny(testers));
+            }
+            else
+            {
+                theRoll = roll;
+            }
+            int toD = theRoll.ToLower().IndexOf('d');
+            int len = theRoll.Length;
+            if (toD < 1)
+            {
+                return 0;
+            }
+            int result;
+            //debug            MessageBox.Show(theRoll.Substring(toD + 1, len - (toD + 1)));
+            if(int.TryParse(theRoll.Substring(toD + 1, len - (toD + 1)), out result))
+            {
+                return result;
+            }
+            return 0;
+        }
+        /// <summary>
+        /// Parses a string in the format of "1d6" into the number of dice rolled.
+        /// </summary>
+        /// <returns>Integer representing the number of dice. if error, returns 0.</returns>
+        public static int ParseDiceNumber(this string roll)
+        {
+            string theRoll = string.Empty;
+            char[] testers = { '+', '-' };
+            if (roll.IndexOfAny(testers) > 1)
+            {
+                theRoll = roll.Substring(0, roll.IndexOfAny(testers));
+            }
+            else
+            {
+                theRoll = roll;
+            }
+            int toD = theRoll.ToLower().IndexOf('d');
+            if (toD < 1)
+            {
+                return 0;
+            }
+            int result;
+            if(int.TryParse(theRoll.Substring(0, toD),out result))
+            {
+                return result;
+            }
+            return 0;
+        }
+        /// <summary>
+        /// Rolls a set of dice.
+        /// </summary>
+        /// <param name="d">The dice type rolled (e.g. 6 sided, 8 sided, etc).</param>
+        /// <param name="numD">The number of dice rolled.</param>
+        /// <returns></returns>
+        public static int rollDice(this int d, int numD)
+        {
+            Random rndRoll = new Random();
+            int Roll = 0;
+            for(int i = 0; i < numD; i++)
+            {
+                Roll += rndRoll.Next(1, d);
+            }
+            return Roll;
+        }
+        #endregion
     }
 }

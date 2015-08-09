@@ -74,7 +74,21 @@ namespace DnD5e
             }
             return wNumDice + "D" + wDice + bonus;
         }
-
+        /// <summary>
+        /// Roll damage for this weapon.
+        /// </summary>
+        /// <returns>Integer representing the damage dealt.</returns>
+        public int rollDamage()
+        {
+            int Roll = wDice.rollDice(wNumDice);
+            Roll += wBonus;
+            if(Roll < 0)
+            {
+                return 0;
+            }
+            return Roll;
+            
+        }
     }
     /// <summary>
     /// Armor. A type of Equipment
@@ -135,14 +149,30 @@ namespace DnD5e
         Trinket,
         Valuable
     }
-    //Currently unused Enum. In Theory:
-    //This would be a list of weapons (Sword, Hand Axe, Spear, Sling, etc)
-    //I feel like it would be unwieldy
-    //Another option would be to treat this like the subclasses.
-    //I would then create a similar set for armor.
-    public enum WeaponType
+    /// <summary>
+    /// Weapon type.
+    /// </summary>
+    public struct WeaponType
     {
-        None = 0
+        string Name;
+        public string Damage;
+        public string VersitileDamage;
+        public bool isVersitile;
+        public bool isTwoHanded;
+        bool isThrown;
+        public WeaponType(string n, string d, string vd, bool v, bool th, bool t)
+        {
+            Name = n;
+            Damage = d;
+            VersitileDamage = vd;
+            isVersitile = v;
+            isTwoHanded = th;
+            isThrown = t;
+        }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
     #endregion
 }
