@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="CharTracker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharTracker.Designer.cs">
+      <DependentUpon>CharTracker.cs</DependentUpon>
+    </Compile>
     <Compile Include="DiceRoller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="XPCalc.Designer.cs">
       <DependentUpon>XPCalc.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CharTracker.resx">
+      <DependentUpon>CharTracker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DiceRoller.resx">
       <DependentUpon>DiceRoller.cs</DependentUpon>
     </EmbeddedResource>

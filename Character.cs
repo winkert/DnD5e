@@ -54,12 +54,12 @@ namespace DnD5e
         private Allignments pAllignment;
         private int pExperience = 0;
         //Abilities
-        public static int pStrength;
-        public static int pDexterity;
-        public static int pConstitution;
-        public static int pIntelligence;
-        public static int pWisdom;
-        public static int pCharisma;
+        public int pStrength;
+        public int pDexterity;
+        public int pConstitution;
+        public int pIntelligence;
+        public int pWisdom;
+        public int pCharisma;
         //Skills
         public List<Skill> pSkills = new List<Skill>();
         //Proficiencies
@@ -252,7 +252,6 @@ namespace DnD5e
             pIntelligence = In;
             pWisdom = Wd;
             pCharisma = Ch;
-            //I haven't introduced skills just yet so I am not sure how this update will affect them.
         }
         /// <summary>
         /// Gets the selected attribute.
@@ -279,10 +278,34 @@ namespace DnD5e
                     return 0;
             }
         }
+        public string AttributeString(string name)
+        {
+            switch (name)
+            {
+                case "Strength":
+                    return pStrength.ToString() + " (" + getBonus(pStrength).ToString() + ")";
+                case "Dexterity":
+                    return pDexterity.ToString() + " (" + getBonus(pDexterity).ToString() + ")";
+                case "Constitution":
+                    return pConstitution.ToString() + " (" + getBonus(pConstitution).ToString() + ")";
+                case "Intelligence":
+                    return pIntelligence.ToString() + " (" + getBonus(pIntelligence).ToString() + ")";
+                case "Wisdom":
+                    return pWisdom.ToString() + " (" + getBonus(pWisdom).ToString() + ")";
+                case "Charisma":
+                    return pCharisma.ToString() + " (" + getBonus(pCharisma).ToString() + ")";
+                default:
+                    return string.Empty;
+            }
+        }
         #endregion
         public void AddXP(int xp)
         {
             pExperience += xp;
+        }
+        public void resetXP()
+        {
+            pExperience = 0;
         }
         private string getLevel()
         {

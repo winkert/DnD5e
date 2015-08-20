@@ -807,6 +807,14 @@ namespace DnD5e
             ItemTypes item = selected.ParseEnum<ItemTypes>();
             setEquipment(item);
         }
+        private void list_Characters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (list_Characters.SelectedIndex > -1)
+            {
+                SelectedCharacter = list_Characters.SelectedIndex;
+                LoadCharacter(allCharacters[SelectedCharacter]);
+            }
+        }
         //Event for general use
         private void txt_Enter_SelectAll(object sender, EventArgs e)
         {
@@ -897,6 +905,18 @@ namespace DnD5e
             else
             {
                 DiceRoller window = new DiceRoller();
+                window.Show();
+            }
+        }
+        private void characterTrackerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<CharTracker>().Count() > 0)
+            {
+                Application.OpenForms.OfType<CharTracker>().First().Select();
+            }
+            else
+            {
+                CharTracker window = new CharTracker();
                 window.Show();
             }
         }
@@ -1018,6 +1038,7 @@ namespace DnD5e
                 MessageBox.Show("Please select an item to delete from the inventory.");
             }
         }
+        
         //Thus far unused event. In theory:
         //When a tab is changed, the required binding and loading of that tab takes place.
         //This moves some of the load time from when the application is started to throughout the runtime.
@@ -1042,9 +1063,8 @@ namespace DnD5e
             //}
         }
 
-
         #endregion
 
-        
+
     }
 }

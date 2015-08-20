@@ -83,6 +83,22 @@ namespace DnD5e
             MainForm.changesMade = true;
             txt_XP.Text = string.Empty;
         }
+        private void btn_ResetXP_Click(object sender, EventArgs e)
+        {
+            if (txt_XP.Text == string.Empty)
+            {
+                MessageBox.Show("Please enter a value in the text box.");
+                return;
+            }
+            MainForm.allCharacters[selectedChar].resetXP();
+            Player_XP.Text = MainForm.allCharacters[selectedChar].Experience + " (" + MainForm.allCharacters[selectedChar].Level + ")";
+            
+            MainForm.changesMade = true;
+            txt_XP.Text = string.Empty;
+        }
+
         #endregion
+
+
     }
 }

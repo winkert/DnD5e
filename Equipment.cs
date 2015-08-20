@@ -57,6 +57,9 @@ namespace DnD5e
         int wNumDice;
         int wDice;
         int wBonus;
+
+        public WeaponClasses WeaponType {get {return wClass;} set {wClass = value;}}
+
         public override string ToString()
         {
             return Name + " (" + Damage() + ")" + " : " + Value.GoldToCoins();
@@ -107,8 +110,11 @@ namespace DnD5e
             AC = aclass;
             Value = value;
         }
-        ArmorTypes aType;
-        int AC;
+        private ArmorTypes aType;
+        public int AC;
+
+        public ArmorTypes Type {get {return aType;} set {aType = value;}}
+
         public override string ToString()
         {
             return Name + " (" + AC + ")" + " : " + Value.GoldToCoins();

@@ -168,6 +168,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.experienceCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diceRollerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.characterTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -1603,6 +1604,7 @@
             this.list_Characters.Name = "list_Characters";
             this.list_Characters.Size = new System.Drawing.Size(217, 303);
             this.list_Characters.TabIndex = 0;
+            this.list_Characters.SelectedIndexChanged += new System.EventHandler(this.list_Characters_SelectedIndexChanged);
             // 
             // btn_Load
             // 
@@ -1680,9 +1682,10 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.experienceCalculatorToolStripMenuItem,
-            this.diceRollerToolStripMenuItem});
+            this.diceRollerToolStripMenuItem,
+            this.characterTrackerToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // experienceCalculatorToolStripMenuItem
@@ -1698,6 +1701,13 @@
             this.diceRollerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.diceRollerToolStripMenuItem.Text = "Dice Roller";
             this.diceRollerToolStripMenuItem.Click += new System.EventHandler(this.diceRollerToolStripMenuItem_Click);
+            // 
+            // characterTrackerToolStripMenuItem
+            // 
+            this.characterTrackerToolStripMenuItem.Name = "characterTrackerToolStripMenuItem";
+            this.characterTrackerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.characterTrackerToolStripMenuItem.Text = "Character Tracker";
+            this.characterTrackerToolStripMenuItem.Click += new System.EventHandler(this.characterTrackerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1894,6 +1904,7 @@
         private System.Windows.Forms.TextBox txt_ItemWeight;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.ToolStripMenuItem diceRollerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem characterTrackerToolStripMenuItem;
     }
 }
 
