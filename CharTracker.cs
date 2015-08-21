@@ -122,6 +122,18 @@ namespace DnD5e
                 innerSet.Controls.Add(ArmorClass);
                 innerSet.Controls.Add(WeaponDamage);
 
+                if (c.isSpellCaster)
+                {
+                    ListBox spellList = new ListBox();
+                    TextBox spellInfo = defaultTextbox();
+                    spellList.Width = 125;
+                    spellList.DataSource = c.pSpells;
+                    spellList.SelectedIndexChanged += spellList_IndexChange;
+                    spellInfo.Name = "SpellInfo";
+                    innerSet.Controls.Add(spellList);
+                    innerSet.Controls.Add(spellInfo);
+                }
+
                 characterBox.Controls.Add(innerSet);
                 flow_CharTrack.Controls.Add(characterBox);
                 #endregion
@@ -166,7 +178,11 @@ namespace DnD5e
             text.ReadOnly = true;
             text.BorderStyle = BorderStyle.None;
             text.BackColor = Color.WhiteSmoke;
-            text.Width = 185;
+            text.Multiline = true;
+            text.Width = 125;
+            text.Height = 30;
+            text.ScrollBars = ScrollBars.Vertical;
+            text.Font = new Font(new FontFamily("Palatino Linotype"),10f);
             return text;
         }
         /// <summary>
@@ -279,6 +295,12 @@ namespace DnD5e
                 box.Parent.Controls.Cast<Control>().First(k => k.Name == "Second_Weapon").Visible = box.Checked;
                 box.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = string.Empty;
             }
+        }
+        private void spellList_IndexChange(object sender, EventArgs e)
+        {
+            ListBox s = (ListBox)sender;
+            Spell spell = (Spell)s.SelectedItem;
+            s.Parent.Controls.Cast<Control>().First(k => k.Name == "SpellInfo").Text = spell.sEffect;
         }
         #endregion
     }
