@@ -1064,7 +1064,5 @@ namespace DnD5e
         }
 
         #endregion
-
-
     }
 }

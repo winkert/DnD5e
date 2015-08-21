@@ -30,66 +30,102 @@ namespace DnD5e
                 //Dynamic fields:
                 //Armor Class
                 //Damage
-                GroupBox characterBox = new GroupBox();
                 Character c = MainForm.allCharacters[i];
-                characterBox.Text = c.ToString();
-                characterBox.Height = 400;
-                characterBox.Width = 200;
-                Label Abilities = createLabel("Abilities:", 5, 15, FontStyle.Bold);
-                Label cSt = createLabel("Strength: " + c.AttributeString("Strength"), 10, 30);
-                Label cDex = createLabel("Dexterity: " + c.AttributeString("Dexterity"), 10, 50);
-                Label cCon = createLabel("Constitution: " + c.AttributeString("Constitution"), 10, 70);
-                Label cInt = createLabel("Intelligence: " + c.AttributeString("Intelligence"), 10, 90);
-                Label cWis = createLabel("Wisdom: " + c.AttributeString("Wisdom"), 10, 110);
-                Label cChr = createLabel("Charisma: " + c.AttributeString("Charisma"), 10, 130);
+                #region Create Controls
+                GroupBox characterBox = new GroupBox();
+                FlowLayoutPanel innerSet = new FlowLayoutPanel();
 
-                ///Interesting conundrum:
-                ///     A player can use a shield and armor
-                ///     A player could use more than one weapon
+                Label Abilities = createLabel("Abilities:", FontStyle.Bold);
+                Label cSt = createLabel("Strength: " + c.AttributeString("Strength"));
+                Label cDex = createLabel("Dexterity: " + c.AttributeString("Dexterity"));
+                Label cCon = createLabel("Constitution: " + c.AttributeString("Constitution"));
+                Label cInt = createLabel("Intelligence: " + c.AttributeString("Intelligence"));
+                Label cWis = createLabel("Wisdom: " + c.AttributeString("Wisdom"));
+                Label cChr = createLabel("Charisma: " + c.AttributeString("Charisma"));
+
                 ComboBox cArmors = defaultComboBox();
                 ComboBox cWeapons = defaultComboBox();
 
-
+                CheckBox hasShield = new CheckBox();
+                CheckBox hasWeapons = new CheckBox();
 
                 ComboBox cArmors2 = defaultComboBox();
                 ComboBox cWeapons2 = defaultComboBox();
 
-                TextBox ArmorClass = defaultTextbox();
-                TextBox WeaponDamage = defaultTextbox();
+                Label ArmorClass = createLabel(FontStyle.Bold);
+                Label WeaponDamage = createLabel(FontStyle.Bold);
+                #endregion
+                #region Define Controls
+                characterBox.Text = c.ToString();
+                characterBox.Height = 400;
+                characterBox.Width = 200;
+
+                innerSet.AutoScroll = true;
+                innerSet.FlowDirection = FlowDirection.TopDown;
+                innerSet.AutoSize = true;
+                innerSet.WrapContents = false;
+                innerSet.Location = new Point(10, 15);
+                innerSet.Margin = new Padding(10);
+                innerSet.Dock = DockStyle.Fill;
 
                 cArmors.SelectedIndexChanged += armor_dropdown_IndexChange;
                 cArmors.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Armor>().ToList();
                 cArmors.Tag = c.getBonus(c.pDexterity).ToString();
-                cArmors.Location = new Point(10, 150);
+                cArmors.Name = "Armor";
 
                 cWeapons.SelectedIndexChanged += weapon_dropdown_IndexChange;
                 cWeapons.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Weapon>().ToList();
                 cWeapons.Tag = i.ToString();
-                cWeapons.Location = new Point(10, 170);
+                cWeapons.Name = "First_Weapon";
+
+                hasShield.Checked = false;
+                hasShield.CheckStateChanged += checkbox_CheckStateChange;
+                hasShield.Tag = "shield";
+                hasShield.Text = "Shield";
+
+                hasWeapons.Checked = false;
+                hasWeapons.CheckStateChanged += checkbox_CheckStateChange;
+                hasWeapons.Tag = "weapon";
+                hasWeapons.Text = "Two Weapons";
+
+                cArmors2.Visible = false;
+                cArmors2.Tag = c.getBonus(c.pDexterity).ToString();
+                cArmors2.Name = "Shield_Combo";
+                cArmors2.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Armor>().ToList();
+
+                cWeapons2.Visible = false;
+                cWeapons2.Tag = i.ToString();
+                cWeapons2.Name = "Second_Weapon";
+                cWeapons2.SelectedIndexChanged += weapon_dropdown_IndexChange;
+                cWeapons2.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Weapon>().ToList();
 
                 ArmorClass.Tag = "pArmor";
-                ArmorClass.Location = new Point(10, 195);
-
                 WeaponDamage.Tag = "pWeapon";
-                WeaponDamage.Location = new Point(10, 220);
+                #endregion
+                #region Add Controls
+                innerSet.Controls.Add(Abilities);
+                innerSet.Controls.Add(cSt);
+                innerSet.Controls.Add(cDex);
+                innerSet.Controls.Add(cCon);
+                innerSet.Controls.Add(cInt);
+                innerSet.Controls.Add(cWis);
+                innerSet.Controls.Add(cChr);
 
-                characterBox.Controls.Add(Abilities);
-                characterBox.Controls.Add(cSt);
-                characterBox.Controls.Add(cDex);
-                characterBox.Controls.Add(cCon);
-                characterBox.Controls.Add(cInt);
-                characterBox.Controls.Add(cWis);
-                characterBox.Controls.Add(cChr);
+                innerSet.Controls.Add(cArmors);
+                innerSet.Controls.Add(cWeapons);
 
-                characterBox.Controls.Add(cArmors);
-                characterBox.Controls.Add(cWeapons);
+                innerSet.Controls.Add(hasShield);
+                innerSet.Controls.Add(hasWeapons);
+                innerSet.Controls.Add(cArmors2);
+                innerSet.Controls.Add(cWeapons2);
 
-                characterBox.Controls.Add(ArmorClass);
-                characterBox.Controls.Add(WeaponDamage);
+                innerSet.Controls.Add(ArmorClass);
+                innerSet.Controls.Add(WeaponDamage);
 
+                characterBox.Controls.Add(innerSet);
                 flow_CharTrack.Controls.Add(characterBox);
+                #endregion
             }
-            addScrollBar();
 
 
         }
@@ -101,14 +137,22 @@ namespace DnD5e
         /// <param name="y">y position</param>
         /// <param name="fs">Optional: Font style</param>
         /// <returns>new Label()</returns>
-        private Label createLabel(string text, int x, int y, FontStyle fs = FontStyle.Regular)
+        private Label createLabel(string text, FontStyle fs = FontStyle.Regular)
         {
             Label thisLabel = new Label();
             thisLabel.Text = text;
-            thisLabel.Font = new Font(new FontFamily("Palatino Linotype"), 9f, fs);
+            thisLabel.Font = new Font(new FontFamily("Palatino Linotype"), 9.5f, fs);
             thisLabel.Height = 18;
             thisLabel.Width = 185;
-            thisLabel.Location = new Point(x, y);
+            thisLabel.Tag = null;
+            return thisLabel;
+        }
+        private Label createLabel(FontStyle fs = FontStyle.Regular)
+        {
+            Label thisLabel = new Label();
+            thisLabel.Font = new Font(new FontFamily("Palatino Linotype"), 9.5f, fs);
+            thisLabel.Height = 18;
+            thisLabel.Width = 185;
             thisLabel.Tag = null;
             return thisLabel;
         }
@@ -122,6 +166,7 @@ namespace DnD5e
             text.ReadOnly = true;
             text.BorderStyle = BorderStyle.None;
             text.BackColor = Color.WhiteSmoke;
+            text.Width = 185;
             return text;
         }
         /// <summary>
@@ -136,66 +181,104 @@ namespace DnD5e
             combo.DropDownStyle = ComboBoxStyle.DropDownList;
             return combo;
         }
-        private void addScrollBar()
-        {
-            VScrollBar scroll = new VScrollBar();
-            scroll.Parent = flow_CharTrack;
-            scroll.Dock = DockStyle.Right;
-        }
-        private string findAC(int ac, ArmorTypes armor, int dexMod)
+        private int findAC(int ac, ArmorTypes armor, int dexMod)
         {
             switch (armor)
             {
                 case ArmorTypes.LightArmor:
-                    return (ac + dexMod).ToString();
+                    return (ac + dexMod);
                 case ArmorTypes.MediumArmor:
                     if (dexMod > 2)
-                        return (ac + 2).ToString();
+                        return (ac + 2);
                     else
-                        return (ac + dexMod).ToString();
+                        return (ac + dexMod);
                 default:
-                    return ac.ToString();
+                    return ac;
             }
+        }
+        private string findDamageBonus(int strMod, int dexMod, WeaponClasses weapon)
+        {
+            string bonus;
+            if (weapon == WeaponClasses.SimpleRange || weapon == WeaponClasses.MartialRange)
+            {
+                if (dexMod > 0)
+                    bonus = "+" + dexMod.ToString();
+                else if (dexMod < 0)
+                    bonus = dexMod.ToString();
+                else
+                    bonus = string.Empty;
+            }
+            else
+            {
+                if (strMod > 0)
+                    bonus = "+" + strMod.ToString();
+                else if (strMod < 0)
+                    bonus = strMod.ToString();
+                else
+                    bonus = string.Empty;
+            }
+            return bonus;
         }
         #region Event Handles
         private void armor_dropdown_IndexChange(object sender, EventArgs e)
         {
             ComboBox select = (ComboBox)sender;
             Armor selectedArmor = (Armor)select.SelectedItem;
-            select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pArmor").Text = "AC: " + findAC(selectedArmor.AC, selectedArmor.Type, int.Parse((string)select.Tag));
-
+            int totalAC;
+            CheckBox shield = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "shield");
+            if(shield.Checked)
+            {
+                ComboBox armor1 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "Armor");
+                ComboBox armor2 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "Shield_Combo");
+                Armor selArmor = (Armor)armor1.SelectedItem;
+                Armor selShield = (Armor)armor2.SelectedItem;
+                totalAC = findAC(selArmor.AC, selArmor.Type, int.Parse((string)armor1.Tag));
+                totalAC += findAC(selShield.AC, selShield.Type, int.Parse((string)armor2.Tag));
+            }
+            else
+            {
+                totalAC = findAC(selectedArmor.AC, selectedArmor.Type, int.Parse((string)select.Tag));
+            }
+            select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pArmor").Text = "AC: " + totalAC.ToString();
         }
         private void weapon_dropdown_IndexChange(object sender, EventArgs e)
         {
             ComboBox select = (ComboBox)sender;
             Weapon selectedWeapon = (Weapon)select.SelectedItem;
-            string bonus;
-            if(selectedWeapon.WeaponType == WeaponClasses.SimpleRange || selectedWeapon.WeaponType == WeaponClasses.MartialRange)
+            Character c = MainForm.allCharacters[int.Parse((string)select.Tag)];
+            CheckBox dual = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "weapon");
+            if(dual.Checked)
             {
-                Character c = MainForm.allCharacters[int.Parse((string)select.Tag)];
-                if (c.getBonus(c.pDexterity) > 0)
-                    bonus = "+" + c.getBonus(c.pDexterity).ToString();
-                else if (c.getBonus(c.pDexterity) < 0)
-                    bonus = c.getBonus(c.pDexterity).ToString();
-                else
-                    bonus = string.Empty;
+                ComboBox weapon1 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "First_Weapon");
+                ComboBox weapon2 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "Second_Weapon");
+                Weapon selWeapon1 = (Weapon)weapon1.SelectedItem;
+                Weapon selWeapon2 = (Weapon)weapon2.SelectedItem;
+                string damage1 = selWeapon1.Damage() + " " + findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selWeapon1.WeaponType);
+                string damage2 = selWeapon2.Damage() + " " + findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selWeapon2.WeaponType);
+                select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = "Damage: " + damage1 + ", " + damage2;
             }
             else
             {
-                Character c = MainForm.allCharacters[int.Parse((string)select.Tag)];
-                if (c.getBonus(c.pStrength) > 0)
-                    bonus = "+" + c.getBonus(c.pStrength).ToString();
-                else if (c.getBonus(c.pStrength) < 0)
-                    bonus = c.getBonus(c.pStrength).ToString();
-                else
-                    bonus = string.Empty;
+                string bonus;
+                bonus = findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selectedWeapon.WeaponType);
+                select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = "Damage: " + selectedWeapon.Damage() + " " + bonus;
             }
-            select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = "Damage: " + selectedWeapon.Damage() + " " + bonus;
-
         }
         private void checkbox_CheckStateChange(object sender, EventArgs e)
         {
-
+            CheckBox box = (CheckBox)sender;
+            if((string)box.Tag == "shield")
+            {
+                //Name = "Shield_Combo"
+                box.Parent.Controls.Cast<Control>().First(k => k.Name == "Shield_Combo").Visible = box.Checked;
+                box.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pArmor").Text = string.Empty;
+            }
+            else
+            {
+                //Name = "Second_Weapon"
+                box.Parent.Controls.Cast<Control>().First(k => k.Name == "Second_Weapon").Visible = box.Checked;
+                box.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = string.Empty;
+            }
         }
         #endregion
     }

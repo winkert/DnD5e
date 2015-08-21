@@ -33,6 +33,7 @@
             // 
             // flow_CharTrack
             // 
+            this.flow_CharTrack.AutoScroll = true;
             this.flow_CharTrack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flow_CharTrack.Location = new System.Drawing.Point(0, 0);
             this.flow_CharTrack.Name = "flow_CharTrack";
