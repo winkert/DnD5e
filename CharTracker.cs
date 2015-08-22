@@ -22,14 +22,6 @@ namespace DnD5e
         {
             for (int i = 0; i < MainForm.allCharacters.Count; i++)
             {
-                //Build a GroupBox with TextBox and such
-                //Set Tag attribute to I for each control. This will allow for dynamic controls
-                //Display:
-                //Dropdown of Weapons and Armor
-                //  - Checkbox for "use Versatile" for weapons which are versatile
-                //Dynamic fields:
-                //Armor Class
-                //Damage
                 Character c = MainForm.allCharacters[i];
                 #region Create Controls
                 GroupBox characterBox = new GroupBox();
@@ -241,28 +233,28 @@ namespace DnD5e
             ComboBox select = (ComboBox)sender;
             Armor selectedArmor = (Armor)select.SelectedItem;
             int totalAC;
-            CheckBox shield = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "shield");
+            CheckBox shield = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "shield");
             if(shield.Checked)
             {
                 ComboBox armor1 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "Armor");
                 ComboBox armor2 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "Shield_Combo");
                 Armor selArmor = (Armor)armor1.SelectedItem;
                 Armor selShield = (Armor)armor2.SelectedItem;
-                totalAC = findAC(selArmor.AC, selArmor.Type, int.Parse((string)armor1.Tag));
-                totalAC += findAC(selShield.AC, selShield.Type, int.Parse((string)armor2.Tag));
+                totalAC = findAC(selArmor.AC, selArmor.Type, int.Parse(armor1.Tag.ToString()));
+                totalAC += findAC(selShield.AC, selShield.Type, int.Parse(armor2.Tag.ToString()));
             }
             else
             {
-                totalAC = findAC(selectedArmor.AC, selectedArmor.Type, int.Parse((string)select.Tag));
+                totalAC = findAC(selectedArmor.AC, selectedArmor.Type, int.Parse(select.Tag.ToString()));
             }
-            select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pArmor").Text = "AC: " + totalAC.ToString();
+            select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pArmor").Text = "AC: " + totalAC.ToString();
         }
         private void weapon_dropdown_IndexChange(object sender, EventArgs e)
         {
             ComboBox select = (ComboBox)sender;
             Weapon selectedWeapon = (Weapon)select.SelectedItem;
-            Character c = MainForm.allCharacters[int.Parse((string)select.Tag)];
-            CheckBox dual = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "weapon");
+            Character c = MainForm.allCharacters[int.Parse(select.Tag.ToString())];
+            CheckBox dual = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "weapon");
             if(dual.Checked)
             {
                 ComboBox weapon1 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "First_Weapon");
@@ -271,13 +263,13 @@ namespace DnD5e
                 Weapon selWeapon2 = (Weapon)weapon2.SelectedItem;
                 string damage1 = selWeapon1.Damage() + " " + findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selWeapon1.WeaponType);
                 string damage2 = selWeapon2.Damage() + " " + findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selWeapon2.WeaponType);
-                select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = "Damage: " + damage1 + ", " + damage2;
+                select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pWeapon").Text = "Damage: " + damage1 + ", " + damage2;
             }
             else
             {
                 string bonus;
                 bonus = findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selectedWeapon.WeaponType);
-                select.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = "Damage: " + selectedWeapon.Damage() + " " + bonus;
+                select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pWeapon").Text = "Damage: " + selectedWeapon.Damage() + " " + bonus;
             }
         }
         private void checkbox_CheckStateChange(object sender, EventArgs e)
@@ -287,13 +279,13 @@ namespace DnD5e
             {
                 //Name = "Shield_Combo"
                 box.Parent.Controls.Cast<Control>().First(k => k.Name == "Shield_Combo").Visible = box.Checked;
-                box.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pArmor").Text = string.Empty;
+                box.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pArmor").Text = string.Empty;
             }
             else
             {
                 //Name = "Second_Weapon"
                 box.Parent.Controls.Cast<Control>().First(k => k.Name == "Second_Weapon").Visible = box.Checked;
-                box.Parent.Controls.Cast<Control>().First(k => (string)k.Tag == "pWeapon").Text = string.Empty;
+                box.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pWeapon").Text = string.Empty;
             }
         }
         private void spellList_IndexChange(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace DnD5e
             BindControls();
             BindSpellControls();
             BindEquipmentControls();
+            AppLog.WriteLog("Application Initialized");
         }
         #region Publics
         public static List<Character> allCharacters;
@@ -29,6 +30,7 @@ namespace DnD5e
         public static bool changesMade = false;
         public static bool savingNloading = false;
         private string SaveLocation = Path.GetDirectoryName(Application.ExecutablePath) + "\\characters.bin";
+        private Log AppLog = new Log("DnD5e.log");
         private List<Proficiencies> tempProficiencies = new List<Proficiencies>();
         private List<Spell> tempSpells = new List<Spell>();
         private List<Equipment> tempEquipment = new List<Equipment>();
@@ -841,6 +843,7 @@ namespace DnD5e
                 SaveLocation = saveFile.FileName;
                 allCharacters.serialize(SaveLocation);
                 changesMade = false;
+                AppLog.WriteLog("Saving " + SaveLocation);
             }
         }
         private void loadListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -856,7 +859,8 @@ namespace DnD5e
                 savingNloading = true;
                 refreshCharacters();
                 changesMade = false;
-                refreshXPForm(); 
+                refreshXPForm();
+                AppLog.WriteLog("Loading " + SaveLocation);
             }
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -873,11 +877,14 @@ namespace DnD5e
                 {
                     //Add SaveFileDialog() first to set SaveLocation
                     allCharacters.serialize(SaveLocation);
+                    AppLog.WriteLog("Saving " + SaveLocation);
+                    AppLog.WriteLog("Ending Application");
                     Close();
                 }
             }
             else
             {
+                AppLog.WriteLog("Ending Application");
                 Close();
             }
             
