@@ -15,7 +15,7 @@ namespace DnD5e
 
         public void WriteLog(string line)
         {
-            using (StreamWriter LogFile = new StreamWriter(LogLocation, true, Encoding.ASCII))
+            using (StreamWriter LogFile = new StreamWriter(LogLocation, false, Encoding.ASCII))
             {
                 LogFile.Write(DateTime.Now + " : " + line + "\r\n");
             }
