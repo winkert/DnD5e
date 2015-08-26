@@ -30,6 +30,8 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tab_CharSheet = new System.Windows.Forms.TabPage();
+            this.txt_PlayerHP = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.txt_Background = new System.Windows.Forms.TextBox();
             this.combo_Prestige = new System.Windows.Forms.ComboBox();
             this.label_Prestige = new System.Windows.Forms.Label();
@@ -170,8 +172,6 @@
             this.diceRollerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.characterTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.combatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label31 = new System.Windows.Forms.Label();
-            this.txt_PlayerHP = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -237,6 +237,24 @@
             this.tab_CharSheet.TabIndex = 0;
             this.tab_CharSheet.Text = "Character Sheet";
             this.tab_CharSheet.UseVisualStyleBackColor = true;
+            // 
+            // txt_PlayerHP
+            // 
+            this.txt_PlayerHP.Location = new System.Drawing.Point(326, 211);
+            this.txt_PlayerHP.Name = "txt_PlayerHP";
+            this.txt_PlayerHP.Size = new System.Drawing.Size(94, 20);
+            this.txt_PlayerHP.TabIndex = 7;
+            // 
+            // label31
+            // 
+            this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label31.Location = new System.Drawing.Point(243, 212);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(78, 17);
+            this.label31.TabIndex = 15;
+            this.label31.Text = "Hit Points";
             // 
             // txt_Background
             // 
@@ -1721,24 +1739,6 @@
             this.combatToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.combatToolStripMenuItem.Text = "Combat";
             this.combatToolStripMenuItem.Click += new System.EventHandler(this.combatToolStripMenuItem_Click);
-            // 
-            // label31
-            // 
-            this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label31.Location = new System.Drawing.Point(243, 212);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(78, 17);
-            this.label31.TabIndex = 15;
-            this.label31.Text = "Hit Points";
-            // 
-            // txt_PlayerHP
-            // 
-            this.txt_PlayerHP.Location = new System.Drawing.Point(326, 211);
-            this.txt_PlayerHP.Name = "txt_PlayerHP";
-            this.txt_PlayerHP.Size = new System.Drawing.Size(94, 20);
-            this.txt_PlayerHP.TabIndex = 7;
             // 
             // MainForm
             // 

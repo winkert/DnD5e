@@ -82,7 +82,6 @@ namespace DnD5e
                     return (T)Enum.Parse(typeof(T), field.Name);
                 }
             }
-            Console.WriteLine(stringVal);
             return (T)Enum.Parse(typeof(T), stringVal);
         }
         #endregion

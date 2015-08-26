@@ -32,8 +32,8 @@ namespace DnD5e
         private string SaveLocation = Path.GetDirectoryName(Application.ExecutablePath) + "\\characters.bin";
         private Log AppLog = new Log("DnD5e.log");
         private List<Proficiencies> tempProficiencies = new List<Proficiencies>();
-        private List<Spell> tempSpells = new List<Spell>();
-        private List<Equipment> tempEquipment = new List<Equipment>();
+        private List<Spell> tempSpells;
+        private List<Equipment> tempEquipment;
         private string tempPrestigeType = "None";
         private bool tempIsCaster = false;
         #endregion
@@ -226,6 +226,12 @@ namespace DnD5e
             refreshSpells();
 
             //Equipment
+            //list_Equipment.Items.Clear();
+            //foreach (Equipment e in c.pEquipment)
+            //{
+            //    list_Equipment.Items.Add(e);
+            //}
+            tempEquipment = null;
             tempEquipment = c.pEquipment;
             refreshEquipment();
         }
@@ -275,6 +281,11 @@ namespace DnD5e
             c.isSpellCaster = tempIsCaster;
             c.pSpells = tempSpells;
             //Save Equipment
+            //c.pEquipment.Clear();
+            //foreach (Equipment e in list_Equipment.Items)
+            //{
+            //    c.pEquipment.Add(e);
+            //}
             c.pEquipment = tempEquipment;
             return c;
         }
@@ -324,6 +335,11 @@ namespace DnD5e
             allCharacters[c].isSpellCaster = tempIsCaster;
             allCharacters[c].pSpells = tempSpells;
             //Save Equipment
+            //allCharacters[c].pEquipment.Clear();
+            //foreach (Equipment e in list_Equipment.Items)
+            //{
+            //    allCharacters[c].pEquipment.Add(e);
+            //}
             allCharacters[c].pEquipment = tempEquipment;
         }
         #endregion
@@ -1040,7 +1056,8 @@ namespace DnD5e
         }
         private void btn_SaveItem_Click(object sender, EventArgs e)
         {
-            if(tempEquipment == null)
+            //list_Equipment.Items.Add(createEquipment());
+            if (tempEquipment == null)
             {
                 tempEquipment = new List<Equipment>();
             }
@@ -1051,6 +1068,7 @@ namespace DnD5e
         {
             if (list_Equipment.SelectedIndex != -1)
             {
+                //list_Equipment.Items.RemoveAt(list_Equipment.SelectedIndex);
                 tempEquipment.RemoveAt(list_Equipment.SelectedIndex);
                 refreshEquipment();
             }
