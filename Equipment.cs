@@ -166,6 +166,15 @@ namespace DnD5e
         public bool isVersitile;
         public bool isTwoHanded;
         bool isThrown;
+        public WeaponType (string n, string d)
+        {
+            Name = n;
+            Damage = d;
+            VersitileDamage = d;
+            isVersitile = false;
+            isTwoHanded = false;
+            isThrown = false;
+        }
         public WeaponType(string n, string d, string vd, bool v, bool th, bool t)
         {
             Name = n;

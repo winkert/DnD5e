@@ -82,6 +82,7 @@ namespace DnD5e
                     return (T)Enum.Parse(typeof(T), field.Name);
                 }
             }
+            Console.WriteLine(stringVal);
             return (T)Enum.Parse(typeof(T), stringVal);
         }
         #endregion
@@ -223,7 +224,7 @@ namespace DnD5e
         /// <param name="d">The dice type rolled (e.g. 6 sided, 8 sided, etc).</param>
         /// <param name="numD">The number of dice rolled.</param>
         /// <returns></returns>
-        public static int rollDice(this int d, int numD)
+        public static int rollDice(this int d, int numD = 1)
         {
             Random rndRoll = new Random();
             int Roll = 0;

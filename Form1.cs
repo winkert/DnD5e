@@ -20,7 +20,7 @@ namespace DnD5e
             BindEquipmentControls();
             AppLog.WriteLog("Application Initialized");
         }
-        #region Publics
+        #region Fields
         public static List<Character> allCharacters;
         /// <summary>
         /// Integer used to track which item is selected (was selected) in order to save the item.
@@ -190,7 +190,7 @@ namespace DnD5e
             combo_Prestige.SelectedItem = c.SubClass;
             combo_Allignment.SelectedItem = c.Allignment;
             txt_Background.Text = c.pBackground;
-
+            txt_PlayerHP.Text = c.HitPoints.ToString();
             //Use a generic method in Character to get the attributes
             txt_St.Value = c.getAttribute("Strength");
             txt_Dx.Value = c.getAttribute("Dexterity");
@@ -237,28 +237,29 @@ namespace DnD5e
         {
             //Attributes are saved in creation
             Character c = new Character(txt_Name.Text, (int)txt_St.Value, (int)txt_Dx.Value, (int)txt_Cn.Value, (int)txt_In.Value, (int)txt_Wd.Value, (int)txt_Ch.Value);
+            c.setHP(txt_PlayerHP.Text);
             //Save characteristics
-            c.setGender((string)combo_Gender.SelectedItem);
-            c.setRace((string)combo_Race.SelectedItem);
+            c.setGender(combo_Gender.SelectedItem.ToString());
+            c.setRace(combo_Race.SelectedItem.ToString());
             if (combo_SubRace.SelectedItem != null)
             {
-                c.setSubRace((string)combo_SubRace.SelectedItem);
+                c.setSubRace(combo_SubRace.SelectedItem.ToString());
             }
             else
             {
                 c.setSubRace("None");
             }
-            c.setClass((string)combo_Class.SelectedItem);
+            c.setClass(combo_Class.SelectedItem.ToString());
             if (combo_Prestige.SelectedItem != null)
             {
-                string prestigeclass = (string)combo_Prestige.SelectedItem;
+                string prestigeclass = combo_Prestige.SelectedItem.ToString();
                 c.setSubClass(prestigeclass, tempPrestigeType.ParseEnum<SubClassTypes>());
             }
             else
             {
                 c.setSubClass("None", SubClassTypes.None);
             }
-            c.setAllignment((string)combo_Allignment.SelectedItem);
+            c.setAllignment(combo_Allignment.SelectedItem.ToString());
             c.pBackground = txt_Background.Text;
             //Save skills
             foreach (Control s in grp_Skills.Controls)
@@ -286,28 +287,29 @@ namespace DnD5e
             //Need to save attributes and name.
             allCharacters[c].pName = txt_Name.Text;
             allCharacters[c].setAttributes((int)txt_St.Value, (int)txt_Dx.Value, (int)txt_Cn.Value, (int)txt_In.Value, (int)txt_Wd.Value, (int)txt_Ch.Value);
+            allCharacters[c].setHP(txt_PlayerHP.Text);
             //Save characteristics
-            allCharacters[c].setGender((string)combo_Gender.SelectedItem);
-            allCharacters[c].setRace((string)combo_Race.SelectedItem);
+            allCharacters[c].setGender(combo_Gender.SelectedItem.ToString());
+            allCharacters[c].setRace(combo_Race.SelectedItem.ToString());
             if (combo_SubRace.SelectedItem != null)
             {
-                allCharacters[c].setSubRace((string)combo_SubRace.SelectedItem);
+                allCharacters[c].setSubRace(combo_SubRace.SelectedItem.ToString());
             }
             else
             {
                 allCharacters[c].setSubRace("None");
             }
-            allCharacters[c].setClass((string)combo_Class.SelectedItem);
+            allCharacters[c].setClass(combo_Class.SelectedItem.ToString());
             if (combo_Prestige.SelectedItem != null)
             {
-                string prestigeclass = (string)combo_Prestige.SelectedItem;
+                string prestigeclass = combo_Prestige.SelectedItem.ToString();
                 allCharacters[c].setSubClass(prestigeclass, tempPrestigeType.ParseEnum<SubClassTypes>());
             }
             else
             {
                 allCharacters[c].setSubClass("None", SubClassTypes.None);
             }
-            allCharacters[c].setAllignment((string)combo_Allignment.SelectedItem);
+            allCharacters[c].setAllignment(combo_Allignment.SelectedItem.ToString());
             allCharacters[c].pBackground = txt_Background.Text;
             //Save skills
             foreach (Control s in grp_Skills.Controls)
@@ -927,6 +929,18 @@ namespace DnD5e
                 window.Show();
             }
         }
+        private void combatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<CombatTracking>().Count() > 0)
+            {
+                Application.OpenForms.OfType<CombatTracking>().First().Select();
+            }
+            else
+            {
+                CombatTracking window = new CombatTracking();
+                window.Show();
+            }
+        }
         //Button events
         private void btn_Save_Click(object sender, EventArgs e)
         {
@@ -980,7 +994,7 @@ namespace DnD5e
         }
         private void btn_SaveProf_Click(object sender, EventArgs e)
         {
-            string type = (string)combo_ProfType.SelectedItem;
+            string type = combo_ProfType.SelectedItem.ToString();
             Proficiencies cProf = new Proficiencies(type.ParseEnum<ProficincyTypes>(), txt_ProfName.Text);
             tempProficiencies.Add(cProf);
             combo_ProfType.SelectedIndex = 0;

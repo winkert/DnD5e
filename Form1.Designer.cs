@@ -169,6 +169,9 @@
             this.experienceCalculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diceRollerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.characterTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.combatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txt_PlayerHP = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tab_CharSheet.SuspendLayout();
             this.grp_Prof.SuspendLayout();
@@ -207,6 +210,8 @@
             // 
             // tab_CharSheet
             // 
+            this.tab_CharSheet.Controls.Add(this.txt_PlayerHP);
+            this.tab_CharSheet.Controls.Add(this.label31);
             this.tab_CharSheet.Controls.Add(this.txt_Background);
             this.tab_CharSheet.Controls.Add(this.combo_Prestige);
             this.tab_CharSheet.Controls.Add(this.label_Prestige);
@@ -276,9 +281,9 @@
             this.grp_Prof.Controls.Add(this.btn_SaveProf);
             this.grp_Prof.Controls.Add(this.txt_ProfName);
             this.grp_Prof.Controls.Add(this.combo_ProfType);
-            this.grp_Prof.Location = new System.Drawing.Point(237, 212);
+            this.grp_Prof.Location = new System.Drawing.Point(237, 254);
             this.grp_Prof.Name = "grp_Prof";
-            this.grp_Prof.Size = new System.Drawing.Size(213, 229);
+            this.grp_Prof.Size = new System.Drawing.Size(213, 187);
             this.grp_Prof.TabIndex = 9;
             this.grp_Prof.TabStop = false;
             this.grp_Prof.Text = "Proficiencies";
@@ -286,7 +291,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 59);
+            this.label2.Location = new System.Drawing.Point(6, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 6;
@@ -295,7 +300,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 19);
+            this.label1.Location = new System.Drawing.Point(6, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 5;
@@ -303,7 +308,7 @@
             // 
             // btn_DelProf
             // 
-            this.btn_DelProf.Location = new System.Drawing.Point(6, 180);
+            this.btn_DelProf.Location = new System.Drawing.Point(6, 144);
             this.btn_DelProf.Name = "btn_DelProf";
             this.btn_DelProf.Size = new System.Drawing.Size(94, 23);
             this.btn_DelProf.TabIndex = 4;
@@ -314,14 +319,14 @@
             // list_Proficiencies
             // 
             this.list_Proficiencies.FormattingEnabled = true;
-            this.list_Proficiencies.Location = new System.Drawing.Point(106, 10);
+            this.list_Proficiencies.Location = new System.Drawing.Point(106, 27);
             this.list_Proficiencies.Name = "list_Proficiencies";
-            this.list_Proficiencies.Size = new System.Drawing.Size(101, 212);
+            this.list_Proficiencies.Size = new System.Drawing.Size(101, 147);
             this.list_Proficiencies.TabIndex = 3;
             // 
             // btn_SaveProf
             // 
-            this.btn_SaveProf.Location = new System.Drawing.Point(6, 151);
+            this.btn_SaveProf.Location = new System.Drawing.Point(6, 115);
             this.btn_SaveProf.Name = "btn_SaveProf";
             this.btn_SaveProf.Size = new System.Drawing.Size(94, 23);
             this.btn_SaveProf.TabIndex = 2;
@@ -331,7 +336,7 @@
             // 
             // txt_ProfName
             // 
-            this.txt_ProfName.Location = new System.Drawing.Point(6, 75);
+            this.txt_ProfName.Location = new System.Drawing.Point(6, 77);
             this.txt_ProfName.Name = "txt_ProfName";
             this.txt_ProfName.Size = new System.Drawing.Size(94, 20);
             this.txt_ProfName.TabIndex = 1;
@@ -341,7 +346,7 @@
             this.combo_ProfType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.combo_ProfType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.combo_ProfType.FormattingEnabled = true;
-            this.combo_ProfType.Location = new System.Drawing.Point(6, 35);
+            this.combo_ProfType.Location = new System.Drawing.Point(6, 37);
             this.combo_ProfType.Name = "combo_ProfType";
             this.combo_ProfType.Size = new System.Drawing.Size(94, 21);
             this.combo_ProfType.TabIndex = 0;
@@ -1683,7 +1688,8 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.experienceCalculatorToolStripMenuItem,
             this.diceRollerToolStripMenuItem,
-            this.characterTrackerToolStripMenuItem});
+            this.characterTrackerToolStripMenuItem,
+            this.combatToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -1708,6 +1714,31 @@
             this.characterTrackerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.characterTrackerToolStripMenuItem.Text = "Character Tracker";
             this.characterTrackerToolStripMenuItem.Click += new System.EventHandler(this.characterTrackerToolStripMenuItem_Click);
+            // 
+            // combatToolStripMenuItem
+            // 
+            this.combatToolStripMenuItem.Name = "combatToolStripMenuItem";
+            this.combatToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.combatToolStripMenuItem.Text = "Combat";
+            this.combatToolStripMenuItem.Click += new System.EventHandler(this.combatToolStripMenuItem_Click);
+            // 
+            // label31
+            // 
+            this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label31.Location = new System.Drawing.Point(243, 212);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(78, 17);
+            this.label31.TabIndex = 15;
+            this.label31.Text = "Hit Points";
+            // 
+            // txt_PlayerHP
+            // 
+            this.txt_PlayerHP.Location = new System.Drawing.Point(326, 211);
+            this.txt_PlayerHP.Name = "txt_PlayerHP";
+            this.txt_PlayerHP.Size = new System.Drawing.Size(94, 20);
+            this.txt_PlayerHP.TabIndex = 7;
             // 
             // MainForm
             // 
@@ -1905,6 +1936,9 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.ToolStripMenuItem diceRollerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem characterTrackerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem combatToolStripMenuItem;
+        private System.Windows.Forms.TextBox txt_PlayerHP;
+        private System.Windows.Forms.Label label31;
     }
 }
 

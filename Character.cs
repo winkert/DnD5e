@@ -45,6 +45,8 @@ namespace DnD5e
         public string Allignment { get { return getAllignment(pAllignment); } }
         public string Experience { get { return pExperience.ToString(); } }
         public string Level { get { return getLevel(); } }
+        public int HitPoints { get { return pHitPoints; }}
+        public int Initiative { get { return pInitiative; } set { pInitiative = value; } }
         public string pBackground;
         private Gender pGender;
         private Races pRace;
@@ -53,6 +55,8 @@ namespace DnD5e
         private SubClass pPrestige;
         private Allignments pAllignment;
         private int pExperience = 0;
+        private int pHitPoints = 0;
+        private int pInitiative = 0;
         //Abilities
         public int pStrength;
         public int pDexterity;
@@ -299,6 +303,13 @@ namespace DnD5e
             }
         }
         #endregion
+        public void setHP(string hp)
+        {
+            if(!int.TryParse(hp, out pHitPoints))
+            {
+                pHitPoints = 0;
+            }
+        }
         public void AddXP(int xp)
         {
             pExperience += xp;
@@ -359,7 +370,8 @@ namespace DnD5e
         HalfElf,
         [Description("Half-Orc")]
         HalfOrc,
-        Tiefling
+        Tiefling,
+        Monster
     }
     //The SubRaces could be refactored to be treated like the SubClasses
     /// <summary>

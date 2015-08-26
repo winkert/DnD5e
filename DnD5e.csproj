@@ -53,6 +53,12 @@
     <Compile Include="CharTracker.Designer.cs">
       <DependentUpon>CharTracker.cs</DependentUpon>
     </Compile>
+    <Compile Include="CombatTracking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CombatTracking.Designer.cs">
+      <DependentUpon>CombatTracking.cs</DependentUpon>
+    </Compile>
     <Compile Include="DiceRoller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Log.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="Proficiencies.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +88,9 @@
     </Compile>
     <EmbeddedResource Include="CharTracker.resx">
       <DependentUpon>CharTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CombatTracking.resx">
+      <DependentUpon>CombatTracking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DiceRoller.resx">
       <DependentUpon>DiceRoller.cs</DependentUpon>
