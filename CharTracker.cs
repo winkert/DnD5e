@@ -61,12 +61,12 @@ namespace DnD5e
                 innerSet.Dock = DockStyle.Fill;
 
                 cArmors.SelectedIndexChanged += armor_dropdown_IndexChange;
-                cArmors.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Armor>().ToList();
+                cArmors.DataSource = c.Equipment.DefaultIfEmpty().OfType<Armor>().ToList();
                 cArmors.Tag = c.getBonus(c.pDexterity).ToString();
                 cArmors.Name = "Armor";
 
                 cWeapons.SelectedIndexChanged += weapon_dropdown_IndexChange;
-                cWeapons.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Weapon>().ToList();
+                cWeapons.DataSource = c.Equipment.DefaultIfEmpty().OfType<Weapon>().ToList();
                 cWeapons.Tag = i.ToString();
                 cWeapons.Name = "First_Weapon";
 
@@ -83,13 +83,13 @@ namespace DnD5e
                 cArmors2.Visible = false;
                 cArmors2.Tag = c.getBonus(c.pDexterity).ToString();
                 cArmors2.Name = "Shield_Combo";
-                cArmors2.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Armor>().ToList();
+                cArmors2.DataSource = c.Equipment.DefaultIfEmpty().OfType<Armor>().ToList();
 
                 cWeapons2.Visible = false;
                 cWeapons2.Tag = i.ToString();
                 cWeapons2.Name = "Second_Weapon";
                 cWeapons2.SelectedIndexChanged += weapon_dropdown_IndexChange;
-                cWeapons2.DataSource = c.pEquipment.DefaultIfEmpty().OfType<Weapon>().ToList();
+                cWeapons2.DataSource = c.Equipment.DefaultIfEmpty().OfType<Weapon>().ToList();
 
                 ArmorClass.Tag = "pArmor";
                 WeaponDamage.Tag = "pWeapon";
@@ -119,7 +119,7 @@ namespace DnD5e
                     ListBox spellList = new ListBox();
                     TextBox spellInfo = defaultTextbox();
                     spellList.Width = 125;
-                    spellList.DataSource = c.pSpells;
+                    spellList.DataSource = c.Spells;
                     spellList.SelectedIndexChanged += spellList_IndexChange;
                     spellInfo.Name = "SpellInfo";
                     innerSet.Controls.Add(spellList);

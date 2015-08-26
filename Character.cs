@@ -47,6 +47,10 @@ namespace DnD5e
         public string Level { get { return getLevel(); } }
         public int HitPoints { get { return pHitPoints; }}
         public int Initiative { get { return pInitiative; } set { pInitiative = value; } }
+        public List<Proficiencies> Proficiencies {get { return pProficiencies; } set { pProficiencies = value; } }
+        public List<Spell> Spells { get { return pSpells; } set { pSpells = value; } }
+        public List<Equipment> Equipment { get { return pEquipment; } set { pEquipment = value; } }
+
         public string pBackground;
         private Gender pGender;
         private Races pRace;
@@ -67,12 +71,12 @@ namespace DnD5e
         //Skills
         public List<Skill> pSkills = new List<Skill>();
         //Proficiencies
-        public List<Proficiencies> pProficiencies = new List<Proficiencies>();
+        private List<Proficiencies> pProficiencies;
         //Spells
         public bool isSpellCaster = false;
-        public List<Spell> pSpells = new List<Spell>();
+        private List<Spell> pSpells = new List<Spell>();
         //Equipment
-        public List<Equipment> pEquipment = new List<Equipment>();
+        private List<Equipment> pEquipment = new List<Equipment>();
         #endregion
         #region Methods
         public override string ToString()

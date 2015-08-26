@@ -31,7 +31,9 @@ namespace DnD5e
         public static bool savingNloading = false;
         private string SaveLocation = Path.GetDirectoryName(Application.ExecutablePath) + "\\characters.bin";
         private Log AppLog = new Log("DnD5e.log");
-        private List<Proficiencies> tempProficiencies = new List<Proficiencies>();
+        //These three seem to no longer work...
+        //I need to do some trouble shooting here to see what happens.
+        private List<Proficiencies> tempProficiencies;
         private List<Spell> tempSpells;
         private List<Equipment> tempEquipment;
         private string tempPrestigeType = "None";
@@ -173,7 +175,19 @@ namespace DnD5e
         /// </summary>
         private void resetEquipmentControls()
         {
-
+            foreach (Control c in tab_CharSpells.Controls)
+            {
+                if (c is TextBox)
+                {
+                    TextBox t = (TextBox)c;
+                    t.Text = string.Empty;
+                }
+                else if (c is ComboBox)
+                {
+                    ComboBox b = (ComboBox)c;
+                    b.SelectedIndex = 0;
+                }
+            }
         }
         /// <summary>
         /// Populates all of the fields to match the selected character.
@@ -181,6 +195,9 @@ namespace DnD5e
         /// <param name="c"></param>
         private void LoadCharacter(Character c)
         {
+            tempEquipment = null;
+            tempProficiencies = null;
+            tempSpells = null;
             //First the Character sheet
             txt_Name.Text = c.pName;
             combo_Gender.SelectedItem = c.Gender;
@@ -216,23 +233,17 @@ namespace DnD5e
             }
 
             //Set the Proficiencies
-            tempProficiencies = c.pProficiencies;
+            LoadProficiencies(ref tempProficiencies, c);
             refreshProficiencies();
 
             //Spells
             tab_CharSpells.Enabled = c.isSpellCaster;
             tempIsCaster = c.isSpellCaster;
-            tempSpells = c.pSpells;
+            tempSpells = c.Spells;
             refreshSpells();
 
-            //Equipment
-            //list_Equipment.Items.Clear();
-            //foreach (Equipment e in c.pEquipment)
-            //{
-            //    list_Equipment.Items.Add(e);
-            //}
-            tempEquipment = null;
-            tempEquipment = c.pEquipment;
+            //Equipment            
+            tempEquipment = c.Equipment;
             refreshEquipment();
         }
         /// <summary>
@@ -276,17 +287,12 @@ namespace DnD5e
 
             }
             //Save Proficiencies
-            c.pProficiencies = tempProficiencies;
+            c.Proficiencies = tempProficiencies;
             //Save Spells
             c.isSpellCaster = tempIsCaster;
-            c.pSpells = tempSpells;
+            c.Spells = tempSpells;
             //Save Equipment
-            //c.pEquipment.Clear();
-            //foreach (Equipment e in list_Equipment.Items)
-            //{
-            //    c.pEquipment.Add(e);
-            //}
-            c.pEquipment = tempEquipment;
+            c.Equipment = tempEquipment;
             return c;
         }
         /// <summary>
@@ -330,18 +336,87 @@ namespace DnD5e
                 allCharacters[c].pSkills.First(k => k.SkillName != null && k.SkillName == check.Text).isProficient = check.Checked;
             }
             //Save Proficiencies
-            allCharacters[c].pProficiencies = tempProficiencies;
+            SaveProficiencies(tempProficiencies, c);
             //Save Spells
             allCharacters[c].isSpellCaster = tempIsCaster;
-            allCharacters[c].pSpells = tempSpells;
+            SaveSpells(tempSpells, c);
             //Save Equipment
-            //allCharacters[c].pEquipment.Clear();
-            //foreach (Equipment e in list_Equipment.Items)
-            //{
-            //    allCharacters[c].pEquipment.Add(e);
-            //}
-            allCharacters[c].pEquipment = tempEquipment;
+            SaveEquipment(tempEquipment, c);
         }
+
+        #region Save Parts
+        private void SaveProficiencies(List<Proficiencies> prof, int c)
+        {
+            allCharacters[c].Proficiencies = prof;
+        }
+        private void SaveSpells(List<Spell> spells, int c)
+        {
+            allCharacters[c].Spells = spells;
+        }
+        private void SaveEquipment(List<Equipment> equip, int c)
+        {
+            allCharacters[c].Equipment = equip;
+        }
+        //private List<Proficiencies> SaveProficiencies(List<Proficiencies> prof)
+        //{
+        //    allCharacters[c].Proficiencies = prof;
+        //}
+        //private List<Spell> SaveSpells(List<Spell> spells)
+        //{
+        //    allCharacters[c].Spells = spells;
+        //}
+        //private List<Equipment> SaveEquipment(List<Equipment> equip)
+        //{
+        //    allCharacters[c].Equipment = equip;
+        //}
+        #endregion
+        #region Load Parts
+        private void LoadProficiencies(ref List<Proficiencies> prof, Character c)
+        {
+            if (prof != null)
+            {
+                prof.Clear(); 
+            }
+            else
+            {
+                prof = new List<Proficiencies>();
+            }
+            foreach (Proficiencies p in c.Proficiencies)
+            {
+                prof.Add(p);
+            }
+        }
+        private void LoadSpells(ref List<Spell> spells, Character c)
+        {
+            if (spells != null)
+            {
+                spells.Clear();
+            }
+            else
+            {
+                spells = new List<Spell>();
+            }
+            foreach (Spell p in c.Spells)
+            {
+                spells.Add(p);
+            }
+        }
+        private void LoadEquipment(ref List<Equipment> equip, Character c)
+        {
+            if (equip != null)
+            {
+                equip.Clear(); 
+            }
+            else
+            {
+                equip = new List<Equipment>();
+            }
+            foreach (Equipment e in c.Equipment)
+            {
+                equip.Add(e);
+            }
+        }
+        #endregion
         #endregion
         #region Build Parts
         private Spell createSpell()
