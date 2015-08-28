@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
+using DnD5e.Utilities;
 
 namespace DnD5e
 {
@@ -30,7 +30,7 @@ namespace DnD5e
         public decimal Weight;
         public override string ToString()
         {
-            return Name + " : " + Value.GoldToCoins();
+            return Name + " : " + Money.GoldToCoins(Value);
         }
 
     }
@@ -62,7 +62,7 @@ namespace DnD5e
 
         public override string ToString()
         {
-            return Name + " (" + Damage() + ")" + " : " + Value.GoldToCoins();
+            return Name + " (" + Damage() + ")" + " : " + Money.GoldToCoins(Value);
         }
         public string Damage()
         {
@@ -83,7 +83,7 @@ namespace DnD5e
         /// <returns>Integer representing the damage dealt.</returns>
         public int rollDamage()
         {
-            int Roll = wDice.rollDice(wNumDice);
+            int Roll = Dice.rollDice(wDice, wNumDice);
             Roll += wBonus;
             if(Roll < 0)
             {
@@ -117,7 +117,7 @@ namespace DnD5e
 
         public override string ToString()
         {
-            return Name + " (" + AC + ")" + " : " + Value.GoldToCoins();
+            return Name + " (" + AC + ")" + " : " + Money.GoldToCoins(Value);
         }
     }
     #endregion

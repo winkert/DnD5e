@@ -1,11 +1,6 @@
-﻿using System;
+﻿using DnD5e.Utilities;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DnD5e
@@ -73,15 +68,15 @@ namespace DnD5e
             int DamageDiceNumber;
             if(w.isVersitile && isTwoHanded.Checked)
             {
-                DamageDiceType = w.VersitileDamage.ParseDiceType();
-                DamageDiceNumber = w.VersitileDamage.ParseDiceNumber();
+                DamageDiceType = Dice.ParseDiceType(w.VersitileDamage);
+                DamageDiceNumber = Dice.ParseDiceNumber(w.VersitileDamage);
             }
             else
             {
-                DamageDiceType = w.Damage.ParseDiceType();
-                DamageDiceNumber = w.Damage.ParseDiceNumber();
+                DamageDiceType = Dice.ParseDiceType(w.Damage);
+                DamageDiceNumber = Dice.ParseDiceNumber(w.Damage);
             }
-            return DamageDiceType.rollDice(DamageDiceNumber);
+            return Dice.rollDice(DamageDiceType, DamageDiceNumber);
         }
         #endregion
         #region Even Handlers
@@ -128,9 +123,9 @@ namespace DnD5e
             {
                 name = txt_RollName.Text;
             }
-            int diceNum = txt_Roll.Text.ParseDiceNumber();
-            int diceType = txt_Roll.Text.ParseDiceType();
-            int result = diceType.rollDice(diceNum);
+            int diceNum = Dice.ParseDiceNumber(txt_Roll.Text);
+            int diceType = Dice.ParseDiceType(txt_Roll.Text);
+            int result = Dice.rollDice(diceType,diceNum);
             roll = name + " : " + result.ToString();
             Rolls.Add(roll);
             RefreshRolls();
@@ -140,31 +135,28 @@ namespace DnD5e
         {
             string roll;
             int d = 6;
-            roll = "Initiative: " + d.rollDice(1).ToString();
+            roll = "Initiative: " + Dice.rollDice(d, 1).ToString();
             Rolls.Add(roll);
             RefreshRolls();
         }
         private void btn_ToHit_Click(object sender, EventArgs e)
         {
             string roll;
-            int d = 20;
-            roll = "To Hit Roll: " + d.rollDice(1).ToString();
+            roll = "To Hit Roll: " + Dice.rollDice(20, 1).ToString();
             Rolls.Add(roll);
             RefreshRolls();
         }
         private void btn_SkillCheck_Click(object sender, EventArgs e)
         {
             string roll;
-            int d = 20;
-            roll = "Skill Check Roll: " + d.rollDice(1).ToString();
+            roll = "Skill Check Roll: " + Dice.rollDice(20, 1).ToString();
             Rolls.Add(roll);
             RefreshRolls();
         }
         private void btn_Percent_Click(object sender, EventArgs e)
         {
             string roll;
-            int d = 100;
-            roll = "Percent: " + d.rollDice(1).ToString() + "%";
+            roll = "Percent: " + Dice.rollDice(100, 1).ToString() + "%";
             Rolls.Add(roll);
             RefreshRolls();
         }

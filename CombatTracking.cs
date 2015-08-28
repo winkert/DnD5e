@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnD5e.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -16,13 +17,14 @@ namespace DnD5e
         #region Fields
         private List<Character> combat_Actors = new List<Character>();
         private List<string> Initiative_List = new List<string>();
+        private int SelectedCombatant = -1;
         #endregion
         #region Methods
         private void SetControlsData()
         {
             combo_Characters.DataSource = MainForm.allCharacters;
-            combo_mSize.DataSource = GetEnumNames(typeof(MonsterSize));
-            combo_mType.DataSource = GetEnumNames(typeof(MonsterType));
+            combo_mSize.DataSource = ExtensionMethods.GetEnumNames(typeof(MonsterSize));
+            combo_mType.DataSource =ExtensionMethods.GetEnumNames(typeof(MonsterType));
             list_Combatants.DataSource = Initiative_List;
         }
         private Monster createMonster()
@@ -43,28 +45,18 @@ namespace DnD5e
             Initiative_List.Clear();
             foreach (Character chr in combat_Actors)
             {
-                Initiative_List.Add(chr.ToString() + " (" + chr.Initiative + ")");
+                Initiative_List.Add(chr.Initiative + " : " + chr.ToString() + "  (" + chr.HitPoints.ToString() +  "hp )");
             }
             list_Combatants.DataSource = null;
             list_Combatants.DataSource = Initiative_List;
+            list_Combatants.SelectedIndex = SelectedCombatant;
         }
         private int RollInitiative()
         {
             int init = 20;
-            return init.rollDice();
+            return Dice.rollDice(init);
         }
-        public string[] GetEnumNames(Type t)
-        {
-            Array EnumValues = Enum.GetValues(t);
-            string[] items = new string[EnumValues.Length];
-            int i = 0;
-            foreach (Enum e in EnumValues)
-            {
-                items[i] = e.GetDescription();
-                i++;
-            }
-            return items;
-        }
+        
         #endregion
         #region Event Handlers
         private void btn_CharInitiative_Click(object sender, EventArgs e)
@@ -73,6 +65,7 @@ namespace DnD5e
             if (!int.TryParse(txt_Initiative.Text, out init))
                 init = RollInitiative();
             AddCombatant((Character)combo_Characters.SelectedItem, init);
+            SelectedCombatant = -1;
             RefreshCombatList();
         }
         private void btn_MonsterInitiative_Click(object sender, EventArgs e)
@@ -81,13 +74,59 @@ namespace DnD5e
             if (!int.TryParse(txt_DexModifier.Text, out dexMod))
                 dexMod = 0;
             AddCombatant(createMonster(), RollInitiative() + dexMod);
+            SelectedCombatant = -1;
             RefreshCombatList();
         }
         private void btn_RemoveChar_Click(object sender, EventArgs e)
         {
             combat_Actors.RemoveAt(list_Combatants.SelectedIndex);
+            SelectedCombatant = -1;
+            RefreshCombatList();
+        }
+        private void btn_Damage_Click(object sender, EventArgs e)
+        {
+            SelectedCombatant = list_Combatants.SelectedIndex;
+            int hp;
+            if(int.TryParse(txt_HPChange.Text,out hp))
+            {
+                combat_Actors[SelectedCombatant].setHP((combat_Actors[SelectedCombatant].HitPoints - hp).ToString());
+            }
+            else //Roll Dice
+            {
+                int dType = Dice.ParseDiceType(txt_HPChange.Text);
+                int dNum = Dice.ParseDiceNumber(txt_HPChange.Text);
+                int dBonus = Dice.findBonus(txt_HPChange.Text);
+                combat_Actors[SelectedCombatant].setHP((combat_Actors[SelectedCombatant].HitPoints - (Dice.rollDice(dType,dNum) + dBonus)).ToString());
+            }
+            if(combat_Actors[SelectedCombatant].HitPoints < 1)
+            {
+                combat_Actors.RemoveAt(SelectedCombatant);
+            }
+            RefreshCombatList();
+        }
+        private void btn_Heal_Click(object sender, EventArgs e)
+        {
+            SelectedCombatant = list_Combatants.SelectedIndex;
+            int hp;
+            if (int.TryParse(txt_HPChange.Text, out hp))
+            {
+                combat_Actors[SelectedCombatant].setHP((combat_Actors[SelectedCombatant].HitPoints + hp).ToString());
+            }
+            else //Roll Dice
+            {
+                int dType = Dice.ParseDiceType(txt_HPChange.Text);
+                int dNum = Dice.ParseDiceNumber(txt_HPChange.Text);
+                int dBonus = Dice.findBonus(txt_HPChange.Text);
+                combat_Actors[SelectedCombatant].setHP((combat_Actors[SelectedCombatant].HitPoints + (Dice.rollDice(dType,dNum) + dBonus)).ToString());
+            }
+            if (combat_Actors[SelectedCombatant].HitPoints > combat_Actors[SelectedCombatant].MaxHitPoints)
+            {
+                combat_Actors[SelectedCombatant].setHP(combat_Actors[SelectedCombatant].MaxHitPoints.ToString());
+            }
             RefreshCombatList();
         }
         #endregion
+
+
     }
 }

@@ -1,9 +1,8 @@
-﻿using System;
+﻿using DnD5e.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace DnD5e
@@ -31,8 +30,6 @@ namespace DnD5e
         public static bool savingNloading = false;
         private string SaveLocation = Path.GetDirectoryName(Application.ExecutablePath) + "\\characters.bin";
         private Log AppLog = new Log("DnD5e.log");
-        //These three seem to no longer work...
-        //I need to do some trouble shooting here to see what happens.
         private List<Proficiencies> tempProficiencies;
         private List<Spell> tempSpells;
         private List<Equipment> tempEquipment;
@@ -41,23 +38,7 @@ namespace DnD5e
         #endregion
 
         #region Methods
-        /// <summary>
-        /// Method to get the description or names of an enum.
-        /// </summary>
-        /// <param name="t">typeof(T)</param>
-        /// <returns>Array of Descriptions or Names of the Enums</returns>
-        public string[] GetEnumNames(Type t)
-        {
-            Array EnumValues = Enum.GetValues(t);
-            string[] items = new string[EnumValues.Length];
-            int i = 0;
-            foreach (Enum e in EnumValues)
-            {
-                items[i] = e.GetDescription();
-                i++;
-            }
-            return items;
-        }
+        
         private void refreshXPForm()
         {
             if (Application.OpenForms.OfType<XPCalc>().Count() > 0)
@@ -207,7 +188,7 @@ namespace DnD5e
             combo_Prestige.SelectedItem = c.SubClass;
             combo_Allignment.SelectedItem = c.Allignment;
             txt_Background.Text = c.pBackground;
-            txt_PlayerHP.Text = c.HitPoints.ToString();
+            txt_PlayerHP.Text = c.MaxHitPoints.ToString();
             //Use a generic method in Character to get the attributes
             txt_St.Value = c.getAttribute("Strength");
             txt_Dx.Value = c.getAttribute("Dexterity");
@@ -254,7 +235,7 @@ namespace DnD5e
         {
             //Attributes are saved in creation
             Character c = new Character(txt_Name.Text, (int)txt_St.Value, (int)txt_Dx.Value, (int)txt_Cn.Value, (int)txt_In.Value, (int)txt_Wd.Value, (int)txt_Ch.Value);
-            c.setHP(txt_PlayerHP.Text);
+            c.MaxHitPoints = int.Parse(txt_PlayerHP.Text);
             //Save characteristics
             c.setGender(combo_Gender.SelectedItem.ToString());
             c.setRace(combo_Race.SelectedItem.ToString());
@@ -304,7 +285,7 @@ namespace DnD5e
             //Need to save attributes and name.
             allCharacters[c].pName = txt_Name.Text;
             allCharacters[c].setAttributes((int)txt_St.Value, (int)txt_Dx.Value, (int)txt_Cn.Value, (int)txt_In.Value, (int)txt_Wd.Value, (int)txt_Ch.Value);
-            allCharacters[c].setHP(txt_PlayerHP.Text);
+            allCharacters[c].MaxHitPoints = int.Parse(txt_PlayerHP.Text);
             //Save characteristics
             allCharacters[c].setGender(combo_Gender.SelectedItem.ToString());
             allCharacters[c].setRace(combo_Race.SelectedItem.ToString());
@@ -473,7 +454,7 @@ namespace DnD5e
             {
                 cp = 0;
             }
-            value += pp.PlatinumToGold() + gp + ep.ElectrumToGold() + sp.SilverToGold() + cp.CopperToGold();
+            value += Money.PlatinumToGold(pp) + gp + Money.ElectrumToGold(ep) + Money.SilverToGold(sp) + Money.CopperToGold(cp);
             if(!decimal.TryParse(txt_ItemWeight.Text, out weight))
             {
                 weight = 0;
@@ -493,8 +474,8 @@ namespace DnD5e
                 string damage = txt_WeaponDamage.Text;
                 int bonus = findBonus(damage);
                 damage = removeBonus(damage);
-                int numDice = damage.ParseDiceNumber();
-                int diceType = damage.ParseDiceType();
+                int numDice = Dice.ParseDiceNumber(damage);
+                int diceType = Dice.ParseDiceType(damage);
                 item = new Weapon(txt_ItemName.Text, combo_WeaponType.SelectedItem.ToString().ParseEnum<WeaponClasses>(), diceType,numDice,bonus,value);
             }
             else
@@ -544,13 +525,13 @@ namespace DnD5e
                     box.DataSource = null;
                 }
             }
-            combo_Gender.DataSource = GetEnumNames(typeof(Gender));
-            combo_Race.DataSource = GetEnumNames(typeof(Races));
+            combo_Gender.DataSource =ExtensionMethods.GetEnumNames(typeof(Gender));
+            combo_Race.DataSource =ExtensionMethods.GetEnumNames(typeof(Races));
             combo_SubRace.Items.Add(SubRaces.None.GetDescription());
-            combo_Class.DataSource = GetEnumNames(typeof(Classes));
+            combo_Class.DataSource =ExtensionMethods.GetEnumNames(typeof(Classes));
             combo_Prestige.Items.Add("None");
-            combo_Allignment.DataSource = GetEnumNames(typeof(Allignments));
-            combo_ProfType.DataSource = GetEnumNames(typeof(ProficincyTypes));
+            combo_Allignment.DataSource =ExtensionMethods.GetEnumNames(typeof(Allignments));
+            combo_ProfType.DataSource =ExtensionMethods.GetEnumNames(typeof(ProficincyTypes));
         }
         /// <summary>
         /// Binds the dropdowns in the Spells tab to arrays of Enums.
@@ -564,8 +545,8 @@ namespace DnD5e
                     ComboBox box = (ComboBox)c;
                     box.DataSource = null;
                 }
-                combo_SpellClass.DataSource = GetEnumNames(typeof(SpellClass));
-                combo_SpellLevel.DataSource = GetEnumNames(typeof(SpellLevel));
+                combo_SpellClass.DataSource =ExtensionMethods.GetEnumNames(typeof(SpellClass));
+                combo_SpellLevel.DataSource =ExtensionMethods.GetEnumNames(typeof(SpellLevel));
             }
         }
         /// <summary>
@@ -580,9 +561,9 @@ namespace DnD5e
                     ComboBox box = (ComboBox)c;
                     box.DataSource = null;
                 }
-                combo_ItemTypes.DataSource = GetEnumNames(typeof(ItemTypes));
-                combo_WeaponType.DataSource = GetEnumNames(typeof(WeaponClasses));
-                combo_ArmorType.DataSource = GetEnumNames(typeof(ArmorTypes));
+                combo_ItemTypes.DataSource =ExtensionMethods.GetEnumNames(typeof(ItemTypes));
+                combo_WeaponType.DataSource =ExtensionMethods.GetEnumNames(typeof(WeaponClasses));
+                combo_ArmorType.DataSource =ExtensionMethods.GetEnumNames(typeof(ArmorTypes));
             }
         }
         /// <summary>
@@ -663,62 +644,62 @@ namespace DnD5e
             switch (c)
             {
                 case Classes.Barbarian:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(PrimalPaths));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(PrimalPaths));
                     tempPrestigeType = "PrimalPaths";
                     label_Prestige.Text = "Primal Path";
                     break;
                 case Classes.Bard:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(BardColleges));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(BardColleges));
                     tempPrestigeType = "BardColleges";
                     label_Prestige.Text = "College";
                     break;
                 case Classes.Cleric:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(DivineDomains));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(DivineDomains));
                     tempPrestigeType = "DivineDomains";
                     label_Prestige.Text = "Domain";
                     break;
                 case Classes.Druid:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(DruidCircles));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(DruidCircles));
                     tempPrestigeType = "DruidCircles";
                     label_Prestige.Text = "Druid Circle";
                     break;
                 case Classes.Fighter:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(MartialArchetypes));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(MartialArchetypes));
                     tempPrestigeType = "MartialArchetypes";
                     label_Prestige.Text = "Archetype";
                     break;
                 case Classes.Monk:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(MonasticTraditions));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(MonasticTraditions));
                     tempPrestigeType = "MonasticTraditions";
                     label_Prestige.Text = "Tradition";
                     break;
                 case Classes.Paladin:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(SacredOaths));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(SacredOaths));
                     tempPrestigeType = "SacredOaths";
                     label_Prestige.Text = "Sacred Oath";
                     break;
                 case Classes.Ranger:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(RangerArchetypes));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(RangerArchetypes));
                     tempPrestigeType = "RangerArchetypes";
                     label_Prestige.Text = "Archetype";
                     break;
                 case Classes.Rogue:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(RoguishArchetypes));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(RoguishArchetypes));
                     tempPrestigeType = "RoguishArchetypes";
                     label_Prestige.Text = "Archetype";
                     break;
                 case Classes.Sorcerer:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(SorcerousOrigins));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(SorcerousOrigins));
                     tempPrestigeType = "SorcerousOrigins";
                     label_Prestige.Text = "Origin";
                     break;
                 case Classes.Warlock:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(OtherworldlyPatrons));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(OtherworldlyPatrons));
                     tempPrestigeType = "OtherworldlyPatrons";
                     label_Prestige.Text = "Patron";
                     break;
                 case Classes.Wizard:
-                    combo_Prestige.DataSource = GetEnumNames(typeof(ArcaneTraditions));
+                    combo_Prestige.DataSource =ExtensionMethods.GetEnumNames(typeof(ArcaneTraditions));
                     tempPrestigeType = "ArcaneTraditions";
                     label_Prestige.Text = "Tradition";
                     break;
@@ -770,7 +751,7 @@ namespace DnD5e
         {
             Item_Name.Text = s.Name;
             Item_Effects.Text = "Additional Information : " + s.Effects;
-            Item_Value.Text = s.Value.GoldToCoins();
+            Item_Value.Text = Money.GoldToCoins(s.Value);
         }
         private void hideItemInfo()
         {
@@ -948,7 +929,7 @@ namespace DnD5e
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 SaveLocation = openFile.FileName;
-                allCharacters = SaveLocation.deserialize();
+                allCharacters = SaveLocation.deserialize<Character>();
                 savingNloading = true;
                 refreshCharacters();
                 changesMade = false;

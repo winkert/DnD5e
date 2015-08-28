@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
-namespace DnD5e
+namespace DnD5e.Utilities
 {
     public static class ExtensionMethods
     {
@@ -14,7 +14,7 @@ namespace DnD5e
         /// Serialize the character to an xml file specified.
         /// </summary>
         /// <param name="fileLoc">Absolute location of destination</param>
-        public static void serialize(this List<Character> c, string fileLoc)
+        public static void serialize<T>(this List<T> c, string fileLoc)
         {
 
             using (Stream FileStream = File.Create(fileLoc))
@@ -24,10 +24,10 @@ namespace DnD5e
             }
         }
         /// <summary>
-        /// Deserialize a character from a string defining a url.
+        /// Deserialize a serializable object from a string defining a url.
         /// </summary>
         /// <returns></returns>
-        public static List<Character> deserialize(this string fileLoc)
+        public static List<T> deserialize<T>(this string fileLoc) where T : class
         {
 
             using (Stream FileStream = File.OpenRead(fileLoc))
@@ -35,7 +35,7 @@ namespace DnD5e
                 BinaryFormatter deserializer = new BinaryFormatter();
                 try
                 {
-                    return (List<Character>)deserializer.Deserialize(FileStream);
+                    return (List<T>)deserializer.Deserialize(FileStream);
                 }
                 catch (Exception e)
                 {
@@ -84,26 +84,45 @@ namespace DnD5e
             }
             return (T)Enum.Parse(typeof(T), stringVal);
         }
+        /// <summary>
+        /// Method to get the description or names of an enum.
+        /// </summary>
+        /// <param name="t">typeof(T)</param>
+        /// <returns>Array of Descriptions or Names of the Enums</returns>
+        public static string[] GetEnumNames(Type t)
+        {
+            Array EnumValues = Enum.GetValues(t);
+            string[] items = new string[EnumValues.Length];
+            int i = 0;
+            foreach (Enum e in EnumValues)
+            {
+                items[i] = e.GetDescription();
+                i++;
+            }
+            return items;
+        }
         #endregion
-        #region Money Methods
+    }
+    public static class Money
+    {
         //Copper = 1/100 gold
         //Silver = 1/10 gold
         //Electrum = 1/2 gold
         //Gold = 1 gold
         //Platinum = 10 gold
-        public static decimal CopperToGold(this int coin)
+        public static decimal CopperToGold(int coin)
         {
-            return (decimal)coin/100;
+            return (decimal)coin / 100;
         }
-        public static decimal SilverToGold(this int coin)
+        public static decimal SilverToGold(int coin)
         {
-            return (decimal)coin/10;
+            return (decimal)coin / 10;
         }
-        public static decimal ElectrumToGold(this int coin)
+        public static decimal ElectrumToGold(int coin)
         {
-            return (decimal)coin/2;
+            return (decimal)coin / 2;
         }
-        public static decimal PlatinumToGold(this int coin)
+        public static decimal PlatinumToGold(int coin)
         {
             return (decimal)coin * 10;
         }
@@ -111,7 +130,7 @@ namespace DnD5e
         /// Converts the value of an item (as gp) into the components.
         /// </summary>
         /// <returns></returns>
-        public static string GoldToCoins(this decimal gold)
+        public static string GoldToCoins(decimal gold)
         {
             decimal amountLeft = gold;
             string coppers = "";
@@ -119,55 +138,56 @@ namespace DnD5e
             string electrums = "";
             string golds = "";
             string platinums = "";
-            if(amountLeft >= 10)
+            if (amountLeft >= 10)
             {
                 int platinumCoins = (int)Math.Floor(Math.Floor(amountLeft) / 10m);
                 platinums = platinumCoins.ToString() + " pp ";
                 amountLeft -= platinumCoins * 10m;
 
             }
-            if(amountLeft >= 1)
+            if (amountLeft >= 1)
             {
                 int goldCoins = (int)Math.Floor(amountLeft);
                 golds = goldCoins.ToString() + " gp ";
                 amountLeft -= goldCoins;
             }
-            if(amountLeft > 0)
+            if (amountLeft > 0)
             {
                 int electrumCoins = (int)Math.Floor(amountLeft * 2m);
                 electrums = electrumCoins.ToString() + " ep ";
                 amountLeft -= electrumCoins / 2m;
             }
-            if(amountLeft > 0)
+            if (amountLeft > 0)
             {
                 int silverCoins = (int)Math.Floor(amountLeft * 10m);
                 silvers = silverCoins.ToString() + " sp ";
                 amountLeft -= silverCoins / 10m;
             }
-            if(amountLeft > 0)
+            if (amountLeft > 0)
             {
                 int copperCoins = (int)Math.Floor(amountLeft * 100m);
                 coppers = copperCoins.ToString() + " cp ";
                 amountLeft -= copperCoins / 100m;
             }
-            if(amountLeft > 0)
+            if (amountLeft > 0)
             {
                 MessageBox.Show("Remainder: " + amountLeft);
             }
             string values = platinums + golds + electrums + silvers + coppers;
             return values.Trim();
         }
-        #endregion
-        #region DiceMethods
+    }
+    public static class Dice
+    {
         /// <summary>
         /// Parses a string in the format of "1d6" into the type of dice rolled.
         /// </summary>
         /// <returns>Integer representing the type of dice. if error, returns 0.</returns>
-        public static int ParseDiceType(this string roll)
+        public static int ParseDiceType(string roll)
         {
             string theRoll = string.Empty;
             char[] testers = { '+', '-' };
-            if(roll.IndexOfAny(testers) > 1)
+            if (roll.IndexOfAny(testers) > 1)
             {
                 theRoll = roll.Substring(0, roll.IndexOfAny(testers));
             }
@@ -183,7 +203,7 @@ namespace DnD5e
             }
             int result;
             //debug            MessageBox.Show(theRoll.Substring(toD + 1, len - (toD + 1)));
-            if(int.TryParse(theRoll.Substring(toD + 1, len - (toD + 1)), out result))
+            if (int.TryParse(theRoll.Substring(toD + 1, len - (toD + 1)), out result))
             {
                 return result;
             }
@@ -193,7 +213,7 @@ namespace DnD5e
         /// Parses a string in the format of "1d6" into the number of dice rolled.
         /// </summary>
         /// <returns>Integer representing the number of dice. if error, returns 0.</returns>
-        public static int ParseDiceNumber(this string roll)
+        public static int ParseDiceNumber(string roll)
         {
             string theRoll = string.Empty;
             char[] testers = { '+', '-' };
@@ -211,7 +231,7 @@ namespace DnD5e
                 return 0;
             }
             int result;
-            if(int.TryParse(theRoll.Substring(0, toD),out result))
+            if (int.TryParse(theRoll.Substring(0, toD), out result))
             {
                 return result;
             }
@@ -222,17 +242,39 @@ namespace DnD5e
         /// </summary>
         /// <param name="d">The dice type rolled (e.g. 6 sided, 8 sided, etc).</param>
         /// <param name="numD">The number of dice rolled.</param>
-        /// <returns></returns>
-        public static int rollDice(this int d, int numD = 1)
+        /// <returns>new int()</returns>
+        public static int rollDice(int d, int numD = 1)
         {
             Random rndRoll = new Random();
             int Roll = 0;
-            for(int i = 0; i < numD; i++)
+            for (int i = 0; i < numD; i++)
             {
                 Roll += rndRoll.Next(1, d);
             }
             return Roll;
         }
-        #endregion
+        public static int findBonus(string s)
+        {
+            if (s.IndexOf('+') > 0)
+            {
+                return int.Parse(s.Substring(s.IndexOf('+') + 1, s.Length - s.IndexOf('+') - 1));
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public static string removeBonus(string s)
+        {
+            if (s.IndexOf('+') > 0)
+            {
+                return s.Substring(0, s.IndexOf('+'));
+            }
+            else
+            {
+                return s;
+            }
+        }
     }
+
 }

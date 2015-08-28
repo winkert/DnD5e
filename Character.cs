@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DnD5e.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -46,6 +47,7 @@ namespace DnD5e
         public string Experience { get { return pExperience.ToString(); } }
         public string Level { get { return getLevel(); } }
         public int HitPoints { get { return pHitPoints; }}
+        public int MaxHitPoints { get { return pMaxHP; } set { pMaxHP = value; } }
         public int Initiative { get { return pInitiative; } set { pInitiative = value; } }
         public List<Proficiencies> Proficiencies {get { return pProficiencies; } set { pProficiencies = value; } }
         public List<Spell> Spells { get { return pSpells; } set { pSpells = value; } }
@@ -60,6 +62,7 @@ namespace DnD5e
         private Allignments pAllignment;
         private int pExperience = 0;
         private int pHitPoints = 0;
+        private int pMaxHP = 0;
         private int pInitiative = 0;
         //Abilities
         public int pStrength;
