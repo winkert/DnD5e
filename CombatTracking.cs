@@ -30,7 +30,12 @@ namespace DnD5e
         private Monster createMonster()
         {
             //invalid argument exception
-            Monster m = new Monster(txt_mName.Text, combo_mSize.SelectedItem.ToString().ParseEnum<MonsterSize>(), combo_mType.SelectedItem.ToString().ParseEnum<MonsterType>());
+            int xp;
+            if(!int.TryParse(txt_XPValue.Text, out xp))
+            {
+                xp = 0;
+            }
+            Monster m = new Monster(txt_mName.Text, combo_mSize.SelectedItem.ToString().ParseEnum<MonsterSize>(), combo_mType.SelectedItem.ToString().ParseEnum<MonsterType>(),xp);
             m.setHP(txt_mHP.Text);
             return m;
         }

@@ -12,15 +12,17 @@ namespace DnD5e
         {
             setRace("Monster");
         }
-        public Monster(string name, MonsterSize s, MonsterType mt)
+        public Monster(string name, MonsterSize s, MonsterType mt, int xp)
         {
             pName = name;
             setRace("Monster");
             mSize = s;
             mType = mt;
+            xpValue = xp;
         }
-        MonsterSize mSize;
-        MonsterType mType;
+        private MonsterSize mSize;
+        private MonsterType mType;
+        private int xpValue;
 
         public override string ToString()
         {
