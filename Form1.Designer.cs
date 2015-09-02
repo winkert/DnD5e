@@ -938,6 +938,7 @@
             // 
             this.Item_Effects.BackColor = System.Drawing.SystemColors.Window;
             this.Item_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Item_Effects.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Item_Effects.Enabled = false;
             this.Item_Effects.Location = new System.Drawing.Point(6, 48);
             this.Item_Effects.Multiline = true;
@@ -1514,6 +1515,7 @@
             // 
             this.Spell_Effects.BackColor = System.Drawing.SystemColors.Window;
             this.Spell_Effects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Spell_Effects.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Spell_Effects.Enabled = false;
             this.Spell_Effects.Location = new System.Drawing.Point(9, 136);
             this.Spell_Effects.Multiline = true;
@@ -1527,6 +1529,7 @@
             // 
             this.Spell_Components.BackColor = System.Drawing.SystemColors.Window;
             this.Spell_Components.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Spell_Components.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Spell_Components.Enabled = false;
             this.Spell_Components.Location = new System.Drawing.Point(9, 87);
             this.Spell_Components.Multiline = true;

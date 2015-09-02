@@ -18,6 +18,7 @@ namespace DnD5e
         private List<Character> combat_Actors = new List<Character>();
         private List<string> Initiative_List = new List<string>();
         private int SelectedCombatant = -1;
+        private int xpGained = 0;
         #endregion
         #region Methods
         private void SetControlsData()
@@ -29,13 +30,14 @@ namespace DnD5e
         }
         private Monster createMonster()
         {
-            //invalid argument exception
             int xp;
             if(!int.TryParse(txt_XPValue.Text, out xp))
             {
                 xp = 0;
             }
-            Monster m = new Monster(txt_mName.Text, combo_mSize.SelectedItem.ToString().ParseEnum<MonsterSize>(), combo_mType.SelectedItem.ToString().ParseEnum<MonsterType>(),xp);
+            MonsterSize size = combo_mSize.SelectedItem.ToString().ParseEnum<MonsterSize>();
+            MonsterType type = combo_mType.SelectedItem.ToString().ParseEnum<MonsterType>();
+            Monster m = new Monster(txt_mName.Text, size, type, xp);
             m.setHP(txt_mHP.Text);
             return m;
         }
@@ -43,14 +45,14 @@ namespace DnD5e
         {
             c.Initiative = init;
             combat_Actors.Add(c);
-            combat_Actors = combat_Actors.OrderBy(i => i.Initiative).Distinct().ToList();
+            combat_Actors = combat_Actors.OrderByDescending(i => i.Initiative).Distinct().ToList();
         }
         private void RefreshCombatList()
         {
             Initiative_List.Clear();
             foreach (Character chr in combat_Actors)
             {
-                Initiative_List.Add(chr.Initiative + " : " + chr.ToString() + "  (" + chr.HitPoints.ToString() +  "hp )");
+                Initiative_List.Add(chr.Initiative + " : " + chr.pName + "  (" + chr.HitPoints.ToString() +  " hp)");
             }
             list_Combatants.DataSource = null;
             list_Combatants.DataSource = Initiative_List;
@@ -84,6 +86,12 @@ namespace DnD5e
         }
         private void btn_RemoveChar_Click(object sender, EventArgs e)
         {
+            if(combat_Actors[list_Combatants.SelectedIndex] is Monster)
+            {
+                Monster sel = (Monster)combat_Actors[list_Combatants.SelectedIndex];
+                xpGained += sel.xpValue;
+                txt_XPGained.Text = "XP Earned: " + xpGained.ToString();
+            }
             combat_Actors.RemoveAt(list_Combatants.SelectedIndex);
             SelectedCombatant = -1;
             RefreshCombatList();

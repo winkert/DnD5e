@@ -35,6 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_CharInitiative = new System.Windows.Forms.Button();
             this.group_Monster = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txt_XPValue = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_DexModifier = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,8 +55,7 @@
             this.txt_HPChange = new System.Windows.Forms.TextBox();
             this.btn_Heal = new System.Windows.Forms.Button();
             this.btn_Damage = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_XPValue = new System.Windows.Forms.TextBox();
+            this.txt_XPGained = new System.Windows.Forms.TextBox();
             this.group_Characters.SuspendLayout();
             this.group_Monster.SuspendLayout();
             this.group_Combat.SuspendLayout();
@@ -141,6 +142,23 @@
             this.group_Monster.TabStop = false;
             this.group_Monster.Text = "Monsters";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label9.Location = new System.Drawing.Point(218, 53);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 17);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "XP Value";
+            // 
+            // txt_XPValue
+            // 
+            this.txt_XPValue.Location = new System.Drawing.Point(219, 73);
+            this.txt_XPValue.Name = "txt_XPValue";
+            this.txt_XPValue.Size = new System.Drawing.Size(65, 20);
+            this.txt_XPValue.TabIndex = 5;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -156,7 +174,7 @@
             this.txt_DexModifier.Location = new System.Drawing.Point(93, 128);
             this.txt_DexModifier.Name = "txt_DexModifier";
             this.txt_DexModifier.Size = new System.Drawing.Size(65, 20);
-            this.txt_DexModifier.TabIndex = 5;
+            this.txt_DexModifier.TabIndex = 4;
             // 
             // label5
             // 
@@ -203,7 +221,7 @@
             this.btn_MonsterInitiative.Location = new System.Drawing.Point(200, 146);
             this.btn_MonsterInitiative.Name = "btn_MonsterInitiative";
             this.btn_MonsterInitiative.Size = new System.Drawing.Size(84, 27);
-            this.btn_MonsterInitiative.TabIndex = 7;
+            this.btn_MonsterInitiative.TabIndex = 6;
             this.btn_MonsterInitiative.Text = "Roll Initiative";
             this.btn_MonsterInitiative.UseVisualStyleBackColor = true;
             this.btn_MonsterInitiative.Click += new System.EventHandler(this.btn_MonsterInitiative_Click);
@@ -213,14 +231,14 @@
             this.txt_mHP.Location = new System.Drawing.Point(93, 102);
             this.txt_mHP.Name = "txt_mHP";
             this.txt_mHP.Size = new System.Drawing.Size(65, 20);
-            this.txt_mHP.TabIndex = 4;
+            this.txt_mHP.TabIndex = 3;
             // 
             // txt_mName
             // 
             this.txt_mName.Location = new System.Drawing.Point(82, 19);
             this.txt_mName.Name = "txt_mName";
             this.txt_mName.Size = new System.Drawing.Size(202, 20);
-            this.txt_mName.TabIndex = 3;
+            this.txt_mName.TabIndex = 0;
             // 
             // combo_mType
             // 
@@ -243,12 +261,12 @@
             this.list_Combatants.FormattingEnabled = true;
             this.list_Combatants.Location = new System.Drawing.Point(308, 38);
             this.list_Combatants.Name = "list_Combatants";
-            this.list_Combatants.Size = new System.Drawing.Size(225, 342);
+            this.list_Combatants.Size = new System.Drawing.Size(244, 342);
             this.list_Combatants.TabIndex = 3;
             // 
             // btn_RemoveChar
             // 
-            this.btn_RemoveChar.Location = new System.Drawing.Point(458, 12);
+            this.btn_RemoveChar.Location = new System.Drawing.Point(477, 12);
             this.btn_RemoveChar.Name = "btn_RemoveChar";
             this.btn_RemoveChar.Size = new System.Drawing.Size(75, 23);
             this.btn_RemoveChar.TabIndex = 2;
@@ -258,6 +276,7 @@
             // 
             // group_Combat
             // 
+            this.group_Combat.Controls.Add(this.txt_XPGained);
             this.group_Combat.Controls.Add(this.label8);
             this.group_Combat.Controls.Add(this.txt_HPChange);
             this.group_Combat.Controls.Add(this.btn_Heal);
@@ -307,28 +326,23 @@
             this.btn_Damage.UseVisualStyleBackColor = true;
             this.btn_Damage.Click += new System.EventHandler(this.btn_Damage_Click);
             // 
-            // label9
+            // txt_XPGained
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(218, 53);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 17);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "XP Value";
-            // 
-            // txt_XPValue
-            // 
-            this.txt_XPValue.Location = new System.Drawing.Point(219, 73);
-            this.txt_XPValue.Name = "txt_XPValue";
-            this.txt_XPValue.Size = new System.Drawing.Size(65, 20);
-            this.txt_XPValue.TabIndex = 6;
+            this.txt_XPGained.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_XPGained.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_XPGained.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txt_XPGained.Location = new System.Drawing.Point(6, 19);
+            this.txt_XPGained.Multiline = true;
+            this.txt_XPGained.Name = "txt_XPGained";
+            this.txt_XPGained.ReadOnly = true;
+            this.txt_XPGained.Size = new System.Drawing.Size(96, 53);
+            this.txt_XPGained.TabIndex = 18;
             // 
             // CombatTracking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 391);
+            this.ClientSize = new System.Drawing.Size(564, 391);
             this.Controls.Add(this.group_Combat);
             this.Controls.Add(this.btn_RemoveChar);
             this.Controls.Add(this.list_Combatants);
@@ -374,5 +388,6 @@
         private System.Windows.Forms.Button btn_Damage;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txt_XPValue;
+        private System.Windows.Forms.TextBox txt_XPGained;
     }
 }

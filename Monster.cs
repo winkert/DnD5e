@@ -22,7 +22,7 @@ namespace DnD5e
         }
         private MonsterSize mSize;
         private MonsterType mType;
-        private int xpValue;
+        public int xpValue { get; set; }
 
         public override string ToString()
         {
