@@ -38,7 +38,6 @@ namespace DnD5e
         #endregion
 
         #region Methods
-        
         private void refreshXPForm()
         {
             if (Application.OpenForms.OfType<XPCalc>().Count() > 0)
@@ -220,11 +219,11 @@ namespace DnD5e
             //Spells
             tab_CharSpells.Enabled = c.isSpellCaster;
             tempIsCaster = c.isSpellCaster;
-            tempSpells = c.Spells;
+            LoadSpells(ref tempSpells, c);
             refreshSpells();
 
             //Equipment            
-            tempEquipment = c.Equipment;
+            LoadEquipment(ref tempEquipment, c);
             refreshEquipment();
         }
         /// <summary>

@@ -62,37 +62,37 @@ namespace DnD5e
 
                 cArmors.SelectedIndexChanged += armor_dropdown_IndexChange;
                 cArmors.DataSource = c.Equipment.DefaultIfEmpty().OfType<Armor>().ToList();
-                cArmors.Tag = c.getBonus(c.pDexterity).ToString();
+                cArmors.Tag = c.getBonus(c.pDexterity);
                 cArmors.Name = "Armor";
 
                 cWeapons.SelectedIndexChanged += weapon_dropdown_IndexChange;
                 cWeapons.DataSource = c.Equipment.DefaultIfEmpty().OfType<Weapon>().ToList();
-                cWeapons.Tag = i.ToString();
+                cWeapons.Tag = i;
                 cWeapons.Name = "First_Weapon";
 
                 hasShield.Checked = false;
                 hasShield.CheckStateChanged += checkbox_CheckStateChange;
-                hasShield.Tag = "shield";
+                hasShield.Name = "shield";
                 hasShield.Text = "Shield";
 
                 hasWeapons.Checked = false;
                 hasWeapons.CheckStateChanged += checkbox_CheckStateChange;
-                hasWeapons.Tag = "weapon";
+                hasWeapons.Name = "weapon";
                 hasWeapons.Text = "Two Weapons";
 
                 cArmors2.Visible = false;
-                cArmors2.Tag = c.getBonus(c.pDexterity).ToString();
+                cArmors2.Tag = c.getBonus(c.pDexterity);
                 cArmors2.Name = "Shield_Combo";
                 cArmors2.DataSource = c.Equipment.DefaultIfEmpty().OfType<Armor>().ToList();
 
                 cWeapons2.Visible = false;
-                cWeapons2.Tag = i.ToString();
+                cWeapons2.Tag = i;
                 cWeapons2.Name = "Second_Weapon";
                 cWeapons2.SelectedIndexChanged += weapon_dropdown_IndexChange;
                 cWeapons2.DataSource = c.Equipment.DefaultIfEmpty().OfType<Weapon>().ToList();
 
-                ArmorClass.Tag = "pArmor";
-                WeaponDamage.Tag = "pWeapon";
+                ArmorClass.Name = "pArmor";
+                WeaponDamage.Name = "pWeapon";
                 #endregion
                 #region Add Controls
                 innerSet.Controls.Add(Abilities);
@@ -129,6 +129,8 @@ namespace DnD5e
                 characterBox.Controls.Add(innerSet);
                 flow_CharTrack.Controls.Add(characterBox);
                 #endregion
+                cWeapons.SelectedIndex = -1;
+                cArmors.SelectedIndex = -1;
             }
 
 
@@ -227,13 +229,13 @@ namespace DnD5e
             }
             return bonus;
         }
-        #region Event Handles
+        #region Event Handlers
         private void armor_dropdown_IndexChange(object sender, EventArgs e)
         {
             ComboBox select = (ComboBox)sender;
             Armor selectedArmor = (Armor)select.SelectedItem;
             int totalAC;
-            CheckBox shield = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "shield");
+            CheckBox shield = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "shield");
             if(shield.Checked)
             {
                 ComboBox armor1 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "Armor");
@@ -247,14 +249,14 @@ namespace DnD5e
             {
                 totalAC = findAC(selectedArmor.AC, selectedArmor.Type, int.Parse(select.Tag.ToString()));
             }
-            select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pArmor").Text = "AC: " + totalAC.ToString();
+            select.Parent.Controls.Cast<Control>().First(k => k.Name == "pArmor").Text = "AC: " + totalAC.ToString();
         }
         private void weapon_dropdown_IndexChange(object sender, EventArgs e)
         {
             ComboBox select = (ComboBox)sender;
             Weapon selectedWeapon = (Weapon)select.SelectedItem;
             Character c = MainForm.allCharacters[int.Parse(select.Tag.ToString())];
-            CheckBox dual = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "weapon");
+            CheckBox dual = (CheckBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "weapon");
             if(dual.Checked)
             {
                 ComboBox weapon1 = (ComboBox)select.Parent.Controls.Cast<Control>().First(k => k.Name == "First_Weapon");
@@ -263,29 +265,29 @@ namespace DnD5e
                 Weapon selWeapon2 = (Weapon)weapon2.SelectedItem;
                 string damage1 = selWeapon1.Damage() + " " + findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selWeapon1.WeaponType);
                 string damage2 = selWeapon2.Damage() + " " + findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selWeapon2.WeaponType);
-                select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pWeapon").Text = "Damage: " + damage1 + ", " + damage2;
+                select.Parent.Controls.Cast<Control>().First(k => k.Name == "pWeapon").Text = "Damage: " + damage1 + ", " + damage2;
             }
             else
             {
                 string bonus;
                 bonus = findDamageBonus(c.getBonus(c.pStrength), c.getBonus(c.pDexterity), selectedWeapon.WeaponType);
-                select.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pWeapon").Text = "Damage: " + selectedWeapon.Damage() + " " + bonus;
+                select.Parent.Controls.Cast<Control>().First(k => k.Name == "pWeapon").Text = "Damage: " + selectedWeapon.Damage() + " " + bonus;
             }
         }
         private void checkbox_CheckStateChange(object sender, EventArgs e)
         {
             CheckBox box = (CheckBox)sender;
-            if((string)box.Tag == "shield")
+            if((string)box.Name == "shield")
             {
                 //Name = "Shield_Combo"
                 box.Parent.Controls.Cast<Control>().First(k => k.Name == "Shield_Combo").Visible = box.Checked;
-                box.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pArmor").Text = string.Empty;
+                box.Parent.Controls.Cast<Control>().First(k => k.Name == "pArmor").Text = string.Empty;
             }
             else
             {
                 //Name = "Second_Weapon"
                 box.Parent.Controls.Cast<Control>().First(k => k.Name == "Second_Weapon").Visible = box.Checked;
-                box.Parent.Controls.Cast<Control>().First(k => k.Tag.ToString() == "pWeapon").Text = string.Empty;
+                box.Parent.Controls.Cast<Control>().First(k => k.Name == "pWeapon").Text = string.Empty;
             }
         }
         private void spellList_IndexChange(object sender, EventArgs e)
